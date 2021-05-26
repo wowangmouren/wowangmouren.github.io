@@ -6,12 +6,12 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Hello World - 王文涛的博客</title>
+  <title>vue与原生（ios，安卓）交互 - 王文涛的博客</title>
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="google" content="notranslate" />
   
-  <meta name="description" content="Welcome to Hexo! This is yo...">
+  <meta name="description" content="一、原生调用H5（vue）的方法：1.在methods...">
   <meta name="author" content="wowangmouren">
   <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
   <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
@@ -145,7 +145,7 @@
       
       
     </div>
-    <div class="center">Hello World</div>
+    <div class="center">vue与原生（ios，安卓）交互</div>
     <div class="right">
       <i class="iconfont iconmenu j-navbar-menu"></i>
     </div>
@@ -187,31 +187,26 @@
       <div class="col-xl-6"><article class="article">
   <div class="wrap">
     <section class="head">
-  <img   class="lazyload" data-original="/images/theme/post-image.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <img   class="lazyload" data-original="/images/theme/cover/ios.jfif" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
   <div class="head-mask">
-    <h1 class="head-title">Hello World</h1>
+    <h1 class="head-title">vue与原生（ios，安卓）交互</h1>
     <div class="head-info">
-      <span class="post-info-item"><i class="iconfont iconcalendar"></i>May 12, 2021</span>
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>May 25, 2021</span>
       
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>444</span>
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>644</span>
     </div>
   </div>
 </section>
     <section class="main">
       <section class="content">
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+        <h4 id="一、原生调用H5（vue）的方法："><a href="#一、原生调用H5（vue）的方法：" class="headerlink" title="一、原生调用H5（vue）的方法："></a>一、原生调用H5（vue）的方法：</h4><h5 id="1-在methods中定义方法"><a href="#1-在methods中定义方法" class="headerlink" title="1.在methods中定义方法"></a>1.在methods中定义方法</h5><figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//判断app是否安装成功 （Android触发）1-&gt;完成 2-&gt;未完成</span></span><br><span class="line">    app<span class="constructor">IsInstall(<span class="params">packageName</span>, <span class="params">status</span>)</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (parse<span class="constructor">Int(<span class="params">status</span>)</span><span class="operator"> === </span><span class="number">1</span>) &#123;</span><br><span class="line">        this.send<span class="constructor">TaskStatus(104)</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<h5 id="2-将要给原生调用的方法挂载到-window-上面"><a href="#2-将要给原生调用的方法挂载到-window-上面" class="headerlink" title="2.将要给原生调用的方法挂载到 window 上面"></a>2.将要给原生调用的方法挂载到 window 上面</h5><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">window.appIsInstall</span> = this.appIsInstall<span class="comment">;</span></span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>​    注意：要注意这里写法是this.appIsInstall指向window，this.appIsInstall()这样就是直接调动了</p>
+<h5 id="3-原生安卓或者ios会在window上读取appIsInstall这个约定的方法名，传参调用"><a href="#3-原生安卓或者ios会在window上读取appIsInstall这个约定的方法名，传参调用" class="headerlink" title="3.原生安卓或者ios会在window上读取appIsInstall这个约定的方法名，传参调用"></a>3.原生安卓或者ios会在window上读取appIsInstall这个约定的方法名，传参调用</h5><h4 id="二、h5调用原生"><a href="#二、h5调用原生" class="headerlink" title="二、h5调用原生"></a>二、h5调用原生</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">adTask(taskID); <span class="comment">//视频广告任务(10个)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">adTask</span>(<span class="params">taskID = <span class="string">&quot;&quot;</span></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">window</span>.location.href = <span class="string">`<span class="subst">$&#123;NativeAPI.AD_TASK&#125;</span>?taskId=<span class="subst">$&#123;taskID&#125;</span>`</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<p>这个原理也很简单，其实就是前端发送一个请求出去，url里面带参，原生会去拦截这个请求，获取到数据</p>
 
       </section>
       <section class="extra">
@@ -219,7 +214,7 @@
           <ul class="copyright">
   
     <li><strong>本文作者：</strong>wowangmouren</li>
-    <li><strong>本文链接：</strong><a href="http://example.com/2021/05/12/hello-world/index.html" title="http:&#x2F;&#x2F;example.com&#x2F;2021&#x2F;05&#x2F;12&#x2F;hello-world&#x2F;index.html">http:&#x2F;&#x2F;example.com&#x2F;2021&#x2F;05&#x2F;12&#x2F;hello-world&#x2F;index.html</a></li>
+    <li><strong>本文链接：</strong><a href="http://example.com/2021/05/25/wmr_04/index.html" title="http:&#x2F;&#x2F;example.com&#x2F;2021&#x2F;05&#x2F;25&#x2F;wmr_04&#x2F;index.html">http:&#x2F;&#x2F;example.com&#x2F;2021&#x2F;05&#x2F;25&#x2F;wmr_04&#x2F;index.html</a></li>
     <li><strong>版权声明：</strong>本博客所有文章均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" title="BY-NC-SA" target="_blank" rel="noopener">BY-NC-SA</a> 许可协议，转载请注明出处！</li>
   
 </ul>
@@ -236,12 +231,12 @@
 </section>
         
         
-  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/hello-world/" rel="tag">hello_world</a></li></ul> 
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/svga/" rel="tag">svga</a></li></ul> 
 
         
   <nav class="nav">
-    <a href="/2021/05/12/wmr_01/"><i class="iconfont iconleft"></i>个人博客的创建-使用详解</a>
     <a></a>
+    <a href="/2021/05/25/wmr_03/">svga动画图在vue中使用<i class="iconfont iconright"></i></a>
   </nav>
 
       </section>
@@ -254,7 +249,7 @@
           
   <aside class="toc-wrap">
     <h3 class="toc-title">文章目录：</h3>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+    
   </aside>
 
         
