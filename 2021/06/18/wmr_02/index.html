@@ -6,12 +6,12 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>svga动画图在vue中使用 - 王文涛的博客</title>
+  <title>git使用 - 王文涛的博客</title>
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="google" content="notranslate" />
   
-  <meta name="description" content="一、svga在vue中使用：安装依赖：npm inst...">
+  <meta name="description" content="一、协同开发，最好是考虑下需要合并的情况：（1）git...">
   <meta name="author" content="wowangmouren">
   <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
   <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
@@ -145,7 +145,7 @@
       
       
     </div>
-    <div class="center">svga动画图在vue中使用</div>
+    <div class="center">git使用</div>
     <div class="right">
       <i class="iconfont iconmenu j-navbar-menu"></i>
     </div>
@@ -187,23 +187,22 @@
       <div class="col-xl-6"><article class="article">
   <div class="wrap">
     <section class="head">
-  <img   class="lazyload" data-original="/images/theme/post-image.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <img   class="lazyload" data-original="/images/theme/cover/gongju.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
   <div class="head-mask">
-    <h1 class="head-title">svga动画图在vue中使用</h1>
+    <h1 class="head-title">git使用</h1>
     <div class="head-info">
-      <span class="post-info-item"><i class="iconfont iconcalendar"></i>May 25, 2021</span>
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>June 18, 2021</span>
       
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>816</span>
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>662</span>
     </div>
   </div>
 </section>
     <section class="main">
       <section class="content">
-        <h4 id="一、svga在vue中使用："><a href="#一、svga在vue中使用：" class="headerlink" title="一、svga在vue中使用："></a>一、svga在vue中使用：</h4><h6 id="安装依赖："><a href="#安装依赖：" class="headerlink" title="安装依赖："></a>安装依赖：</h6><pre><code>npm install svgaplayerweb --save
-</code></pre>
-<h6 id="引入方式："><a href="#引入方式：" class="headerlink" title="引入方式："></a>引入方式：</h6><p>//   parser.load(“@/assets/img/byb.svga”, videoItem =&gt; { // 错误的引入方式，会报错incorrect header check<br>//   parser.load(“../../assets/img/svga/byb.svga”, videoItem =&gt; { // 错误的引入方式<br>//   使用@ 或者是../的形式都会报错，图片放在static中也是会报错，我的解决办法是放在了public的img文件夹中</p>
-<h6 id="js中调用："><a href="#js中调用：" class="headerlink" title="js中调用："></a>js中调用：</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">loadSvga</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">      <span class="keyword">let</span> that = <span class="built_in">this</span>;</span><br><span class="line">      <span class="keyword">var</span> player = <span class="keyword">new</span> SVGA.Player(<span class="string">&quot;#demoCanvas&quot;</span>);</span><br><span class="line">      <span class="keyword">var</span> parser = <span class="keyword">new</span> SVGA.Parser(<span class="string">&quot;#demoCanvas&quot;</span>);</span><br><span class="line">      parser.load(</span><br><span class="line">        <span class="string">&quot;svga/background.svga&quot;</span>,</span><br><span class="line">        <span class="function"><span class="keyword">function</span>(<span class="params">videoItem</span>) </span>&#123;</span><br><span class="line">          player.setVideoItem(videoItem);</span><br><span class="line">          player.startAnimation();</span><br><span class="line">          that.isShowBackground = <span class="literal">false</span>;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">          <span class="built_in">console</span>.log(<span class="string">&quot;ERR&quot;</span>, err);</span><br><span class="line">        &#125;</span><br><span class="line">      );</span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure>
-
+        <h4 id="一、协同开发，最好是考虑下需要合并的情况："><a href="#一、协同开发，最好是考虑下需要合并的情况：" class="headerlink" title="一、协同开发，最好是考虑下需要合并的情况："></a>一、协同开发，最好是考虑下需要合并的情况：</h4><p>（1）git stash save “save message”  : 执行存储时，添加备注，方便查找，只有git stash 也要可以的，但查找时不方便识别。<br>（2）git pull  ：没有改动的情况下，可以去掉（1）跟（3）直接拉取代码。<br>（3）git stash pop ：命令恢复之前缓存的工作目录，将缓存堆栈中的对应stash删除<br>（4）编译器上手动解决代码冲突问题<br>（5）git add .<br>（6）git commit -m “提交说明”<br>（7）git push</p>
+<h4 id="二、常用命令："><a href="#二、常用命令：" class="headerlink" title="二、常用命令："></a>二、常用命令：</h4><p> git status ：查看状态<br> git commit -m “提交说明”<br> git reset HEAD  文件名: 撤销add<br>git reset –soft HEAD^: 撤回commit跟add的提交，返回上一版本<br>git checkout – 文件: 撤销没add修改<br>git log   查看记录<br>git diff  文件路径   对比文件改动<br>gitk  对比文件改动<br>git commit -s -m “说明”<br>git push origin dev  提交</p>
+<p>使用前设置用户信息：<br> git config –global user.name ‘runoob’<br> git config –global user.email <a href="mailto:&#116;&#x65;&#x73;&#116;&#64;&#x72;&#x75;&#110;&#111;&#111;&#x62;&#x2e;&#99;&#x6f;&#x6d;">&#116;&#x65;&#x73;&#116;&#64;&#x72;&#x75;&#110;&#111;&#111;&#x62;&#x2e;&#99;&#x6f;&#x6d;</a>
+ </p>
 
       </section>
       <section class="extra">
@@ -211,7 +210,7 @@
           <ul class="copyright">
   
     <li><strong>本文作者：</strong>wowangmouren</li>
-    <li><strong>本文链接：</strong><a href="http://example.com/2021/05/25/wmr_03/index.html" title="http:&#x2F;&#x2F;example.com&#x2F;2021&#x2F;05&#x2F;25&#x2F;wmr_03&#x2F;index.html">http:&#x2F;&#x2F;example.com&#x2F;2021&#x2F;05&#x2F;25&#x2F;wmr_03&#x2F;index.html</a></li>
+    <li><strong>本文链接：</strong><a href="http://example.com/2021/06/18/wmr_02/index.html" title="http:&#x2F;&#x2F;example.com&#x2F;2021&#x2F;06&#x2F;18&#x2F;wmr_02&#x2F;index.html">http:&#x2F;&#x2F;example.com&#x2F;2021&#x2F;06&#x2F;18&#x2F;wmr_02&#x2F;index.html</a></li>
     <li><strong>版权声明：</strong>本博客所有文章均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" title="BY-NC-SA" target="_blank" rel="noopener">BY-NC-SA</a> 许可协议，转载请注明出处！</li>
   
 </ul>
@@ -228,12 +227,12 @@
 </section>
         
         
-  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/svga/" rel="tag">svga</a></li></ul> 
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li></ul> 
 
         
   <nav class="nav">
-    <a href="/2021/05/25/wmr_04/"><i class="iconfont iconleft"></i>vue与原生（ios，安卓）交互</a>
-    <a href="/2021/05/25/wmr_02/">git使用<i class="iconfont iconright"></i></a>
+    <a href="/2021/06/18/wmr_03/"><i class="iconfont iconleft"></i>svga动画图在vue中使用</a>
+    <a href="/2021/06/18/wmr_01/">个人博客的创建-使用详解<i class="iconfont iconright"></i></a>
   </nav>
 
       </section>
