@@ -1,0 +1,426 @@
+
+
+<!DOCTYPE html>
+<html lang="en" color-mode=light>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>TS - 王文涛的博客</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+  
+  <meta name="description" content="一、ypeScript 的特点1.始于JavaScri...">
+  <meta name="author" content="wowangmouren">
+  <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
+  <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" sizes="180x180">
+  <meta rel="mask-icon" href="/images/icons/stun-logo.svg" color="#333333">
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/favicon-144x144.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+    
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1445822_r673sha78lq.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+    
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css" name="highlight-style" mode="light">
+
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solarized-dark.min.css" name="highlight-style" mode="dark">
+
+      
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      lazyload: {
+        enable: true,
+        only_post: 'false',
+        loading: '[object Object]'
+      },
+      donate: {
+        enable: true,
+        alipay: '/images/theme/alipay.png',
+        wechat: '/images/theme/wechat.png'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: true,
+        always_show: true
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: false
+      },
+      preview: {
+        background: {
+          default: '',
+          api: ''
+        },
+        motto: {
+          default: '王文涛的博客',
+          typing: true,
+          api: '',
+          data_contents: ''
+        },
+      },
+      qrcode: {
+        enable: true,
+        type: 'url',
+        image: 'https://pic.izhaoo.com/weapp-code.jpg',
+      },
+      toc: {
+        enable: true
+      },
+      scrollbar: {
+        type: 'default'
+      },
+      notification: {
+        enable: false,
+        delay: 4500,
+        list: '',
+        page_white_list: '',
+        page_black_list: ''
+      },
+      search: {
+        enable: false,
+        path: ''
+      }
+    }
+  </script>
+
+  
+
+  
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="lock-screen">
+  <div class="loading"></div>
+  
+    
+
+
+  <nav class="navbar">
+    <div class="left">
+      
+        <i class="iconfont iconhome j-navbar-back-home"></i>
+      
+      
+        <i class="iconfont iconqrcode j-navbar-qrcode"></i>
+      
+      
+        <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+      
+      
+    </div>
+    <div class="center">TS</div>
+    <div class="right">
+      <i class="iconfont iconmenu j-navbar-menu"></i>
+    </div>
+    
+      <div id="qrcode-navbar"></div>
+    
+  </nav>
+
+  
+  
+
+<nav class="menu">
+  <div class="menu-container">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content"><li class="menu-item">
+        <a href="/ " class="underline "> 首页</a>
+      </li><li class="menu-item">
+        <a href="/galleries/ " class="underline "> 相册</a>
+      </li><li class="menu-item">
+        <a href="/archives/ " class="underline "> 归档</a>
+      </li><li class="menu-item">
+        <a href="/tags/ " class="underline "> 标签</a>
+      </li><li class="menu-item">
+        <a href="/categories/ " class="underline "> 分类</a>
+      </li><li class="menu-item">
+        <a href="/about/ " class="underline "> 关于</a>
+      </li></ul>
+    
+      <div class="menu-copyright"><p>欢迎进入王文涛的个人博客~  |  <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">主题</a></p></div>
+    
+  </div>
+</nav>
+  <main id="main">
+  <div class="article-wrap">
+    <div class="row container">
+      <div class="col-xl-3"></div>
+      <div class="col-xl-6"><article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img   class="lazyload" data-original="/images/theme/cover/ts.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">TS</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>August 12, 2021</span>
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>3020</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        <h1 id="一、ypeScript-的特点"><a href="#一、ypeScript-的特点" class="headerlink" title="一、ypeScript 的特点"></a>一、ypeScript 的特点</h1><h4 id="1-始于JavaScript，归于JavaScript-最终编译出的依旧是js"><a href="#1-始于JavaScript，归于JavaScript-最终编译出的依旧是js" class="headerlink" title="1.始于JavaScript，归于JavaScript(最终编译出的依旧是js)"></a>1.始于JavaScript，归于JavaScript(最终编译出的依旧是js)</h4><h4 id="2-强大的类型系统-对数据类型的约束"><a href="#2-强大的类型系统-对数据类型的约束" class="headerlink" title="2.强大的类型系统(对数据类型的约束)"></a>2.强大的类型系统(对数据类型的约束)</h4><h4 id="3-JS的超集-兼容JS-es6等"><a href="#3-JS的超集-兼容JS-es6等" class="headerlink" title="3.JS的超集,兼容JS,es6等"></a>3.JS的超集,兼容JS,es6等</h4><h1 id="二、安装-TypeScript"><a href="#二、安装-TypeScript" class="headerlink" title="二、安装 TypeScript"></a>二、安装 TypeScript</h1><p>命令行运行如下命令，全局安装 TypeScript：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g typescript</span><br></pre></td></tr></table></figure>
+
+<p>安装完成后，在控制台运行如下命令，检查安装是否成功(3.x)：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tsc -V </span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="三、基础类型"><a href="#三、基础类型" class="headerlink" title="三、基础类型"></a>三、基础类型</h1><h2 id="1-布尔值"><a href="#1-布尔值" class="headerlink" title="1.布尔值"></a>1.布尔值</h2><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> isDone: <span class="built_in">boolean</span> = <span class="literal">false</span>;</span><br><span class="line">isDone = <span class="literal">true</span>;</span><br><span class="line"><span class="comment">// isDone = 2 // error</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-数字"><a href="#2-数字" class="headerlink" title="2.数字"></a>2.数字</h2><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a1: <span class="built_in">number</span> = <span class="number">10</span> <span class="comment">// 十进制</span></span><br><span class="line"><span class="keyword">let</span> a2: <span class="built_in">number</span> = <span class="number">0b1010</span>  <span class="comment">// 二进制</span></span><br><span class="line"><span class="keyword">let</span> a3: <span class="built_in">number</span> = <span class="number">0o12</span> <span class="comment">// 八进制</span></span><br><span class="line"><span class="keyword">let</span> a4: <span class="built_in">number</span> = <span class="number">0xa</span> <span class="comment">// 十六进制</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="3-字符串"><a href="#3-字符串" class="headerlink" title="3.字符串"></a>3.字符串</h2><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> name:<span class="built_in">string</span> = <span class="string">&#x27;tom&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="4-undefined-和-null"><a href="#4-undefined-和-null" class="headerlink" title="4.undefined 和 null"></a>4.undefined 和 null</h2><p>TypeScript 里，<code>undefined</code> 和 <code>null</code> 两者各自有自己的类型分别叫做 <code>undefined</code> 和 <code>null</code>。 它们的本身的类型用处不是很大：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> u: <span class="literal">undefined</span> = <span class="literal">undefined</span></span><br><span class="line"><span class="keyword">let</span> n: <span class="literal">null</span> = <span class="literal">null</span></span><br></pre></td></tr></table></figure>
+
+<p>默认情况下 <code>null</code> 和 <code>undefined</code> 是所有类型的子类型。 就是说你可以把 <code>null</code> 和 <code>undefined</code> 赋值给 <code>number</code> 类型的变量。</p>
+<h2 id="5-数组"><a href="#5-数组" class="headerlink" title="5.数组"></a>5.数组</h2><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> list1: <span class="built_in">number</span>[] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br></pre></td></tr></table></figure>
+
+<p>第二种方式:    数组泛型，<code>Array&lt;元素类型&gt;</code>：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> list2: <span class="built_in">Array</span>&lt;<span class="built_in">number</span>&gt; = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-元组-Tuple"><a href="#6-元组-Tuple" class="headerlink" title="6.元组 Tuple"></a>6.元组 Tuple</h2><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> t1: [<span class="built_in">string</span>, <span class="built_in">number</span>]</span><br></pre></td></tr></table></figure>
+
+<p>当访问一个已知索引的元素，会得到正确的类型：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(t1[<span class="number">0</span>].substring(<span class="number">1</span>)) <span class="comment">// OK</span></span><br><span class="line"><span class="built_in">console</span>.log(t1[<span class="number">1</span>].substring(<span class="number">1</span>)) <span class="comment">// Error, &#x27;number&#x27; 不存在 &#x27;substring&#x27; 方法</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="7-枚举"><a href="#7-枚举" class="headerlink" title="7.枚举"></a>7.枚举</h2><p><code>enum</code> 类型是对 JavaScript 标准数据类型的一个补充。 使用枚举类型可以<code>为一组数值赋予友好的名字</code>。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">enum</span> Color &#123;</span><br><span class="line">  Red,</span><br><span class="line">  Green,</span><br><span class="line">  Blue</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 枚举数值默认从0开始依次递增</span></span><br><span class="line"><span class="comment">// 根据特定的名称得到对应的枚举数值</span></span><br><span class="line"><span class="keyword">let</span> myColor: Color = Color.Green  <span class="comment">// 0</span></span><br><span class="line"><span class="built_in">console</span>.log(myColor, Color.Red, Color.Blue)</span><br></pre></td></tr></table></figure>
+
+<p>默认情况下，从 <code>0</code> 开始为元素编号。 你也可以手动的指定成员的数值。 例如，我们将上面的例子改成从 <code>1</code> 开始编号：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">enum</span> Color &#123;Red = <span class="number">1</span>, Green, Blue&#125;</span><br><span class="line"><span class="keyword">let</span> c: Color = Color.Green</span><br></pre></td></tr></table></figure>
+
+<p>或者，全部都采用手动赋值：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">enum</span> Color &#123;Red = <span class="number">1</span>, Green = <span class="number">2</span>, Blue = <span class="number">4</span>&#125;</span><br><span class="line"><span class="keyword">let</span> c: Color = Color.Green</span><br></pre></td></tr></table></figure>
+
+<p>枚举类型提供的一个便利是你可以由枚举的值得到它的名字。 例如，我们知道数值为 2，但是不确定它映射到 Color 里的哪个名字，我们可以查找相应的名字：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">enum</span> Color &#123;Red = <span class="number">1</span>, Green, Blue&#125;</span><br><span class="line"><span class="keyword">let</span> colorName: <span class="built_in">string</span> = Color[<span class="number">2</span>]</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(colorName)  <span class="comment">// &#x27;Green&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="8-any-任何类型"><a href="#8-any-任何类型" class="headerlink" title="8.any: 任何类型"></a>8.any: 任何类型</h2><h2 id="9-void：没有任何类型（在函数无返回值时使用）"><a href="#9-void：没有任何类型（在函数无返回值时使用）" class="headerlink" title="9.void：没有任何类型（在函数无返回值时使用）"></a>9.void：没有任何类型（在函数无返回值时使用）</h2><p>声明一个 <code>void</code> 类型的变量没有什么大用，因为你只能为它赋予 <code>undefined</code> 和 <code>null</code>：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> unusable: <span class="built_in">void</span> = <span class="literal">undefined</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="10-object"><a href="#10-object" class="headerlink" title="10.object"></a>10.object</h2><p><code>object</code> 表示非原始类型，也就是除 <code>number</code>，<code>string</code>，<code>boolean</code>之外的类型。</p>
+<h2 id="11-联合类型：（’‘-’‘）"><a href="#11-联合类型：（’‘-’‘）" class="headerlink" title="11.联合类型：（’‘ | ’‘）"></a>11.联合类型：（’‘ | ’‘）</h2><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">toString2</span>(<span class="params">x: <span class="built_in">number</span> | <span class="built_in">string</span></span>) : <span class="title">string</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> x.toString()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="12-类型断言：（’‘-as-’‘）"><a href="#12-类型断言：（’‘-as-’‘）" class="headerlink" title="12.类型断言：（’‘  as ’‘）"></a>12.类型断言：（’‘  as ’‘）</h2><p>通过类型断言这种方式可以告诉编译器，“相信我，我知道自己在干什么”。 类型断言好比其它语言里的类型转换</p>
+<h2 id="13-类型推断"><a href="#13-类型推断" class="headerlink" title="13.类型推断"></a>13.类型推断</h2><p>类型推断: TS会在没有明确的指定类型的时候推测出一个类型</p>
+<h1 id="四、接口"><a href="#四、接口" class="headerlink" title="四、接口"></a>四、接口</h1><p>inferface  一种能力，约束（约束对象的属性值的类型）</p>
+<h4 id="1-可选属性：-sex-string"><a href="#1-可选属性：-sex-string" class="headerlink" title="1.可选属性：  sex ? : string"></a>1.可选属性：  sex ? : string</h4><h4 id="2-只读属性：readonly-id-number"><a href="#2-只读属性：readonly-id-number" class="headerlink" title="2.只读属性：readonly id : number"></a>2.只读属性：readonly id : number</h4><h4 id="3-函数类型：接口也可描述函数了欸行"><a href="#3-函数类型：接口也可描述函数了欸行" class="headerlink" title="3.函数类型：接口也可描述函数了欸行"></a>3.函数类型：接口也可描述函数了欸行</h4><h4 id="4-类类型："><a href="#4-类类型：" class="headerlink" title="4.类类型："></a>4.类类型：</h4><p>​        （1）类实现接口：implements</p>
+<p>​            一个类实现多个接口： class Cars  implements 接口1,接口2</p>
+<p>​        （2）接口继承接口：extends</p>
+<h1 id="五、类"><a href="#五、类" class="headerlink" title="五、类"></a>五、类</h1><p>基于类的面向对象的方式，单例模式也可以理解为是class类的实例，仅有这一个实例</p>
+<h4 id="1-继承：-extends-派生类（子类）从基类（超类）中继承属性和方法"><a href="#1-继承：-extends-派生类（子类）从基类（超类）中继承属性和方法" class="headerlink" title="1.继承： extends :   派生类（子类）从基类（超类）中继承属性和方法"></a>1.继承： extends :   派生类（子类）从基类（超类）中继承属性和方法</h4><h4 id="super-子类调用父类的方法或构造函数时使用，子类也可重写父类的方法"><a href="#super-子类调用父类的方法或构造函数时使用，子类也可重写父类的方法" class="headerlink" title="super:   子类调用父类的方法或构造函数时使用，子类也可重写父类的方法"></a>super:   子类调用父类的方法或构造函数时使用，子类也可重写父类的方法</h4><h4 id="2-类成员的修饰符"><a href="#2-类成员的修饰符" class="headerlink" title="2.类成员的修饰符"></a>2.类成员的修饰符</h4><p>​        （1）private:私有的，只有类内部可以访问</p>
+<p>​        （2）protected：受保护的，类内部和子类中可以访问</p>
+<p>​        （3）public： 公开的，默认值，外部可以访问</p>
+<p>​        （4）readonly ： 只读</p>
+<p>​        （5）参数属性：相当于类的简写，</p>
+<h4 id="3-存取器：类属性的获取（get函数）、类属性的改写（set函数）"><a href="#3-存取器：类属性的获取（get函数）、类属性的改写（set函数）" class="headerlink" title="3.存取器：类属性的获取（get函数）、类属性的改写（set函数）"></a>3.存取器：类属性的获取（get函数）、类属性的改写（set函数）</h4><h4 id="4-类的静态属性：-static"><a href="#4-类的静态属性：-static" class="headerlink" title="4.类的静态属性： static"></a>4.类的静态属性： static</h4><h4 id="5-抽象类：抽象类其子类可以实例化（extend继承后再实例）"><a href="#5-抽象类：抽象类其子类可以实例化（extend继承后再实例）" class="headerlink" title="5.抽象类：抽象类其子类可以实例化（extend继承后再实例）"></a>5.抽象类：抽象类其子类可以实例化（extend继承后再实例）</h4><h1 id="六、函数：匿名函数、命名函数"><a href="#六、函数：匿名函数、命名函数" class="headerlink" title="六、函数：匿名函数、命名函数"></a>六、函数：匿名函数、命名函数</h1><h4 id="1-可选参数（？）和默认参数（未传参时为undefind）"><a href="#1-可选参数（？）和默认参数（未传参时为undefind）" class="headerlink" title="1.可选参数（？）和默认参数（未传参时为undefind）"></a>1.可选参数（？）和默认参数（未传参时为undefind）</h4><h4 id="2-剩余参数（…args-string）"><a href="#2-剩余参数（…args-string）" class="headerlink" title="2.剩余参数（…args:string）"></a>2.剩余参数（…args:string）</h4><h4 id="3-函数重载：函数名相同，而参数不同的多个函数"><a href="#3-函数重载：函数名相同，而参数不同的多个函数" class="headerlink" title="3.函数重载：函数名相同，而参数不同的多个函数"></a>3.函数重载：函数名相同，而参数不同的多个函数</h4><h1 id="七、泛型"><a href="#七、泛型" class="headerlink" title="七、泛型"></a>七、泛型</h1><p>在定义函数、接口、类时未预定类型 <T>，也可以写成其他字母</p>
+<p>1.函数泛型</p>
+<p>2.多个泛型参数的函数：&lt;T，V&gt;,使用逗号隔开</p>
+<p>3.泛型接口</p>
+<p>4.泛型约束：泛型参数直接取属性值会报错，必须先继承接口</p>
+<h4 id="八、其他"><a href="#八、其他" class="headerlink" title="八、其他"></a>八、其他</h4><h4 id="1-声明文件：使用第三方库时，需先引用它的声明文件"><a href="#1-声明文件：使用第三方库时，需先引用它的声明文件" class="headerlink" title="1.声明文件：使用第三方库时，需先引用它的声明文件"></a>1.声明文件：使用第三方库时，需先引用它的声明文件</h4><h4 id="2-内置对象：可以在TS中当定义好了的类型使用"><a href="#2-内置对象：可以在TS中当定义好了的类型使用" class="headerlink" title="2.内置对象：可以在TS中当定义好了的类型使用"></a>2.内置对象：可以在TS中当定义好了的类型使用</h4><p>​    ECMAScript：</p>
+<p>​        Number、Boolean、String、Date、RegExp、Error</p>
+<p>​    BOM 和 DOM 的内置对象</p>
+<p>​        Window、Document、HTMLElement、DocumentFragment、Event、NodeList</p>
+
+      </section>
+      <section class="extra">
+        
+          <ul class="copyright">
+  
+    <li><strong>本文作者：</strong>wowangmouren</li>
+    <li><strong>本文链接：</strong><a href="https://wwentao.club/2021/08/12/wmr_08/index.html" title="https:&#x2F;&#x2F;wwentao.club&#x2F;2021&#x2F;08&#x2F;12&#x2F;wmr_08&#x2F;index.html">https:&#x2F;&#x2F;wwentao.club&#x2F;2021&#x2F;08&#x2F;12&#x2F;wmr_08&#x2F;index.html</a></li>
+    <li><strong>版权声明：</strong>本博客所有文章均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" title="BY-NC-SA" target="_blank" rel="noopener">BY-NC-SA</a> 许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+          <section class="donate">
+  <div id="qrcode-donate">
+    <img   class="lazyload" data-original="/images/theme/alipay.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+        
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/" rel="tag">TypeScript</a></li></ul> 
+
+        
+  <nav class="nav">
+    <a></a>
+    <a href="/2021/08/12/wmr_07/">创建vue3.0项目<i class="iconfont iconright"></i></a>
+  </nav>
+
+      </section>
+      
+    </section>
+  </div>
+</article></div>
+      <div class="col-xl-3">
+        
+          
+  <aside class="toc-wrap">
+    <h3 class="toc-title">文章目录：</h3>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81ypeScript-%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-text">一、ypeScript 的特点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%AE%89%E8%A3%85-TypeScript"><span class="toc-text">二、安装 TypeScript</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%9F%BA%E7%A1%80%E7%B1%BB%E5%9E%8B"><span class="toc-text">三、基础类型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%B8%83%E5%B0%94%E5%80%BC"><span class="toc-text">1.布尔值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%95%B0%E5%AD%97"><span class="toc-text">2.数字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">3.字符串</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-undefined-%E5%92%8C-null"><span class="toc-text">4.undefined 和 null</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E6%95%B0%E7%BB%84"><span class="toc-text">5.数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E5%85%83%E7%BB%84-Tuple"><span class="toc-text">6.元组 Tuple</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E6%9E%9A%E4%B8%BE"><span class="toc-text">7.枚举</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-any-%E4%BB%BB%E4%BD%95%E7%B1%BB%E5%9E%8B"><span class="toc-text">8.any: 任何类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-void%EF%BC%9A%E6%B2%A1%E6%9C%89%E4%BB%BB%E4%BD%95%E7%B1%BB%E5%9E%8B%EF%BC%88%E5%9C%A8%E5%87%BD%E6%95%B0%E6%97%A0%E8%BF%94%E5%9B%9E%E5%80%BC%E6%97%B6%E4%BD%BF%E7%94%A8%EF%BC%89"><span class="toc-text">9.void：没有任何类型（在函数无返回值时使用）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-object"><span class="toc-text">10.object</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-%E8%81%94%E5%90%88%E7%B1%BB%E5%9E%8B%EF%BC%9A%EF%BC%88%E2%80%99%E2%80%98-%E2%80%99%E2%80%98%EF%BC%89"><span class="toc-text">11.联合类型：（’‘ | ’‘）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-%E7%B1%BB%E5%9E%8B%E6%96%AD%E8%A8%80%EF%BC%9A%EF%BC%88%E2%80%99%E2%80%98-as-%E2%80%99%E2%80%98%EF%BC%89"><span class="toc-text">12.类型断言：（’‘  as ’‘）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-%E7%B1%BB%E5%9E%8B%E6%8E%A8%E6%96%AD"><span class="toc-text">13.类型推断</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E6%8E%A5%E5%8F%A3"><span class="toc-text">四、接口</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E7%B1%BB"><span class="toc-text">五、类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E5%87%BD%E6%95%B0%EF%BC%9A%E5%8C%BF%E5%90%8D%E5%87%BD%E6%95%B0%E3%80%81%E5%91%BD%E5%90%8D%E5%87%BD%E6%95%B0"><span class="toc-text">六、函数：匿名函数、命名函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E6%B3%9B%E5%9E%8B"><span class="toc-text">七、泛型</span></a></li></ol>
+  </aside>
+
+        
+      </div>
+    </div>
+  </div>
+</main>
+  
+
+<footer class="footer">
+  <div class="footer-social"><a 
+        href="tencent://message/?Menu=yes&uin=1020524654 "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#12B7F5'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconQQ "></i>
+      </a><a 
+        href="https://github.com/wowangmouren?tab=repositories "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#9f7be1'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  icongithub-fill "></i>
+      </a><a 
+        href="mailto:1020524654@qq.com "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#DA2E76'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconmail "></i>
+      </a></div>
+  
+    <div class="footer-copyright"><p>欢迎进入王文涛的个人博客~  |  <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">主题</a></p></div>
+  
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  
+  
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+  
+</body>
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>
