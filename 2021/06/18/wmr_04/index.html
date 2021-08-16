@@ -193,18 +193,31 @@
     <div class="head-info">
       <span class="post-info-item"><i class="iconfont iconcalendar"></i>June 18, 2021</span>
       
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>644</span>
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>1311</span>
     </div>
   </div>
 </section>
     <section class="main">
       <section class="content">
-        <h4 id="一、原生调用H5（vue）的方法："><a href="#一、原生调用H5（vue）的方法：" class="headerlink" title="一、原生调用H5（vue）的方法："></a>一、原生调用H5（vue）的方法：</h4><h5 id="1-在methods中定义方法"><a href="#1-在methods中定义方法" class="headerlink" title="1.在methods中定义方法"></a>1.在methods中定义方法</h5><figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//判断app是否安装成功 （Android触发）1-&gt;完成 2-&gt;未完成</span></span><br><span class="line">    app<span class="constructor">IsInstall(<span class="params">packageName</span>, <span class="params">status</span>)</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (parse<span class="constructor">Int(<span class="params">status</span>)</span><span class="operator"> === </span><span class="number">1</span>) &#123;</span><br><span class="line">        this.send<span class="constructor">TaskStatus(104)</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+        <h2 id="一、原生调用H5（vue）的方法："><a href="#一、原生调用H5（vue）的方法：" class="headerlink" title="一、原生调用H5（vue）的方法："></a>一、原生调用H5（vue）的方法：</h2><h5 id="1-在methods中定义方法"><a href="#1-在methods中定义方法" class="headerlink" title="1.在methods中定义方法"></a>1.在methods中定义方法</h5><figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//判断app是否安装成功 （Android触发）1-&gt;完成 2-&gt;未完成</span></span><br><span class="line">    app<span class="constructor">IsInstall(<span class="params">packageName</span>, <span class="params">status</span>)</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (parse<span class="constructor">Int(<span class="params">status</span>)</span><span class="operator"> === </span><span class="number">1</span>) &#123;</span><br><span class="line">        this.send<span class="constructor">TaskStatus(104)</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
 <h5 id="2-将要给原生调用的方法挂载到-window-上面"><a href="#2-将要给原生调用的方法挂载到-window-上面" class="headerlink" title="2.将要给原生调用的方法挂载到 window 上面"></a>2.将要给原生调用的方法挂载到 window 上面</h5><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">window.appIsInstall</span> = this.appIsInstall<span class="comment">;</span></span><br></pre></td></tr></table></figure>
 
 <p>​    注意：要注意这里写法是this.appIsInstall指向window，this.appIsInstall()这样就是直接调动了</p>
-<h5 id="3-原生安卓或者ios会在window上读取appIsInstall这个约定的方法名，传参调用"><a href="#3-原生安卓或者ios会在window上读取appIsInstall这个约定的方法名，传参调用" class="headerlink" title="3.原生安卓或者ios会在window上读取appIsInstall这个约定的方法名，传参调用"></a>3.原生安卓或者ios会在window上读取appIsInstall这个约定的方法名，传参调用</h5><h4 id="二、h5调用原生"><a href="#二、h5调用原生" class="headerlink" title="二、h5调用原生"></a>二、h5调用原生</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">adTask(taskID); <span class="comment">//视频广告任务(10个)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">adTask</span>(<span class="params">taskID = <span class="string">&quot;&quot;</span></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">window</span>.location.href = <span class="string">`<span class="subst">$&#123;NativeAPI.AD_TASK&#125;</span>?taskId=<span class="subst">$&#123;taskID&#125;</span>`</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="3-原生安卓或者ios会在window上读取appIsInstall这个约定的方法名，传参调用"><a href="#3-原生安卓或者ios会在window上读取appIsInstall这个约定的方法名，传参调用" class="headerlink" title="3.原生安卓或者ios会在window上读取appIsInstall这个约定的方法名，传参调用"></a>3.原生安卓或者ios会在window上读取appIsInstall这个约定的方法名，传参调用</h5><h4 id="二、h5调用原生"><a href="#二、h5调用原生" class="headerlink" title="二、h5调用原生"></a>二、h5调用原生</h4><h4 id="（一）js注入（第一种方式）"><a href="#（一）js注入（第一种方式）" class="headerlink" title="（一）js注入（第一种方式）"></a>（一）js注入（第一种方式）</h4><pre><code>    const &#123; isAndroid &#125; = this.judgeSystem();  //判断系统
+    if (isAndroid) &#123;
+        //安卓端--PggH5Js--需要是约定的字段
+        window.PggH5Js.lookAdsForGuaZi(extraAdTask);
+        &#125; else &#123;
+        //ios端
+        window.webkit.messageHandlers.lookAdsForGuaZi.postMessage(&#123;
+        extraAdTask
+        &#125;);
+    &#125;
+</code></pre>
+<h4 id="（二）url拦截（第二种方式，ios跟安卓一样）"><a href="#（二）url拦截（第二种方式，ios跟安卓一样）" class="headerlink" title="（二）url拦截（第二种方式，ios跟安卓一样）"></a>（二）url拦截（第二种方式，ios跟安卓一样）</h4><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 跳转到指定视频</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">toVideoView</span>(<span class="params">videoId: <span class="built_in">string</span></span>) </span>&#123;</span><br><span class="line">  	<span class="built_in">window</span>.location.href = <span class="string">`<span class="subst">$&#123;NativeAPI.TO_VIDEO_VIEW&#125;</span>?videoId=<span class="subst">$&#123;videoId&#125;</span>`</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="（三）判断系统"><a href="#（三）判断系统" class="headerlink" title="（三）判断系统"></a>（三）判断系统</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="function"><span class="title">judgeSystem</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">       <span class="keyword">const</span> u = navigator.userAgent;</span><br><span class="line">       <span class="keyword">const</span> isAndroid = u.indexOf(<span class="string">&quot;Android&quot;</span>) &gt; -<span class="number">1</span> || u.indexOf(<span class="string">&quot;Linux&quot;</span>) &gt; -<span class="number">1</span>;</span><br><span class="line">       <span class="keyword">const</span> isIOS = !!u.match(<span class="regexp">/\(i[^;]+;( U;)? CPU.+Mac OS X/</span>);</span><br><span class="line">       <span class="keyword">return</span> &#123; isAndroid, isIOS &#125;;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 
 <p>这个原理也很简单，其实就是前端发送一个请求出去，url里面带参，原生会去拦截这个请求，获取到数据</p>
 
@@ -249,7 +262,7 @@
           
   <aside class="toc-wrap">
     <h3 class="toc-title">文章目录：</h3>
-    
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%8E%9F%E7%94%9F%E8%B0%83%E7%94%A8H5%EF%BC%88vue%EF%BC%89%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%9A"><span class="toc-text">一、原生调用H5（vue）的方法：</span></a></li></ol>
   </aside>
 
         
