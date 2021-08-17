@@ -6,13 +6,12 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>vue2.0  VS  vue3.0 - 王文涛的博客</title>
+  <title>svga动画图在vue中使用 - 王文涛的博客</title>
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="google" content="notranslate" />
   
-  <meta name="description" content="1) 了解相关信息
-Vue.js 3.0 “One P...">
+  <meta name="description" content="一、svga在vue中使用：安装依赖：npm inst...">
   <meta name="author" content="wowangmouren">
   <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
   <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
@@ -146,7 +145,7 @@ Vue.js 3.0 “One P...">
       
       
     </div>
-    <div class="center">vue2.0  VS  vue3.0</div>
+    <div class="center">svga动画图在vue中使用</div>
     <div class="right">
       <i class="iconfont iconmenu j-navbar-menu"></i>
     </div>
@@ -188,53 +187,23 @@ Vue.js 3.0 “One P...">
       <div class="col-xl-6"><article class="article">
   <div class="wrap">
     <section class="head">
-  <img   class="lazyload" data-original="/images/theme/cover/vue3.0.webp" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <img   class="lazyload" data-original="/images/theme/post-image.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
   <div class="head-mask">
-    <h1 class="head-title">vue2.0  VS  vue3.0</h1>
+    <h1 class="head-title">svga动画图在vue中使用</h1>
     <div class="head-info">
-      <span class="post-info-item"><i class="iconfont iconcalendar"></i>August 12, 2021</span>
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>August 17, 2021</span>
       
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>391</span>
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>816</span>
     </div>
   </div>
 </section>
     <section class="main">
       <section class="content">
-        <h2 id="1-了解相关信息"><a href="#1-了解相关信息" class="headerlink" title="1) 了解相关信息"></a>1) 了解相关信息</h2><ul>
-<li>Vue.js 3.0 “One Piece” 正式版在今年9月份发布</li>
-<li><strong>Vue3支持vue2的大多数特性</strong></li>
-<li><strong>更好的支持Typescript</strong></li>
-</ul>
-<h2 id="2-性能提升"><a href="#2-性能提升" class="headerlink" title="2) 性能提升:"></a>2) 性能提升:</h2><ul>
-<li>打包大小减少41%</li>
-<li>初次渲染快55%, 更新渲染快133%</li>
-<li>内存减少54%</li>
-<li><strong>使用Proxy代替defineProperty实现数据响应式</strong></li>
-<li><strong>重写虚拟DOM的实现和Tree-Shaking</strong></li>
-</ul>
-<h2 id="3-新增特性"><a href="#3-新增特性" class="headerlink" title="3) 新增特性:"></a>3) 新增特性:</h2><ul>
-<li><strong>Composition (组合) API</strong></li>
-<li>setup<ul>
-<li>ref 和 reactive</li>
-<li>computed 和 watch</li>
-<li>新的生命周期函数</li>
-<li>provide与inject</li>
-<li>…</li>
-</ul>
-</li>
-<li>新组件<ul>
-<li>Fragment - 文档碎片</li>
-<li>Teleport - 瞬移组件的位置</li>
-<li>Suspense - 异步加载组件的loading界面</li>
-</ul>
-</li>
-<li>其它API更新<ul>
-<li>全局API的修改</li>
-<li>将原来的全局API转移到应用对象</li>
-<li>模板语法变化</li>
-</ul>
-</li>
-</ul>
+        <h4 id="一、svga在vue中使用："><a href="#一、svga在vue中使用：" class="headerlink" title="一、svga在vue中使用："></a>一、svga在vue中使用：</h4><h6 id="安装依赖："><a href="#安装依赖：" class="headerlink" title="安装依赖："></a>安装依赖：</h6><pre><code>npm install svgaplayerweb --save
+</code></pre>
+<h6 id="引入方式："><a href="#引入方式：" class="headerlink" title="引入方式："></a>引入方式：</h6><p>//   parser.load(“@/assets/img/byb.svga”, videoItem =&gt; { // 错误的引入方式，会报错incorrect header check<br>//   parser.load(“../../assets/img/svga/byb.svga”, videoItem =&gt; { // 错误的引入方式<br>//   使用@ 或者是../的形式都会报错，图片放在static中也是会报错，我的解决办法是放在了public的img文件夹中</p>
+<h6 id="js中调用："><a href="#js中调用：" class="headerlink" title="js中调用："></a>js中调用：</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">loadSvga</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">      <span class="keyword">let</span> that = <span class="built_in">this</span>;</span><br><span class="line">      <span class="keyword">var</span> player = <span class="keyword">new</span> SVGA.Player(<span class="string">&quot;#demoCanvas&quot;</span>);</span><br><span class="line">      <span class="keyword">var</span> parser = <span class="keyword">new</span> SVGA.Parser(<span class="string">&quot;#demoCanvas&quot;</span>);</span><br><span class="line">      parser.load(</span><br><span class="line">        <span class="string">&quot;svga/background.svga&quot;</span>,</span><br><span class="line">        <span class="function"><span class="keyword">function</span>(<span class="params">videoItem</span>) </span>&#123;</span><br><span class="line">          player.setVideoItem(videoItem);</span><br><span class="line">          player.startAnimation();</span><br><span class="line">          that.isShowBackground = <span class="literal">false</span>;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">          <span class="built_in">console</span>.log(<span class="string">&quot;ERR&quot;</span>, err);</span><br><span class="line">        &#125;</span><br><span class="line">      );</span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure>
+
 
       </section>
       <section class="extra">
@@ -242,7 +211,7 @@ Vue.js 3.0 “One P...">
           <ul class="copyright">
   
     <li><strong>本文作者：</strong>wowangmouren</li>
-    <li><strong>本文链接：</strong><a href="https://wwentao.club/2021/08/12/wmr_06/index.html" title="https:&#x2F;&#x2F;wwentao.club&#x2F;2021&#x2F;08&#x2F;12&#x2F;wmr_06&#x2F;index.html">https:&#x2F;&#x2F;wwentao.club&#x2F;2021&#x2F;08&#x2F;12&#x2F;wmr_06&#x2F;index.html</a></li>
+    <li><strong>本文链接：</strong><a href="https://wwentao.club/2021/08/17/wmr_03/index.html" title="https:&#x2F;&#x2F;wwentao.club&#x2F;2021&#x2F;08&#x2F;17&#x2F;wmr_03&#x2F;index.html">https:&#x2F;&#x2F;wwentao.club&#x2F;2021&#x2F;08&#x2F;17&#x2F;wmr_03&#x2F;index.html</a></li>
     <li><strong>版权声明：</strong>本博客所有文章均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" title="BY-NC-SA" target="_blank" rel="noopener">BY-NC-SA</a> 许可协议，转载请注明出处！</li>
   
 </ul>
@@ -259,12 +228,12 @@ Vue.js 3.0 “One P...">
 </section>
         
         
-  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue3-0/" rel="tag">vue3.0</a></li></ul> 
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/svga/" rel="tag">svga</a></li></ul> 
 
         
   <nav class="nav">
-    <a href="/2021/08/12/wmr_07/"><i class="iconfont iconleft"></i>创建vue3.0项目</a>
-    <a href="/2021/06/18/wmr_05/">vuex存取值的两种方式<i class="iconfont iconright"></i></a>
+    <a href="/2021/08/17/wmr_04/"><i class="iconfont iconleft"></i>vue与原生（ios，安卓）交互</a>
+    <a href="/2021/08/17/wmr_02/">git使用<i class="iconfont iconright"></i></a>
   </nav>
 
       </section>
@@ -277,7 +246,7 @@ Vue.js 3.0 “One P...">
           
   <aside class="toc-wrap">
     <h3 class="toc-title">文章目录：</h3>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%BA%86%E8%A7%A3%E7%9B%B8%E5%85%B3%E4%BF%A1%E6%81%AF"><span class="toc-text">1) 了解相关信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%80%A7%E8%83%BD%E6%8F%90%E5%8D%87"><span class="toc-text">2) 性能提升:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%96%B0%E5%A2%9E%E7%89%B9%E6%80%A7"><span class="toc-text">3) 新增特性:</span></a></li></ol>
+    
   </aside>
 
         

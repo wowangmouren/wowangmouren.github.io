@@ -6,13 +6,13 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>创建vue3.0项目 - 王文涛的博客</title>
+  <title>vue2.0  VS  vue3.0 - 王文涛的博客</title>
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="google" content="notranslate" />
   
-  <meta name="description" content="
-1) 使用 vue-cli 创建文档: https:...">
+  <meta name="description" content="1) 了解相关信息
+Vue.js 3.0 “One P...">
   <meta name="author" content="wowangmouren">
   <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
   <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
@@ -146,7 +146,7 @@
       
       
     </div>
-    <div class="center">创建vue3.0项目</div>
+    <div class="center">vue2.0  VS  vue3.0</div>
     <div class="right">
       <i class="iconfont iconmenu j-navbar-menu"></i>
     </div>
@@ -190,45 +190,50 @@
     <section class="head">
   <img   class="lazyload" data-original="/images/theme/cover/vue3.0.webp" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
   <div class="head-mask">
-    <h1 class="head-title">创建vue3.0项目</h1>
+    <h1 class="head-title">vue2.0  VS  vue3.0</h1>
     <div class="head-info">
-      <span class="post-info-item"><i class="iconfont iconcalendar"></i>August 12, 2021</span>
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>August 17, 2021</span>
       
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>1097</span>
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>391</span>
     </div>
   </div>
 </section>
     <section class="main">
       <section class="content">
-        <ul>
-<li><h2 id="1-使用-vue-cli-创建"><a href="#1-使用-vue-cli-创建" class="headerlink" title="1) 使用 vue-cli 创建"></a>1) 使用 vue-cli 创建</h2><p>文档: <a target="_blank" rel="noopener" href="https://cli.vuejs.org/zh/guide/creating-a-project.html#vue-create">https://cli.vuejs.org/zh/guide/creating-a-project.html#vue-create</a></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 安装或者升级</span></span><br><span class="line">npm install -g @vue/cli</span><br><span class="line"><span class="comment">## 保证 vue cli 版本在 4.5.0 以上</span></span><br><span class="line">vue --version</span><br><span class="line"><span class="comment">## 创建项目</span></span><br><span class="line">vue create my-project</span><br></pre></td></tr></table></figure>
-
-<p>然后的步骤</p>
-<ul>
-<li>Please pick a preset - 选择 <em><strong>Manually select features</strong></em></li>
-<li>Check the features needed for your project - 选择上 <em><strong>TypeScript</strong></em> ，特别注意点空格是选择，点回车是下一步</li>
-<li>Choose a version of Vue.js that you want to start the project with - 选择 <em><strong>3.x (Preview)</strong></em></li>
-<li>Use class-style component syntax - 直接回车</li>
-<li>Use Babel alongside TypeScript - 直接回车</li>
-<li>Pick a linter / formatter config - 直接回车</li>
-<li>Use history mode for router? - 直接回车</li>
-<li>Pick a linter / formatter config - 直接回车</li>
-<li>Pick additional lint features - 直接回车</li>
-<li>Where do you prefer placing config for Babel, ESLint, etc.? - 直接回车</li>
-<li>Save this as a preset for future projects? - 直接回车</li>
+        <h2 id="1-了解相关信息"><a href="#1-了解相关信息" class="headerlink" title="1) 了解相关信息"></a>1) 了解相关信息</h2><ul>
+<li>Vue.js 3.0 “One Piece” 正式版在今年9月份发布</li>
+<li><strong>Vue3支持vue2的大多数特性</strong></li>
+<li><strong>更好的支持Typescript</strong></li>
 </ul>
-<h2 id="2-使用-vite-创建"><a href="#2-使用-vite-创建" class="headerlink" title="2) 使用 vite 创建"></a>2) 使用 vite 创建</h2><ul>
-<li>文档: <a target="_blank" rel="noopener" href="https://v3.cn.vuejs.org/guide/installation.html">https://v3.cn.vuejs.org/guide/installation.html</a></li>
-<li>vite 是一个由原生 ESM 驱动的 Web 开发构建工具。在开发环境下基于浏览器原生 ES imports 开发，</li>
-<li>它做到了<em><strong>本地快速开发启动</strong></em>, 在生产环境下基于 Rollup 打包。<ul>
-<li>快速的冷启动，不需要等待打包操作；</li>
-<li>即时的热模块更新，替换性能和模块数量的解耦让更新飞起；</li>
-<li>真正的按需编译，不再等待整个应用编译完成，这是一个巨大的改变。</li>
+<h2 id="2-性能提升"><a href="#2-性能提升" class="headerlink" title="2) 性能提升:"></a>2) 性能提升:</h2><ul>
+<li>打包大小减少41%</li>
+<li>初次渲染快55%, 更新渲染快133%</li>
+<li>内存减少54%</li>
+<li><strong>使用Proxy代替defineProperty实现数据响应式</strong></li>
+<li><strong>重写虚拟DOM的实现和Tree-Shaking</strong></li>
+</ul>
+<h2 id="3-新增特性"><a href="#3-新增特性" class="headerlink" title="3) 新增特性:"></a>3) 新增特性:</h2><ul>
+<li><strong>Composition (组合) API</strong></li>
+<li>setup<ul>
+<li>ref 和 reactive</li>
+<li>computed 和 watch</li>
+<li>新的生命周期函数</li>
+<li>provide与inject</li>
+<li>…</li>
 </ul>
 </li>
+<li>新组件<ul>
+<li>Fragment - 文档碎片</li>
+<li>Teleport - 瞬移组件的位置</li>
+<li>Suspense - 异步加载组件的loading界面</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm init vite-app &lt;project-name&gt;</span><br><span class="line"><span class="built_in">cd</span> &lt;project-name&gt;</span><br><span class="line">npm install</span><br><span class="line">npm run dev</span><br></pre></td></tr></table></figure></li>
+</li>
+<li>其它API更新<ul>
+<li>全局API的修改</li>
+<li>将原来的全局API转移到应用对象</li>
+<li>模板语法变化</li>
+</ul>
+</li>
 </ul>
 
       </section>
@@ -237,7 +242,7 @@
           <ul class="copyright">
   
     <li><strong>本文作者：</strong>wowangmouren</li>
-    <li><strong>本文链接：</strong><a href="https://wwentao.club/2021/08/12/wmr_07/index.html" title="https:&#x2F;&#x2F;wwentao.club&#x2F;2021&#x2F;08&#x2F;12&#x2F;wmr_07&#x2F;index.html">https:&#x2F;&#x2F;wwentao.club&#x2F;2021&#x2F;08&#x2F;12&#x2F;wmr_07&#x2F;index.html</a></li>
+    <li><strong>本文链接：</strong><a href="https://wwentao.club/2021/08/17/wmr_06/index.html" title="https:&#x2F;&#x2F;wwentao.club&#x2F;2021&#x2F;08&#x2F;17&#x2F;wmr_06&#x2F;index.html">https:&#x2F;&#x2F;wwentao.club&#x2F;2021&#x2F;08&#x2F;17&#x2F;wmr_06&#x2F;index.html</a></li>
     <li><strong>版权声明：</strong>本博客所有文章均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" title="BY-NC-SA" target="_blank" rel="noopener">BY-NC-SA</a> 许可协议，转载请注明出处！</li>
   
 </ul>
@@ -258,8 +263,8 @@
 
         
   <nav class="nav">
-    <a href="/2021/08/12/wmr_08/"><i class="iconfont iconleft"></i>TS</a>
-    <a href="/2021/08/12/wmr_06/">vue2.0  VS  vue3.0<i class="iconfont iconright"></i></a>
+    <a href="/2021/08/17/wmr_07/"><i class="iconfont iconleft"></i>创建vue3.0项目</a>
+    <a href="/2021/08/17/wmr_05/">vuex存取值的两种方式<i class="iconfont iconright"></i></a>
   </nav>
 
       </section>
@@ -272,7 +277,7 @@
           
   <aside class="toc-wrap">
     <h3 class="toc-title">文章目录：</h3>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%BD%BF%E7%94%A8-vue-cli-%E5%88%9B%E5%BB%BA"><span class="toc-text">1) 使用 vue-cli 创建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%BD%BF%E7%94%A8-vite-%E5%88%9B%E5%BB%BA"><span class="toc-text">2) 使用 vite 创建</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%BA%86%E8%A7%A3%E7%9B%B8%E5%85%B3%E4%BF%A1%E6%81%AF"><span class="toc-text">1) 了解相关信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%80%A7%E8%83%BD%E6%8F%90%E5%8D%87"><span class="toc-text">2) 性能提升:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%96%B0%E5%A2%9E%E7%89%B9%E6%80%A7"><span class="toc-text">3) 新增特性:</span></a></li></ol>
   </aside>
 
         

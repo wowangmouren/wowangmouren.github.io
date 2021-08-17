@@ -6,12 +6,12 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>svga动画图在vue中使用 - 王文涛的博客</title>
+  <title>vue与原生（ios，安卓）交互 - 王文涛的博客</title>
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="google" content="notranslate" />
   
-  <meta name="description" content="一、svga在vue中使用：安装依赖：npm inst...">
+  <meta name="description" content="一、原生调用H5（vue）的方法：1.在methods...">
   <meta name="author" content="wowangmouren">
   <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
   <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
@@ -145,7 +145,7 @@
       
       
     </div>
-    <div class="center">svga动画图在vue中使用</div>
+    <div class="center">vue与原生（ios，安卓）交互</div>
     <div class="right">
       <i class="iconfont iconmenu j-navbar-menu"></i>
     </div>
@@ -187,23 +187,39 @@
       <div class="col-xl-6"><article class="article">
   <div class="wrap">
     <section class="head">
-  <img   class="lazyload" data-original="/images/theme/post-image.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <img   class="lazyload" data-original="/images/theme/cover/ios.jfif" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
   <div class="head-mask">
-    <h1 class="head-title">svga动画图在vue中使用</h1>
+    <h1 class="head-title">vue与原生（ios，安卓）交互</h1>
     <div class="head-info">
-      <span class="post-info-item"><i class="iconfont iconcalendar"></i>June 18, 2021</span>
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>August 17, 2021</span>
       
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>816</span>
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>1311</span>
     </div>
   </div>
 </section>
     <section class="main">
       <section class="content">
-        <h4 id="一、svga在vue中使用："><a href="#一、svga在vue中使用：" class="headerlink" title="一、svga在vue中使用："></a>一、svga在vue中使用：</h4><h6 id="安装依赖："><a href="#安装依赖：" class="headerlink" title="安装依赖："></a>安装依赖：</h6><pre><code>npm install svgaplayerweb --save
-</code></pre>
-<h6 id="引入方式："><a href="#引入方式：" class="headerlink" title="引入方式："></a>引入方式：</h6><p>//   parser.load(“@/assets/img/byb.svga”, videoItem =&gt; { // 错误的引入方式，会报错incorrect header check<br>//   parser.load(“../../assets/img/svga/byb.svga”, videoItem =&gt; { // 错误的引入方式<br>//   使用@ 或者是../的形式都会报错，图片放在static中也是会报错，我的解决办法是放在了public的img文件夹中</p>
-<h6 id="js中调用："><a href="#js中调用：" class="headerlink" title="js中调用："></a>js中调用：</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">loadSvga</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">      <span class="keyword">let</span> that = <span class="built_in">this</span>;</span><br><span class="line">      <span class="keyword">var</span> player = <span class="keyword">new</span> SVGA.Player(<span class="string">&quot;#demoCanvas&quot;</span>);</span><br><span class="line">      <span class="keyword">var</span> parser = <span class="keyword">new</span> SVGA.Parser(<span class="string">&quot;#demoCanvas&quot;</span>);</span><br><span class="line">      parser.load(</span><br><span class="line">        <span class="string">&quot;svga/background.svga&quot;</span>,</span><br><span class="line">        <span class="function"><span class="keyword">function</span>(<span class="params">videoItem</span>) </span>&#123;</span><br><span class="line">          player.setVideoItem(videoItem);</span><br><span class="line">          player.startAnimation();</span><br><span class="line">          that.isShowBackground = <span class="literal">false</span>;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">          <span class="built_in">console</span>.log(<span class="string">&quot;ERR&quot;</span>, err);</span><br><span class="line">        &#125;</span><br><span class="line">      );</span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure>
+        <h2 id="一、原生调用H5（vue）的方法："><a href="#一、原生调用H5（vue）的方法：" class="headerlink" title="一、原生调用H5（vue）的方法："></a>一、原生调用H5（vue）的方法：</h2><h5 id="1-在methods中定义方法"><a href="#1-在methods中定义方法" class="headerlink" title="1.在methods中定义方法"></a>1.在methods中定义方法</h5><figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//判断app是否安装成功 （Android触发）1-&gt;完成 2-&gt;未完成</span></span><br><span class="line">    app<span class="constructor">IsInstall(<span class="params">packageName</span>, <span class="params">status</span>)</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (parse<span class="constructor">Int(<span class="params">status</span>)</span><span class="operator"> === </span><span class="number">1</span>) &#123;</span><br><span class="line">        this.send<span class="constructor">TaskStatus(104)</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
+<h5 id="2-将要给原生调用的方法挂载到-window-上面"><a href="#2-将要给原生调用的方法挂载到-window-上面" class="headerlink" title="2.将要给原生调用的方法挂载到 window 上面"></a>2.将要给原生调用的方法挂载到 window 上面</h5><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">window.appIsInstall</span> = this.appIsInstall<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+
+<p>​    注意：要注意这里写法是this.appIsInstall指向window，this.appIsInstall()这样就是直接调动了</p>
+<h5 id="3-原生安卓或者ios会在window上读取appIsInstall这个约定的方法名，传参调用"><a href="#3-原生安卓或者ios会在window上读取appIsInstall这个约定的方法名，传参调用" class="headerlink" title="3.原生安卓或者ios会在window上读取appIsInstall这个约定的方法名，传参调用"></a>3.原生安卓或者ios会在window上读取appIsInstall这个约定的方法名，传参调用</h5><h4 id="二、h5调用原生"><a href="#二、h5调用原生" class="headerlink" title="二、h5调用原生"></a>二、h5调用原生</h4><h4 id="（一）js注入（第一种方式）"><a href="#（一）js注入（第一种方式）" class="headerlink" title="（一）js注入（第一种方式）"></a>（一）js注入（第一种方式）</h4><pre><code>    const &#123; isAndroid &#125; = this.judgeSystem();  //判断系统
+    if (isAndroid) &#123;
+        //安卓端--PggH5Js--需要是约定的字段
+        window.PggH5Js.lookAdsForGuaZi(extraAdTask);
+        &#125; else &#123;
+        //ios端
+        window.webkit.messageHandlers.lookAdsForGuaZi.postMessage(&#123;
+        extraAdTask
+        &#125;);
+    &#125;
+</code></pre>
+<h4 id="（二）url拦截（第二种方式，ios跟安卓一样）"><a href="#（二）url拦截（第二种方式，ios跟安卓一样）" class="headerlink" title="（二）url拦截（第二种方式，ios跟安卓一样）"></a>（二）url拦截（第二种方式，ios跟安卓一样）</h4><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 跳转到指定视频</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">toVideoView</span>(<span class="params">videoId: <span class="built_in">string</span></span>) </span>&#123;</span><br><span class="line">  	<span class="built_in">window</span>.location.href = <span class="string">`<span class="subst">$&#123;NativeAPI.TO_VIDEO_VIEW&#125;</span>?videoId=<span class="subst">$&#123;videoId&#125;</span>`</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="（三）判断系统"><a href="#（三）判断系统" class="headerlink" title="（三）判断系统"></a>（三）判断系统</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="function"><span class="title">judgeSystem</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">       <span class="keyword">const</span> u = navigator.userAgent;</span><br><span class="line">       <span class="keyword">const</span> isAndroid = u.indexOf(<span class="string">&quot;Android&quot;</span>) &gt; -<span class="number">1</span> || u.indexOf(<span class="string">&quot;Linux&quot;</span>) &gt; -<span class="number">1</span>;</span><br><span class="line">       <span class="keyword">const</span> isIOS = !!u.match(<span class="regexp">/\(i[^;]+;( U;)? CPU.+Mac OS X/</span>);</span><br><span class="line">       <span class="keyword">return</span> &#123; isAndroid, isIOS &#125;;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个原理也很简单，其实就是前端发送一个请求出去，url里面带参，原生会去拦截这个请求，获取到数据</p>
 
       </section>
       <section class="extra">
@@ -211,7 +227,7 @@
           <ul class="copyright">
   
     <li><strong>本文作者：</strong>wowangmouren</li>
-    <li><strong>本文链接：</strong><a href="https://wwentao.club/2021/06/18/wmr_03/index.html" title="https:&#x2F;&#x2F;wwentao.club&#x2F;2021&#x2F;06&#x2F;18&#x2F;wmr_03&#x2F;index.html">https:&#x2F;&#x2F;wwentao.club&#x2F;2021&#x2F;06&#x2F;18&#x2F;wmr_03&#x2F;index.html</a></li>
+    <li><strong>本文链接：</strong><a href="https://wwentao.club/2021/08/17/wmr_04/index.html" title="https:&#x2F;&#x2F;wwentao.club&#x2F;2021&#x2F;08&#x2F;17&#x2F;wmr_04&#x2F;index.html">https:&#x2F;&#x2F;wwentao.club&#x2F;2021&#x2F;08&#x2F;17&#x2F;wmr_04&#x2F;index.html</a></li>
     <li><strong>版权声明：</strong>本博客所有文章均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" title="BY-NC-SA" target="_blank" rel="noopener">BY-NC-SA</a> 许可协议，转载请注明出处！</li>
   
 </ul>
@@ -228,12 +244,12 @@
 </section>
         
         
-  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/svga/" rel="tag">svga</a></li></ul> 
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%9F%E7%94%9F%E4%BA%A4%E4%BA%92/" rel="tag">原生交互</a></li></ul> 
 
         
   <nav class="nav">
-    <a href="/2021/06/18/wmr_04/"><i class="iconfont iconleft"></i>vue与原生（ios，安卓）交互</a>
-    <a href="/2021/06/18/wmr_02/">git使用<i class="iconfont iconright"></i></a>
+    <a href="/2021/08/17/wmr_05/"><i class="iconfont iconleft"></i>vuex存取值的两种方式</a>
+    <a href="/2021/08/17/wmr_03/">svga动画图在vue中使用<i class="iconfont iconright"></i></a>
   </nav>
 
       </section>
@@ -246,7 +262,7 @@
           
   <aside class="toc-wrap">
     <h3 class="toc-title">文章目录：</h3>
-    
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%8E%9F%E7%94%9F%E8%B0%83%E7%94%A8H5%EF%BC%88vue%EF%BC%89%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%9A"><span class="toc-text">一、原生调用H5（vue）的方法：</span></a></li></ol>
   </aside>
 
         

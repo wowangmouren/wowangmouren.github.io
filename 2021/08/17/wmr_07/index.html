@@ -6,12 +6,13 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>vue与原生（ios，安卓）交互 - 王文涛的博客</title>
+  <title>创建vue3.0项目 - 王文涛的博客</title>
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="google" content="notranslate" />
   
-  <meta name="description" content="一、原生调用H5（vue）的方法：1.在methods...">
+  <meta name="description" content="
+1) 使用 vue-cli 创建文档: https:...">
   <meta name="author" content="wowangmouren">
   <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
   <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
@@ -145,7 +146,7 @@
       
       
     </div>
-    <div class="center">vue与原生（ios，安卓）交互</div>
+    <div class="center">创建vue3.0项目</div>
     <div class="right">
       <i class="iconfont iconmenu j-navbar-menu"></i>
     </div>
@@ -187,39 +188,48 @@
       <div class="col-xl-6"><article class="article">
   <div class="wrap">
     <section class="head">
-  <img   class="lazyload" data-original="/images/theme/cover/ios.jfif" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <img   class="lazyload" data-original="/images/theme/cover/vue3.0.webp" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
   <div class="head-mask">
-    <h1 class="head-title">vue与原生（ios，安卓）交互</h1>
+    <h1 class="head-title">创建vue3.0项目</h1>
     <div class="head-info">
-      <span class="post-info-item"><i class="iconfont iconcalendar"></i>June 18, 2021</span>
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>August 17, 2021</span>
       
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>1311</span>
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>1097</span>
     </div>
   </div>
 </section>
     <section class="main">
       <section class="content">
-        <h2 id="一、原生调用H5（vue）的方法："><a href="#一、原生调用H5（vue）的方法：" class="headerlink" title="一、原生调用H5（vue）的方法："></a>一、原生调用H5（vue）的方法：</h2><h5 id="1-在methods中定义方法"><a href="#1-在methods中定义方法" class="headerlink" title="1.在methods中定义方法"></a>1.在methods中定义方法</h5><figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//判断app是否安装成功 （Android触发）1-&gt;完成 2-&gt;未完成</span></span><br><span class="line">    app<span class="constructor">IsInstall(<span class="params">packageName</span>, <span class="params">status</span>)</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (parse<span class="constructor">Int(<span class="params">status</span>)</span><span class="operator"> === </span><span class="number">1</span>) &#123;</span><br><span class="line">        this.send<span class="constructor">TaskStatus(104)</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+        <ul>
+<li><h2 id="1-使用-vue-cli-创建"><a href="#1-使用-vue-cli-创建" class="headerlink" title="1) 使用 vue-cli 创建"></a>1) 使用 vue-cli 创建</h2><p>文档: <a target="_blank" rel="noopener" href="https://cli.vuejs.org/zh/guide/creating-a-project.html#vue-create">https://cli.vuejs.org/zh/guide/creating-a-project.html#vue-create</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 安装或者升级</span></span><br><span class="line">npm install -g @vue/cli</span><br><span class="line"><span class="comment">## 保证 vue cli 版本在 4.5.0 以上</span></span><br><span class="line">vue --version</span><br><span class="line"><span class="comment">## 创建项目</span></span><br><span class="line">vue create my-project</span><br></pre></td></tr></table></figure>
 
-<h5 id="2-将要给原生调用的方法挂载到-window-上面"><a href="#2-将要给原生调用的方法挂载到-window-上面" class="headerlink" title="2.将要给原生调用的方法挂载到 window 上面"></a>2.将要给原生调用的方法挂载到 window 上面</h5><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">window.appIsInstall</span> = this.appIsInstall<span class="comment">;</span></span><br></pre></td></tr></table></figure>
-
-<p>​    注意：要注意这里写法是this.appIsInstall指向window，this.appIsInstall()这样就是直接调动了</p>
-<h5 id="3-原生安卓或者ios会在window上读取appIsInstall这个约定的方法名，传参调用"><a href="#3-原生安卓或者ios会在window上读取appIsInstall这个约定的方法名，传参调用" class="headerlink" title="3.原生安卓或者ios会在window上读取appIsInstall这个约定的方法名，传参调用"></a>3.原生安卓或者ios会在window上读取appIsInstall这个约定的方法名，传参调用</h5><h4 id="二、h5调用原生"><a href="#二、h5调用原生" class="headerlink" title="二、h5调用原生"></a>二、h5调用原生</h4><h4 id="（一）js注入（第一种方式）"><a href="#（一）js注入（第一种方式）" class="headerlink" title="（一）js注入（第一种方式）"></a>（一）js注入（第一种方式）</h4><pre><code>    const &#123; isAndroid &#125; = this.judgeSystem();  //判断系统
-    if (isAndroid) &#123;
-        //安卓端--PggH5Js--需要是约定的字段
-        window.PggH5Js.lookAdsForGuaZi(extraAdTask);
-        &#125; else &#123;
-        //ios端
-        window.webkit.messageHandlers.lookAdsForGuaZi.postMessage(&#123;
-        extraAdTask
-        &#125;);
-    &#125;
-</code></pre>
-<h4 id="（二）url拦截（第二种方式，ios跟安卓一样）"><a href="#（二）url拦截（第二种方式，ios跟安卓一样）" class="headerlink" title="（二）url拦截（第二种方式，ios跟安卓一样）"></a>（二）url拦截（第二种方式，ios跟安卓一样）</h4><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 跳转到指定视频</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">toVideoView</span>(<span class="params">videoId: <span class="built_in">string</span></span>) </span>&#123;</span><br><span class="line">  	<span class="built_in">window</span>.location.href = <span class="string">`<span class="subst">$&#123;NativeAPI.TO_VIDEO_VIEW&#125;</span>?videoId=<span class="subst">$&#123;videoId&#125;</span>`</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="（三）判断系统"><a href="#（三）判断系统" class="headerlink" title="（三）判断系统"></a>（三）判断系统</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="function"><span class="title">judgeSystem</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">       <span class="keyword">const</span> u = navigator.userAgent;</span><br><span class="line">       <span class="keyword">const</span> isAndroid = u.indexOf(<span class="string">&quot;Android&quot;</span>) &gt; -<span class="number">1</span> || u.indexOf(<span class="string">&quot;Linux&quot;</span>) &gt; -<span class="number">1</span>;</span><br><span class="line">       <span class="keyword">const</span> isIOS = !!u.match(<span class="regexp">/\(i[^;]+;( U;)? CPU.+Mac OS X/</span>);</span><br><span class="line">       <span class="keyword">return</span> &#123; isAndroid, isIOS &#125;;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-
-<p>这个原理也很简单，其实就是前端发送一个请求出去，url里面带参，原生会去拦截这个请求，获取到数据</p>
+<p>然后的步骤</p>
+<ul>
+<li>Please pick a preset - 选择 <em><strong>Manually select features</strong></em></li>
+<li>Check the features needed for your project - 选择上 <em><strong>TypeScript</strong></em> ，特别注意点空格是选择，点回车是下一步</li>
+<li>Choose a version of Vue.js that you want to start the project with - 选择 <em><strong>3.x (Preview)</strong></em></li>
+<li>Use class-style component syntax - 直接回车</li>
+<li>Use Babel alongside TypeScript - 直接回车</li>
+<li>Pick a linter / formatter config - 直接回车</li>
+<li>Use history mode for router? - 直接回车</li>
+<li>Pick a linter / formatter config - 直接回车</li>
+<li>Pick additional lint features - 直接回车</li>
+<li>Where do you prefer placing config for Babel, ESLint, etc.? - 直接回车</li>
+<li>Save this as a preset for future projects? - 直接回车</li>
+</ul>
+<h2 id="2-使用-vite-创建"><a href="#2-使用-vite-创建" class="headerlink" title="2) 使用 vite 创建"></a>2) 使用 vite 创建</h2><ul>
+<li>文档: <a target="_blank" rel="noopener" href="https://v3.cn.vuejs.org/guide/installation.html">https://v3.cn.vuejs.org/guide/installation.html</a></li>
+<li>vite 是一个由原生 ESM 驱动的 Web 开发构建工具。在开发环境下基于浏览器原生 ES imports 开发，</li>
+<li>它做到了<em><strong>本地快速开发启动</strong></em>, 在生产环境下基于 Rollup 打包。<ul>
+<li>快速的冷启动，不需要等待打包操作；</li>
+<li>即时的热模块更新，替换性能和模块数量的解耦让更新飞起；</li>
+<li>真正的按需编译，不再等待整个应用编译完成，这是一个巨大的改变。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm init vite-app &lt;project-name&gt;</span><br><span class="line"><span class="built_in">cd</span> &lt;project-name&gt;</span><br><span class="line">npm install</span><br><span class="line">npm run dev</span><br></pre></td></tr></table></figure></li>
+</ul>
 
       </section>
       <section class="extra">
@@ -227,7 +237,7 @@
           <ul class="copyright">
   
     <li><strong>本文作者：</strong>wowangmouren</li>
-    <li><strong>本文链接：</strong><a href="https://wwentao.club/2021/06/18/wmr_04/index.html" title="https:&#x2F;&#x2F;wwentao.club&#x2F;2021&#x2F;06&#x2F;18&#x2F;wmr_04&#x2F;index.html">https:&#x2F;&#x2F;wwentao.club&#x2F;2021&#x2F;06&#x2F;18&#x2F;wmr_04&#x2F;index.html</a></li>
+    <li><strong>本文链接：</strong><a href="https://wwentao.club/2021/08/17/wmr_07/index.html" title="https:&#x2F;&#x2F;wwentao.club&#x2F;2021&#x2F;08&#x2F;17&#x2F;wmr_07&#x2F;index.html">https:&#x2F;&#x2F;wwentao.club&#x2F;2021&#x2F;08&#x2F;17&#x2F;wmr_07&#x2F;index.html</a></li>
     <li><strong>版权声明：</strong>本博客所有文章均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" title="BY-NC-SA" target="_blank" rel="noopener">BY-NC-SA</a> 许可协议，转载请注明出处！</li>
   
 </ul>
@@ -244,12 +254,12 @@
 </section>
         
         
-  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%9F%E7%94%9F%E4%BA%A4%E4%BA%92/" rel="tag">原生交互</a></li></ul> 
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue3-0/" rel="tag">vue3.0</a></li></ul> 
 
         
   <nav class="nav">
-    <a href="/2021/06/18/wmr_05/"><i class="iconfont iconleft"></i>vuex存取值的两种方式</a>
-    <a href="/2021/06/18/wmr_03/">svga动画图在vue中使用<i class="iconfont iconright"></i></a>
+    <a href="/2021/08/17/wmr_08/"><i class="iconfont iconleft"></i>TS</a>
+    <a href="/2021/08/17/wmr_06/">vue2.0  VS  vue3.0<i class="iconfont iconright"></i></a>
   </nav>
 
       </section>
@@ -262,7 +272,7 @@
           
   <aside class="toc-wrap">
     <h3 class="toc-title">文章目录：</h3>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%8E%9F%E7%94%9F%E8%B0%83%E7%94%A8H5%EF%BC%88vue%EF%BC%89%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%9A"><span class="toc-text">一、原生调用H5（vue）的方法：</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%BD%BF%E7%94%A8-vue-cli-%E5%88%9B%E5%BB%BA"><span class="toc-text">1) 使用 vue-cli 创建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%BD%BF%E7%94%A8-vite-%E5%88%9B%E5%BB%BA"><span class="toc-text">2) 使用 vite 创建</span></a></li></ol>
   </aside>
 
         
