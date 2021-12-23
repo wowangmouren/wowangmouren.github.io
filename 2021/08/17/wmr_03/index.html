@@ -11,7 +11,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="google" content="notranslate" />
   
-  <meta name="description" content="一、svga在vue中使用：安装依赖：npm inst...">
+  <meta name="description" content="一、svga在vue中使用：
+安装依赖：1npm in...">
   <meta name="author" content="wowangmouren">
   <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
   <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
@@ -193,17 +194,17 @@
     <div class="head-info">
       <span class="post-info-item"><i class="iconfont iconcalendar"></i>August 17, 2021</span>
       
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>816</span>
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>850</span>
     </div>
   </div>
 </section>
     <section class="main">
       <section class="content">
-        <h4 id="一、svga在vue中使用："><a href="#一、svga在vue中使用：" class="headerlink" title="一、svga在vue中使用："></a>一、svga在vue中使用：</h4><h6 id="安装依赖："><a href="#安装依赖：" class="headerlink" title="安装依赖："></a>安装依赖：</h6><pre><code>npm install svgaplayerweb --save
-</code></pre>
-<h6 id="引入方式："><a href="#引入方式：" class="headerlink" title="引入方式："></a>引入方式：</h6><p>//   parser.load(“@/assets/img/byb.svga”, videoItem =&gt; { // 错误的引入方式，会报错incorrect header check<br>//   parser.load(“../../assets/img/svga/byb.svga”, videoItem =&gt; { // 错误的引入方式<br>//   使用@ 或者是../的形式都会报错，图片放在static中也是会报错，我的解决办法是放在了public的img文件夹中</p>
-<h6 id="js中调用："><a href="#js中调用：" class="headerlink" title="js中调用："></a>js中调用：</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-title">loadSvga</span>(<span class="hljs-params"></span>)</span> &#123;<br>      <span class="hljs-keyword">let</span> that = <span class="hljs-built_in">this</span>;<br>      <span class="hljs-keyword">var</span> player = <span class="hljs-keyword">new</span> SVGA.Player(<span class="hljs-string">&quot;#demoCanvas&quot;</span>);<br>      <span class="hljs-keyword">var</span> parser = <span class="hljs-keyword">new</span> SVGA.Parser(<span class="hljs-string">&quot;#demoCanvas&quot;</span>);<br>      parser.load(<br>        <span class="hljs-string">&quot;svga/background.svga&quot;</span>,<br>        <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">videoItem</span>) </span>&#123;<br>          player.setVideoItem(videoItem);<br>          player.startAnimation();<br>          that.isShowBackground = <span class="hljs-literal">false</span>;<br>        &#125;,<br>        <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>&#123;<br>          <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;ERR&quot;</span>, err);<br>        &#125;<br>      );<br>    &#125;,<br></code></pre></td></tr></table></figure>
-
+        <h1 id="一、svga在vue中使用："><a href="#一、svga在vue中使用：" class="headerlink" title="一、svga在vue中使用："></a>一、svga在vue中使用：</h1><ol>
+<li><h5 id="安装依赖："><a href="#安装依赖：" class="headerlink" title="安装依赖："></a>安装依赖：</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">npm install svgaplayerweb --save<br></code></pre></td></tr></table></figure></li>
+<li><h5 id="引入方式："><a href="#引入方式：" class="headerlink" title="引入方式："></a>引入方式：</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//   parser.load(&quot;@/assets/img/byb.svga&quot;, videoItem =&gt; &#123; // 错误的引入方式，会报错incorrect header check</span><br><span class="hljs-comment">//   parser.load(&quot;../../assets/img/svga/byb.svga&quot;, videoItem =&gt; &#123; // 错误的引入方式</span><br><span class="hljs-comment">//   使用@ 或者是../的形式都会报错，图片放在static中也是会报错，我的解决办法是放在了public的img文件夹中</span><br></code></pre></td></tr></table></figure></li>
+<li><h5 id="js中调用："><a href="#js中调用：" class="headerlink" title="js中调用："></a>js中调用：</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-title">loadSvga</span>(<span class="hljs-params"></span>)</span> &#123;<br>      <span class="hljs-keyword">let</span> that = <span class="hljs-built_in">this</span>;<br>      <span class="hljs-keyword">var</span> player = <span class="hljs-keyword">new</span> SVGA.Player(<span class="hljs-string">&quot;#demoCanvas&quot;</span>);<br>      <span class="hljs-keyword">var</span> parser = <span class="hljs-keyword">new</span> SVGA.Parser(<span class="hljs-string">&quot;#demoCanvas&quot;</span>);<br>      parser.load(<br>        <span class="hljs-string">&quot;svga/background.svga&quot;</span>,<br>        <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">videoItem</span>) </span>&#123;<br>          player.setVideoItem(videoItem);<br>          player.startAnimation();<br>          that.isShowBackground = <span class="hljs-literal">false</span>;<br>        &#125;,<br>        <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>&#123;<br>          <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;ERR&quot;</span>, err);<br>        &#125;<br>      );<br>    &#125;,<br></code></pre></td></tr></table></figure></li>
+</ol>
 
       </section>
       <section class="extra">
@@ -246,7 +247,7 @@
           
   <aside class="toc-wrap">
     <h3 class="toc-title">文章目录：</h3>
-    
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81svga%E5%9C%A8vue%E4%B8%AD%E4%BD%BF%E7%94%A8%EF%BC%9A"><span class="toc-text">一、svga在vue中使用：</span></a></li></ol>
   </aside>
 
         
