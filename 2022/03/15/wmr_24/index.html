@@ -6,12 +6,12 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>分类 - 王文涛的博客</title>
+  <title>DOM、document、BOM、window区别 - 王文涛的博客</title>
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="google" content="notranslate" />
   
-  <meta name="description" content="个人博客">
+  <meta name="description" content="一、总结​    DOM:      DOM 是为了操...">
   <meta name="author" content="wowangmouren">
   <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
   <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
@@ -145,7 +145,7 @@
       
       
     </div>
-    <div class="center">分类</div>
+    <div class="center">DOM、document、BOM、window区别</div>
     <div class="right">
       <i class="iconfont iconmenu j-navbar-menu"></i>
     </div>
@@ -171,7 +171,7 @@
       </li><li class="menu-item">
         <a href="/tags/ " class="underline "> 标签</a>
       </li><li class="menu-item">
-        <a href="/categories/ " class="underline active"> 分类</a>
+        <a href="/categories/ " class="underline "> 分类</a>
       </li><li class="menu-item">
         <a href="/about/ " class="underline "> 关于</a>
       </li></ul>
@@ -181,13 +181,92 @@
   </div>
 </nav>
   <main id="main">
-  <section class="categories">
-    <header class="header">
-  <h1 class="header-title">分类</h1>
-  <p class="header-subtitle">共: 16 个</p>
-</header>
-    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/vue/">vue</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%B6%E5%AE%83/">其它</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue3-0/">vue3.0</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/js/">js</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%9A%E5%AE%A2/">博客</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TS/">TS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/es6/">es6</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/webpack/">webpack</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0/">图片上传</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node/">node</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/promise/">promise</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/mysql/">mysql</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8F%E8%A7%88%E5%99%A8/">浏览器</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/React/">React</a><span class="category-list-count">1</span></li></ul>
-  </section>
+  <div class="article-wrap">
+    <div class="row container">
+      <div class="col-xl-3"></div>
+      <div class="col-xl-6"><article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img   class="lazyload" data-original="/images/theme/cover/browser.webp" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">DOM、document、BOM、window区别</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>March 15, 2022</span>
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>591</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        <h1 id="一、总结"><a href="#一、总结" class="headerlink" title="一、总结"></a>一、总结</h1><p>​    <strong>DOM</strong>:      DOM 是为了操作文档出现的 API，document 是其的一个对象（顶级对象）</p>
+<p>​    <strong>BOM</strong>:      BOM 是为了操作浏览器出现的 API，window 是其的一个对象（顶级对象）。</p>
+<h1 id="二、DOM"><a href="#二、DOM" class="headerlink" title="二、DOM"></a>二、DOM</h1><p>​        <strong>定义</strong>：为了能够通过编程的方法操作HTML的内容（添些元素、修改元素、删除元素），即对各种DOM进行操作。</p>
+<h1 id="三、Document"><a href="#三、Document" class="headerlink" title="三、Document"></a>三、Document</h1><ul>
+<li><p><strong>定义</strong>：Document就是整个DOM树的根节点。可以通过document访问到dom树的所有节点。</p>
+</li>
+<li><p><strong>总结的document的属性</strong>：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs javascript">cookie <br><span class="hljs-attr">domain</span>:返回文档当前的域名<br><span class="hljs-attr">URL</span>:返回文档当前的URL<br><span class="hljs-attr">title</span>:拿到文档的标题<br>body<br>head<br>getElementBy系列<br><br></code></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="四、BOM"><a href="#四、BOM" class="headerlink" title="四、BOM"></a>四、BOM</h1><ul>
+<li><strong>定义</strong>：BOM是为了控制浏览器行为而出现的接口。它里面有着很多的对象来操作浏览器的行为。</li>
+</ul>
+<h1 id="五、window"><a href="#五、window" class="headerlink" title="五、window"></a>五、window</h1><ul>
+<li><p><strong>定义</strong>：window是BOM的顶层对象，其他的BOM对象都是window的属性，主要用于获取浏览器信息和对浏览器的操作。</p>
+</li>
+<li><p><strong>总结的window的属性</strong>：screen,location,history(vue-route的history模式也是基于此属性),setInterval等</p>
+<p><a target="_blank" rel="noopener" href="https://www.runoob.com/jsref/obj-window.html">https://www.runoob.com/jsref/obj-window.html</a></p>
+</li>
+</ul>
+
+      </section>
+      <section class="extra">
+        
+          <ul class="copyright">
+  
+    <li><strong>本文作者：</strong>wowangmouren</li>
+    <li><strong>本文链接：</strong><a href="https://wangwentao.plus/2022/03/15/wmr_24/index.html" title="https:&#x2F;&#x2F;wangwentao.plus&#x2F;2022&#x2F;03&#x2F;15&#x2F;wmr_24&#x2F;index.html">https:&#x2F;&#x2F;wangwentao.plus&#x2F;2022&#x2F;03&#x2F;15&#x2F;wmr_24&#x2F;index.html</a></li>
+    <li><strong>版权声明：</strong>本博客所有文章均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" title="BY-NC-SA" target="_blank" rel="noopener">BY-NC-SA</a> 许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+          <section class="donate">
+  <div id="qrcode-donate">
+    <img   class="lazyload" data-original="/images/theme/alipay.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+        
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/window/" rel="tag">window</a></li></ul> 
+
+        
+  <nav class="nav">
+    <a></a>
+    <a href="/2022/02/28/wmr_23/">react知识点的简单总结<i class="iconfont iconright"></i></a>
+  </nav>
+
+      </section>
+      
+    </section>
+  </div>
+</article></div>
+      <div class="col-xl-3">
+        
+          
+  <aside class="toc-wrap">
+    <h3 class="toc-title">文章目录：</h3>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%80%BB%E7%BB%93"><span class="toc-text">一、总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81DOM"><span class="toc-text">二、DOM</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81Document"><span class="toc-text">三、Document</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E3%80%81BOM"><span class="toc-text">四、BOM</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%94%E3%80%81window"><span class="toc-text">五、window</span></a></li></ol>
+  </aside>
+
+        
+      </div>
+    </div>
+  </div>
 </main>
   
 
