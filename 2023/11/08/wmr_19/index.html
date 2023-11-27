@@ -1,0 +1,458 @@
+
+
+<!DOCTYPE html>
+<html lang="en" color-mode=light>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>async await promise try...catch - 王文涛的博客</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+  
+  <meta name="description" content="一、几者之间联系
+简单介绍下这几个的关系1234567...">
+  <meta name="author" content="wowangmouren">
+  <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
+  <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" sizes="180x180">
+  <meta rel="mask-icon" href="/images/icons/stun-logo.svg" color="#333333">
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/favicon-144x144.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+    
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1445822_r673sha78lq.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+    
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css" name="highlight-style" mode="light">
+
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solarized-dark.min.css" name="highlight-style" mode="dark">
+
+      
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      lazyload: {
+        enable: true,
+        only_post: 'false',
+        loading: '[object Object]'
+      },
+      donate: {
+        enable: true,
+        alipay: '/images/theme/alipay.png',
+        wechat: '/images/theme/wechat.png'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: true,
+        always_show: true
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: false
+      },
+      preview: {
+        background: {
+          default: '',
+          api: ''
+        },
+        motto: {
+          default: '王文涛的博客',
+          typing: true,
+          api: '',
+          data_contents: ''
+        },
+      },
+      qrcode: {
+        enable: true,
+        type: 'url',
+        image: 'https://pic.izhaoo.com/weapp-code.jpg',
+      },
+      toc: {
+        enable: true
+      },
+      scrollbar: {
+        type: 'default'
+      },
+      notification: {
+        enable: false,
+        delay: 4500,
+        list: '',
+        page_white_list: '',
+        page_black_list: ''
+      },
+      search: {
+        enable: false,
+        path: ''
+      }
+    }
+  </script>
+
+  
+
+  
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="lock-screen">
+  <div class="loading"></div>
+  
+    
+
+
+  <nav class="navbar">
+    <div class="left">
+      
+        <i class="iconfont iconhome j-navbar-back-home"></i>
+      
+      
+        <i class="iconfont iconqrcode j-navbar-qrcode"></i>
+      
+      
+        <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+      
+      
+    </div>
+    <div class="center">async await promise try...catch</div>
+    <div class="right">
+      <i class="iconfont iconmenu j-navbar-menu"></i>
+    </div>
+    
+      <div id="qrcode-navbar"></div>
+    
+  </nav>
+
+  
+  
+
+<nav class="menu">
+  <div class="menu-container">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content"><li class="menu-item">
+        <a href="/ " class="underline "> 首页</a>
+      </li><li class="menu-item">
+        <a href="/galleries/ " class="underline "> 相册</a>
+      </li><li class="menu-item">
+        <a href="/archives/ " class="underline "> 归档</a>
+      </li><li class="menu-item">
+        <a href="/tags/ " class="underline "> 标签</a>
+      </li><li class="menu-item">
+        <a href="/categories/ " class="underline "> 分类</a>
+      </li><li class="menu-item">
+        <a href="/about/ " class="underline "> 关于</a>
+      </li></ul>
+    
+      <div class="menu-copyright"><p>欢迎进入王文涛的个人博客~  |  <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">主题</a></p></div>
+    
+  </div>
+</nav>
+  <main id="main">
+  <div class="article-wrap">
+    <div class="row container">
+      <div class="col-xl-3"></div>
+      <div class="col-xl-6"><article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img   class="lazyload" data-original="/images/theme/cover/promise.webp" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">async await promise try...catch</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>November 08, 2023</span>
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>5924</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        <h1 id="一、几者之间联系"><a href="#一、几者之间联系" class="headerlink" title="一、几者之间联系"></a>一、几者之间联系</h1><ol>
+<li><h2 id="简单介绍下这几个的关系"><a href="#简单介绍下这几个的关系" class="headerlink" title="简单介绍下这几个的关系"></a>简单介绍下这几个的关系</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">buildData</span>(<span class="hljs-params">name</span>) </span>&#123;<br>      <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-keyword">let</span> response1 = <span class="hljs-keyword">await</span> axios.get(<span class="hljs-string">&#x27;/api/user?name=&#x27;</span> + name);<br>        <span class="hljs-keyword">let</span> userInfo = response1.data;<br>        <br>        <span class="hljs-keyword">let</span> response2 = <span class="hljs-keyword">await</span> axios.get(<span class="hljs-string">&#x27;/api/topics?user_id&#x27;</span> + userInfo._id);<br>        <span class="hljs-keyword">let</span> posts = response2.data;<br>        <span class="hljs-comment">// i got it.</span><br>    &#125; <span class="hljs-keyword">catch</span>(err) &#123;<br>      <span class="hljs-built_in">console</span>.log(err);<br>   &#125;  <br>&#125;<br>    <br>    buildData(<span class="hljs-string">&#x27;xiaoming&#x27;</span>);<br></code></pre></td></tr></table></figure></li>
+<li><h2 id="async"><a href="#async" class="headerlink" title="async"></a>async</h2><p>在函数声明前使用async关键词修饰 说明函数中有异步操作</p>
+</li>
+<li><h2 id="await"><a href="#await" class="headerlink" title="await"></a>await</h2><p>等待 后面的代码执行完毕 再继续向下执行</p>
+</li>
+<li><h2 id="promise"><a href="#promise" class="headerlink" title="promise"></a>promise</h2><p>Promise 是一个对象，从它可以获取异步操作的消息，知道异步函数是完成了还是出错了。<br>axios返回的结果就是一个promise</p>
+</li>
+<li><h2 id="try-catch"><a href="#try-catch" class="headerlink" title="try catch"></a>try catch</h2><p>try catch JavaScript的异常捕获机制，凡是在try语句块中的代码出错了，都会被catch捕获。</p>
+<p>上面的代码就是说</p>
+<ol>
+<li>buildData 这个函数被 async 修饰 说函数中有异步操作</li>
+<li>await 等待异步操作结果</li>
+<li>如果有错误发生 使用try catch 捕获异常</li>
+</ol>
+</li>
+</ol>
+<h1 id="二、详解"><a href="#二、详解" class="headerlink" title="二、详解"></a>二、详解</h1><h2 id="（一）promise"><a href="#（一）promise" class="headerlink" title="（一）promise"></a>（一）promise</h2><p>从语法上说，Promise 是一个对象，从它可以获取异步操作的消息。Promise 提供统一的 API，各种异步操作都可以用同样的方法进行处理。</p>
+<ol>
+<li><h3 id="三个状态"><a href="#三个状态" class="headerlink" title="三个状态"></a>三个状态</h3><p>Promise字面上讲，是一个承诺。这个承诺有三个状态</p>
+<ul>
+<li>pending 进行中（悬而未决）</li>
+<li>fulfilled 已成功(以满足)</li>
+<li>rejected 已失败(已拒绝)</li>
+</ul>
+</li>
+<li><h3 id="两个特点"><a href="#两个特点" class="headerlink" title="两个特点"></a>两个特点</h3><ol>
+<li>对象的状态不受外界的影响。只有异步操作的结果可以决定当前是哪种状态。</li>
+<li>状态一旦改变 就不会再变，任何时候都可以得到这个结果。promise对象状态的改变只有两种情况，</li>
+</ol>
+<ul>
+<li>pending 到 fulfilled</li>
+<li>pending 到 rejected</li>
+</ul>
+<p>只要这两种情况发生，状态就凝固了，不会再改变了，会一直保持这个结果，这时就定型了 resolved。<br> 如果改变已经发生了，任何时候添加回调函数，得到的都是这个结果。</p>
+<p>因为创建Promise对象时，回调函数中有resolve和reject两个参数，后续的resolved统一指的是fulfilled状态，不包括rejected状态</p>
+<p>一个Promise对象一旦状态确定了，它的使命也就结束了。后面的代码都不应该再执行了，最好return resolve();<br> 如果状态已经resolve了，再在后面抛出错误也是无效的，也不会改变状态为rejected，后面有异常也不会抛出</p>
+</li>
+<li><h3 id="Promise对象如何知道异步操作结果又如何传递-resolve、reject"><a href="#Promise对象如何知道异步操作结果又如何传递-resolve、reject" class="headerlink" title="Promise对象如何知道异步操作结果又如何传递(resolve、reject)"></a>Promise对象如何知道异步操作结果又如何传递(resolve、reject)</h3><p>Promise对象如何知道异步操作的结果呢，那就是回调函数了，一个表示成功resolve，一个表示失败reject，</p>
+<p>ES6 规定，Promise对象是一个构造函数，用来生成Promise实例。</p>
+<ul>
+<li><p>Promise实例</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> promise = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve, reject</span>) </span>&#123;<br>    <span class="hljs-comment">// ... some code</span><br>    <span class="hljs-built_in">console</span>.log(我一创建就执行了)<br>    <span class="hljs-keyword">if</span> (<span class="hljs-comment">/* 异步操作成功 */</span>)&#123;<br>      resolve(value);<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      reject(error);<br>    &#125;<br>  &#125;);<br></code></pre></td></tr></table></figure>
+
+<p>Promise新建后，就会立即执行,返回一个Promise对象。<br> Promise构造函数需要一个函数作为参数，这个函数有两个参数，分别是resolve和reject，<br> 它们是两个函数，由 JavaScript 引擎提供，不用自己部署</p>
+</li>
+<li><p><strong>resolve</strong>: 把Promise状态 从 pending 变为 resolved ，在异步操作成功时调用，并将异步操作的结果，作为参数传递出去</p>
+</li>
+<li><p><strong>reject</strong>: 把Promise状态 从 pending 变为 reject ，在异步操作失败时调用，并把错误作为参数传递出去<br> 此外，reject方法的作用，也等同于抛出异常。reject的参数会被catch捕获。即便没有调用reject，如果执行过程中出错了，也会被catch捕获。</p>
+</li>
+</ul>
+<p>所以：</p>
+<ol>
+<li>异步操作成功时，把结果告诉resolve回调函数 异步操作失败 把错误告诉reject回调函数</li>
+<li>resolve 和 reject 回调函数 还有一个作用就是把 结果传递出去</li>
+</ol>
+</li>
+<li><h3 id="Promise对象如何使用异步函数的执行结果-then、catch"><a href="#Promise对象如何使用异步函数的执行结果-then、catch" class="headerlink" title="Promise对象如何使用异步函数的执行结果(then、catch)"></a>Promise对象如何使用异步函数的执行结果(then、catch)</h3><ul>
+<li><h3 id="then（指定了resolve状态和reject的回调函数）"><a href="#then（指定了resolve状态和reject的回调函数）" class="headerlink" title="then（指定了resolve状态和reject的回调函数）"></a>then（指定了resolve状态和reject的回调函数）</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs javascript">promise.then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">value</span>) </span>&#123;<br>  <span class="hljs-comment">// success</span><br>&#125;, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error</span>) </span>&#123;<br>  <span class="hljs-comment">// failure</span><br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<p>then方法的参数是两个回调函数，都接受Promise对象传出的值作为参数：</p>
+<ul>
+<li>第一个参数是resolve状态的回调函数</li>
+<li>第二个参数是reject的回调函数， 这个参数是可选的</li>
+</ul>
+<p>通常这个参数也不写，因为Promise实例还有一个方法叫catch是专门用来捕获异常的。</p>
+</li>
+<li><h3 id="catch（专门用来捕获Promise对象产生的错误）"><a href="#catch（专门用来捕获Promise对象产生的错误）" class="headerlink" title="catch（专门用来捕获Promise对象产生的错误）"></a>catch（专门用来捕获Promise对象产生的错误）</h3><p>catch 是 .then(null, rejection)的别名，用于指定发生错误时的回调函数。</p>
+<p>一旦catch前面的任何一个Promise发生异常，都会被catch捕获，包括Promise函数创建的Promise，还有.then返回的Promise,甚至catch前面如果还有一个catch在这个catch抛出的异常也会被后一个catch捕获。</p>
+<p>也就是说：<br> Promise对象的错误具有冒泡性质，会一直向后传递，直到被捕获为止，也即是说，错误总会被下一个catch语句捕获。</p>
+<p>所以，既然这个catch这么厉害，then函数中的第二个参数常常被省略了，然后被这个catch方法替代。</p>
+<p>所以通常这么写:<br> promise.then().catch()<br> promise.then().then().catch()<br> promise.then().then().catch().then().catch()</p>
+<p>所以下面例子第二种写法好些。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// bad</span><br>promise<br>  .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>) </span>&#123;<br>    <span class="hljs-comment">// success</span><br>  &#125;, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>&#123;<br>    <span class="hljs-comment">// error</span><br>  &#125;);<br><br><span class="hljs-comment">// good</span><br>promise<br>  .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>) </span>&#123; <span class="hljs-comment">//cb</span><br>    <span class="hljs-comment">// success</span><br>  &#125;)<br>  .catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>&#123;<br>    <span class="hljs-comment">// error</span><br>  &#125;);<br></code></pre></td></tr></table></figure>
+
+<p>一般总是建议，Promise 对象后面要跟catch方法，这样可以处理 Promise 内部发生的错误。catch方法返回的还是一个 Promise 对象，因此后面还可以接着调用then方法和catch方法。</p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="（二）try-catch"><a href="#（二）try-catch" class="headerlink" title="（二）try catch"></a>（二）try catch</h2><p>try catch是JavaScript的异常处理机制，把可能出错的代码放在try语句块中，如果出错了，就会被catch捕获来处理异常。如果不catch 一旦出错就会造成程序崩溃。</p>
+<ul>
+<li><p>如果有多个await命令，可以将其都放在try catch结构中，如果执行出错，catch会去捕获异常</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-keyword">try</span> &#123;<br>     <span class="hljs-keyword">await</span> <span class="hljs-built_in">Promise</span>.reject(<span class="hljs-string">&#x27;出错了&#x27;</span>);<br>     <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;上面已经出错了&#x27;</span>);<br>     <span class="hljs-keyword">return</span> <span class="hljs-keyword">await</span> <span class="hljs-built_in">Promise</span>.resolve(<span class="hljs-string">&#x27;hello world&#x27;</span>);<br>    &#125; <span class="hljs-keyword">catch</span>(e) &#123;<br>        <span class="hljs-built_in">console</span>.log(e);<br>    &#125;<br>  &#125;<br>  <br>  f()<br>  .then(<span class="hljs-function"><span class="hljs-params">v</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(v))<br></code></pre></td></tr></table></figure></li>
+</ul>
+<p>catch会去捕获try代码块中的错误，只要有一个抛出了异常，就不会继续执行，所以上面的代码不会打印上面已经出错了也不会执行return await Promise.resolve(‘hello world’);<br> 因为使用了trycatch 所以 async 是顺利执行完成的，其中的报错 被 try catch处理了，所以异常不会被async返回的Promise的catch捕获，因此async返回的Promise对象状态是resolved。</p>
+<h2 id="（三）Promise-all"><a href="#（三）Promise-all" class="headerlink" title="（三）Promise.all()"></a>（三）Promise.all()</h2><ul>
+<li><p>Promise.all可以将多个Promise实例包装成一个新的Promise实例。同时，成功和失败的返回值是不同的，成功的时候返回的是一个结果数组，而失败的时候则返回最先被reject失败状态的值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> p1 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> &#123;<br>  resolve(<span class="hljs-string">&#x27;成功了&#x27;</span>)<br>&#125;)<br><br><span class="hljs-keyword">let</span> p2 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> &#123;<br>  resolve(<span class="hljs-string">&#x27;success&#x27;</span>)<br>&#125;)<br><br><span class="hljs-keyword">let</span> p3 = Promse.reject(<span class="hljs-string">&#x27;失败&#x27;</span>)<br><br><span class="hljs-built_in">Promise</span>.all([p1, p2]).then(<span class="hljs-function">(<span class="hljs-params">result</span>) =&gt;</span> &#123;<br>  <span class="hljs-built_in">console</span>.log(result)               <span class="hljs-comment">//[&#x27;成功了&#x27;, &#x27;success&#x27;]</span><br>&#125;).catch(<span class="hljs-function">(<span class="hljs-params">error</span>) =&gt;</span> &#123;<br>  <span class="hljs-built_in">console</span>.log(error)<br>&#125;)<br><br><span class="hljs-built_in">Promise</span>.all([p1,p3,p2]).then(<span class="hljs-function">(<span class="hljs-params">result</span>) =&gt;</span> &#123;<br>  <span class="hljs-built_in">console</span>.log(result)<br>&#125;).catch(<span class="hljs-function">(<span class="hljs-params">error</span>) =&gt;</span> &#123;<br>  <span class="hljs-built_in">console</span>.log(error)      <span class="hljs-comment">// 失败了，打出 &#x27;失败&#x27;</span><br>&#125;)<br></code></pre></td></tr></table></figure></li>
+<li><p>Promse.all在处理多个异步处理时非常有用，比如说一个页面上需要等两个或多个ajax的数据回来以后才正常显示，在此之前只显示loading图标</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> wake = <span class="hljs-function">(<span class="hljs-params">time</span>) =&gt;</span> &#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> &#123;<br>    <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>      resolve(<span class="hljs-string">`<span class="hljs-subst">$&#123;time / <span class="hljs-number">1000</span>&#125;</span>秒后醒来`</span>)<br>    &#125;, time)<br>  &#125;)<br>&#125;<br><br><span class="hljs-keyword">let</span> p1 = wake(<span class="hljs-number">3000</span>)<br><span class="hljs-keyword">let</span> p2 = wake(<span class="hljs-number">2000</span>)<br><br><span class="hljs-built_in">Promise</span>.all([p1, p2]).then(<span class="hljs-function">(<span class="hljs-params">result</span>) =&gt;</span> &#123;<br>  <span class="hljs-built_in">console</span>.log(result)       <span class="hljs-comment">// [ &#x27;3秒后醒来&#x27;, &#x27;2秒后醒来&#x27; ]</span><br>&#125;).catch(<span class="hljs-function">(<span class="hljs-params">error</span>) =&gt;</span> &#123;<br>  <span class="hljs-built_in">console</span>.log(error)<br>&#125;)<br></code></pre></td></tr></table></figure></li>
+</ul>
+<p>需要特别注意的是，Promise.all获得的成功结果的数组里面的数据顺序和Promise.all接收到的数组顺序是一致的，即p1的结果在前，即便p1的结果获取的比p2要晚。这带来了一个绝大的好处：在前端开发请求数据的过程中，偶尔会遇到发送多个请求并根据请求顺序获取和使用数据的场景，使用Promise.all毫无疑问可以解决这个问题。</p>
+<h2 id="（四）Promise-race"><a href="#（四）Promise-race" class="headerlink" title="（四）Promise.race()"></a>（四）Promise.race()</h2><ul>
+<li><p>顾名思义，Promse.race就是赛跑的意思，意思就是说，Promise.race([p1, p2, p3])里面哪个结果获得的快，就返回那个结果，不管结果本身是成功状态还是失败状态</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> p1 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> &#123;<br>  <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>    resolve(<span class="hljs-string">&#x27;success&#x27;</span>)<br>  &#125;,<span class="hljs-number">1000</span>)<br>&#125;)<br><br><span class="hljs-keyword">let</span> p2 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> &#123;<br>  <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>    reject(<span class="hljs-string">&#x27;failed&#x27;</span>)<br>  &#125;, <span class="hljs-number">500</span>)<br>&#125;)<br><br><span class="hljs-built_in">Promise</span>.race([p1, p2]).then(<span class="hljs-function">(<span class="hljs-params">result</span>) =&gt;</span> &#123;<br>  <span class="hljs-built_in">console</span>.log(result)<br>&#125;).catch(<span class="hljs-function">(<span class="hljs-params">error</span>) =&gt;</span> &#123;<br>  <span class="hljs-built_in">console</span>.log(error)  <span class="hljs-comment">// 打开的是 &#x27;failed&#x27;</span><br>&#125;)<br></code></pre></td></tr></table></figure></li>
+</ul>
+<p>原理是挺简单的，但是在实际运用中还没有想到什么的使用场景会使用到。</p>
+
+      </section>
+      <section class="extra">
+        
+          <ul class="copyright">
+  
+    <li><strong>本文作者：</strong>wowangmouren</li>
+    <li><strong>本文链接：</strong><a href="https://wangwewntao.top/2023/11/08/wmr_19/index.html" title="https:&#x2F;&#x2F;wangwewntao.top&#x2F;2023&#x2F;11&#x2F;08&#x2F;wmr_19&#x2F;index.html">https:&#x2F;&#x2F;wangwewntao.top&#x2F;2023&#x2F;11&#x2F;08&#x2F;wmr_19&#x2F;index.html</a></li>
+    <li><strong>版权声明：</strong>本博客所有文章均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" title="BY-NC-SA" target="_blank" rel="noopener">BY-NC-SA</a> 许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+          <section class="donate">
+  <div id="qrcode-donate">
+    <img   class="lazyload" data-original="/images/theme/alipay.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+        
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/" rel="tag">ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/promise/" rel="tag">promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/promise-all/" rel="tag">promise.all</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/try-catch/" rel="tag">try...catch</a></li></ul> 
+
+        
+  <nav class="nav">
+    <a href="/2023/11/08/wmr_20/"><i class="iconfont iconleft"></i>node项目连接mysql</a>
+    <a href="/2023/11/08/wmr_18/">node<i class="iconfont iconright"></i></a>
+  </nav>
+
+      </section>
+      
+    </section>
+  </div>
+</article></div>
+      <div class="col-xl-3">
+        
+          
+  <aside class="toc-wrap">
+    <h3 class="toc-title">文章目录：</h3>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%87%A0%E8%80%85%E4%B9%8B%E9%97%B4%E8%81%94%E7%B3%BB"><span class="toc-text">一、几者之间联系</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D%E4%B8%8B%E8%BF%99%E5%87%A0%E4%B8%AA%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-text">简单介绍下这几个的关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#async"><span class="toc-text">async</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#await"><span class="toc-text">await</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#promise"><span class="toc-text">promise</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#try-catch"><span class="toc-text">try catch</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E8%AF%A6%E8%A7%A3"><span class="toc-text">二、详解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%88%E4%B8%80%EF%BC%89promise"><span class="toc-text">（一）promise</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E4%B8%AA%E7%8A%B6%E6%80%81"><span class="toc-text">三个状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%A4%E4%B8%AA%E7%89%B9%E7%82%B9"><span class="toc-text">两个特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Promise%E5%AF%B9%E8%B1%A1%E5%A6%82%E4%BD%95%E7%9F%A5%E9%81%93%E5%BC%82%E6%AD%A5%E6%93%8D%E4%BD%9C%E7%BB%93%E6%9E%9C%E5%8F%88%E5%A6%82%E4%BD%95%E4%BC%A0%E9%80%92-resolve%E3%80%81reject"><span class="toc-text">Promise对象如何知道异步操作结果又如何传递(resolve、reject)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Promise%E5%AF%B9%E8%B1%A1%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E5%BC%82%E6%AD%A5%E5%87%BD%E6%95%B0%E7%9A%84%E6%89%A7%E8%A1%8C%E7%BB%93%E6%9E%9C-then%E3%80%81catch"><span class="toc-text">Promise对象如何使用异步函数的执行结果(then、catch)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#then%EF%BC%88%E6%8C%87%E5%AE%9A%E4%BA%86resolve%E7%8A%B6%E6%80%81%E5%92%8Creject%E7%9A%84%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0%EF%BC%89"><span class="toc-text">then（指定了resolve状态和reject的回调函数）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#catch%EF%BC%88%E4%B8%93%E9%97%A8%E7%94%A8%E6%9D%A5%E6%8D%95%E8%8E%B7Promise%E5%AF%B9%E8%B1%A1%E4%BA%A7%E7%94%9F%E7%9A%84%E9%94%99%E8%AF%AF%EF%BC%89"><span class="toc-text">catch（专门用来捕获Promise对象产生的错误）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%88%E4%BA%8C%EF%BC%89try-catch"><span class="toc-text">（二）try catch</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%88%E4%B8%89%EF%BC%89Promise-all"><span class="toc-text">（三）Promise.all()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%88%E5%9B%9B%EF%BC%89Promise-race"><span class="toc-text">（四）Promise.race()</span></a></li></ol></li></ol>
+  </aside>
+
+        
+      </div>
+    </div>
+  </div>
+</main>
+  
+
+<footer class="footer">
+  <div class="footer-social"><a 
+        href="tencent://message/?Menu=yes&uin=1020524654 "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#12B7F5'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconQQ "></i>
+      </a><a 
+        href="https://github.com/wowangmouren?tab=repositories "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#9f7be1'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  icongithub-fill "></i>
+      </a><a 
+        href="mailto:1020524654@qq.com "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#DA2E76'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconmail "></i>
+      </a></div>
+  
+    <div class="footer-copyright"><p>欢迎进入王文涛的个人博客~  |  <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">主题</a></p></div>
+  
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  
+  
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+  
+</body>
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

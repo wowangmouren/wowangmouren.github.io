@@ -1,0 +1,387 @@
+
+
+<!DOCTYPE html>
+<html lang="en" color-mode=light>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>vue与原生（ios，安卓）交互 - 王文涛的博客</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+  
+  <meta name="description" content="一、原生调用H5（vue）的方法：
+在methods中...">
+  <meta name="author" content="wowangmouren">
+  <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
+  <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" sizes="180x180">
+  <meta rel="mask-icon" href="/images/icons/stun-logo.svg" color="#333333">
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/favicon-144x144.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+    
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1445822_r673sha78lq.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+    
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css" name="highlight-style" mode="light">
+
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solarized-dark.min.css" name="highlight-style" mode="dark">
+
+      
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      lazyload: {
+        enable: true,
+        only_post: 'false',
+        loading: '[object Object]'
+      },
+      donate: {
+        enable: true,
+        alipay: '/images/theme/alipay.png',
+        wechat: '/images/theme/wechat.png'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: true,
+        always_show: true
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: false
+      },
+      preview: {
+        background: {
+          default: '',
+          api: ''
+        },
+        motto: {
+          default: '王文涛的博客',
+          typing: true,
+          api: '',
+          data_contents: ''
+        },
+      },
+      qrcode: {
+        enable: true,
+        type: 'url',
+        image: 'https://pic.izhaoo.com/weapp-code.jpg',
+      },
+      toc: {
+        enable: true
+      },
+      scrollbar: {
+        type: 'default'
+      },
+      notification: {
+        enable: false,
+        delay: 4500,
+        list: '',
+        page_white_list: '',
+        page_black_list: ''
+      },
+      search: {
+        enable: false,
+        path: ''
+      }
+    }
+  </script>
+
+  
+
+  
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="lock-screen">
+  <div class="loading"></div>
+  
+    
+
+
+  <nav class="navbar">
+    <div class="left">
+      
+        <i class="iconfont iconhome j-navbar-back-home"></i>
+      
+      
+        <i class="iconfont iconqrcode j-navbar-qrcode"></i>
+      
+      
+        <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+      
+      
+    </div>
+    <div class="center">vue与原生（ios，安卓）交互</div>
+    <div class="right">
+      <i class="iconfont iconmenu j-navbar-menu"></i>
+    </div>
+    
+      <div id="qrcode-navbar"></div>
+    
+  </nav>
+
+  
+  
+
+<nav class="menu">
+  <div class="menu-container">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content"><li class="menu-item">
+        <a href="/ " class="underline "> 首页</a>
+      </li><li class="menu-item">
+        <a href="/galleries/ " class="underline "> 相册</a>
+      </li><li class="menu-item">
+        <a href="/archives/ " class="underline "> 归档</a>
+      </li><li class="menu-item">
+        <a href="/tags/ " class="underline "> 标签</a>
+      </li><li class="menu-item">
+        <a href="/categories/ " class="underline "> 分类</a>
+      </li><li class="menu-item">
+        <a href="/about/ " class="underline "> 关于</a>
+      </li></ul>
+    
+      <div class="menu-copyright"><p>欢迎进入王文涛的个人博客~  |  <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">主题</a></p></div>
+    
+  </div>
+</nav>
+  <main id="main">
+  <div class="article-wrap">
+    <div class="row container">
+      <div class="col-xl-3"></div>
+      <div class="col-xl-6"><article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img   class="lazyload" data-original="/images/theme/cover/ios.jfif" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">vue与原生（ios，安卓）交互</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>September 18, 2021</span>
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>2941</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        <h1 id="一、原生调用H5（vue）的方法："><a href="#一、原生调用H5（vue）的方法：" class="headerlink" title="一、原生调用H5（vue）的方法："></a>一、原生调用H5（vue）的方法：</h1><ol>
+<li><h5 id="在methods中定义方法"><a href="#在methods中定义方法" class="headerlink" title="在methods中定义方法"></a>在methods中定义方法</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//判断app是否安装成功 （Android触发）1-&gt;完成 2-&gt;未完成</span><br>    <span class="hljs-function"><span class="hljs-title">appIsInstall</span>(<span class="hljs-params">packageName, status</span>)</span> &#123;<br>      <span class="hljs-keyword">if</span> (<span class="hljs-built_in">parseInt</span>(status) === <span class="hljs-number">1</span>) &#123;<br>        <span class="hljs-built_in">this</span>.sendTaskStatus(<span class="hljs-number">104</span>);<br>      &#125;<br>    &#125;<br></code></pre></td></tr></table></figure></li>
+<li><h5 id="将要给原生调用的方法挂载到-window-上面"><a href="#将要给原生调用的方法挂载到-window-上面" class="headerlink" title="将要给原生调用的方法挂载到 window 上面"></a>将要给原生调用的方法挂载到 window 上面</h5><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">window.appIsInstall</span> = this.appIsInstall<span class="hljs-comment">;</span><br></code></pre></td></tr></table></figure></li>
+<li><h5 id="注意：要注意这里写法是this-appIsInstall指向window，this-appIsInstall-这样就是直接调动了"><a href="#注意：要注意这里写法是this-appIsInstall指向window，this-appIsInstall-这样就是直接调动了" class="headerlink" title="注意：要注意这里写法是this.appIsInstall指向window，this.appIsInstall()这样就是直接调动了"></a>注意：要注意这里写法是this.appIsInstall指向window，this.appIsInstall()这样就是直接调动了</h5></li>
+<li><h5 id="原生安卓或者ios会在window上读取appIsInstall这个约定的方法名，传参调用"><a href="#原生安卓或者ios会在window上读取appIsInstall这个约定的方法名，传参调用" class="headerlink" title="原生安卓或者ios会在window上读取appIsInstall这个约定的方法名，传参调用"></a>原生安卓或者ios会在window上读取appIsInstall这个约定的方法名，传参调用</h5></li>
+</ol>
+<h1 id="二、h5调用原生"><a href="#二、h5调用原生" class="headerlink" title="二、h5调用原生"></a>二、h5调用原生</h1><ol>
+<li><h5 id="js注入（第一种方式）"><a href="#js注入（第一种方式）" class="headerlink" title="js注入（第一种方式）"></a>js注入（第一种方式）</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> &#123; isAndroid &#125; = <span class="hljs-built_in">this</span>.judgeSystem();  <span class="hljs-comment">//判断系统</span><br><span class="hljs-keyword">if</span> (isAndroid) &#123;<br>    <span class="hljs-comment">//安卓端--PggH5Js--需要是约定的字段</span><br>    <span class="hljs-built_in">window</span>.PggH5Js.lookAdsForGuaZi(extraAdTask);<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-comment">//ios端</span><br>    <span class="hljs-built_in">window</span>.webkit.messageHandlers.lookAdsForGuaZi.postMessage(&#123;<br>    extraAdTask<br>    &#125;);<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li><h5 id="url拦截（第二种方式，ios跟安卓一样）"><a href="#url拦截（第二种方式，ios跟安卓一样）" class="headerlink" title="url拦截（第二种方式，ios跟安卓一样）"></a>url拦截（第二种方式，ios跟安卓一样）</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 跳转到指定视频</span><br><span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">toVideoView</span>(<span class="hljs-params">videoId: string</span>) </span>&#123;<br>  	<span class="hljs-built_in">window</span>.location.href = <span class="hljs-string">`<span class="hljs-subst">$&#123;NativeAPI.TO_VIDEO_VIEW&#125;</span>?videoId=<span class="hljs-subst">$&#123;videoId&#125;</span>`</span>;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li><h5 id="判断系统"><a href="#判断系统" class="headerlink" title="判断系统"></a>判断系统</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-title">judgeSystem</span>(<span class="hljs-params"></span>)</span> &#123;<br>       <span class="hljs-keyword">const</span> u = navigator.userAgent;<br>       <span class="hljs-keyword">const</span> isAndroid = u.indexOf(<span class="hljs-string">&quot;Android&quot;</span>) &gt; -<span class="hljs-number">1</span> || u.indexOf(<span class="hljs-string">&quot;Linux&quot;</span>) &gt; -<span class="hljs-number">1</span>;<br>       <span class="hljs-keyword">const</span> isIOS = !!u.match(<span class="hljs-regexp">/\(i[^;]+;( U;)? CPU.+Mac OS X/</span>);<br>       <span class="hljs-keyword">return</span> &#123; isAndroid, isIOS &#125;;<br>   &#125;<br></code></pre></td></tr></table></figure></li>
+</ol>
+<h5 id="这个原理也很简单，其实就是前端发送一个请求出去，url里面带参，原生会去拦截这个请求，获取到数据"><a href="#这个原理也很简单，其实就是前端发送一个请求出去，url里面带参，原生会去拦截这个请求，获取到数据" class="headerlink" title="这个原理也很简单，其实就是前端发送一个请求出去，url里面带参，原生会去拦截这个请求，获取到数据"></a>这个原理也很简单，其实就是前端发送一个请求出去，url里面带参，原生会去拦截这个请求，获取到数据</h5><h1 id="三、总结"><a href="#三、总结" class="headerlink" title="三、总结"></a>三、总结</h1><ol>
+<li><p>一般用的最多的就是：H5调用原生（安卓可以直接回调参数，ios不行），然后原生调用H5这边方法，传参过来</p>
+<ul>
+<li>第一步：H5调用原生方法</li>
+</ul>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs reasonml"><br><span class="hljs-comment">// 通知原生获取设备唯一标识</span><br>const getDeviceIdentify = async<span class="hljs-function"> <span class="hljs-params">()</span> =&gt;</span> &#123;<br>  <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">PggNative</span>.</span></span>get<span class="hljs-constructor">DevicesID()</span>;<br>&#125;;<br><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// nativeInterface.ts  文件</span><br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PggNative</span> </span>&#123;<br>  <span class="hljs-comment">/**</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@description</span>: 通知原生获取设备的唯一标识</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span></span></span><br><span class="hljs-comment">   * <span class="hljs-doctag">@return <span class="hljs-type">&#123;*&#125;</span></span></span><br><span class="hljs-comment">   */</span><br>  <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-title">getDevicesID</span>(<span class="hljs-params"></span>)</span> &#123;<br>    <span class="hljs-keyword">const</span> &#123; isAndroid, isIOS &#125; = <span class="hljs-built_in">this</span>.judgeSystem();<br>    <span class="hljs-keyword">try</span> &#123;<br>      <span class="hljs-keyword">if</span> (isAndroid) &#123;<br>        <span class="hljs-built_in">window</span>.NFTH5JS.getDeviceIdentify();<br>      &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (isIOS) &#123;<br>        <span class="hljs-built_in">window</span>.webkit.messageHandlers.getDeviceIdentify.postMessage(&#123;&#125;);<br>      &#125;<br>    &#125; <span class="hljs-keyword">catch</span> (error) &#123;<br>      <span class="hljs-built_in">console</span>.log(error);<br>    &#125;<br>  &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<p>第二步：原生调用H5这边方法</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs stata"><span class="hljs-comment">//  main.ts文件  js方法挂载全局</span><br><br>import &#123; createApp &#125; from <span class="hljs-string">&quot;vue&quot;</span>;<br>import <span class="hljs-keyword">App</span> from <span class="hljs-string">&quot;./App.vue&quot;</span>;<br>import JavaCallJs from <span class="hljs-string">&quot;@/services/jsInterface&quot;</span>;<br><span class="hljs-keyword">window</span>.JavaCallJs = JavaCallJs;<br><br><span class="hljs-keyword">const</span> <span class="hljs-keyword">app</span> = createApp(<span class="hljs-keyword">App</span>);<br>useVantComponent(<span class="hljs-keyword">app</span>);<br><span class="hljs-keyword">app</span>.<span class="hljs-keyword">use</span>(store, key).<span class="hljs-keyword">use</span>(router).mount(<span class="hljs-string">&quot;#app&quot;</span>);<br><br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><br><span class="hljs-comment">// jsInterface.ts  文件</span><br><br><span class="hljs-keyword">import</span> emitter <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@/utils/emit&quot;</span>;<br><span class="hljs-keyword">import</span> &#123; store &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@/store&quot;</span>;<br><span class="hljs-keyword">import</span> useTaskState <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@/composables/useTaskState&quot;</span>;<br><span class="hljs-keyword">const</span> &#123; getCompletionInfo, finishXuanshang &#125; = useTaskState()<br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">JavaCallJs</span> </span>&#123;<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@description</span>: 设置设备码存到本地</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param <span class="hljs-type">&#123;设备码&#125;</span></span></span><br><span class="hljs-comment">   * <span class="hljs-doctag">@return <span class="hljs-type">&#123;*&#125;</span></span></span><br><span class="hljs-comment">   */</span><br>  <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-title">setDeviceIdentify</span>(<span class="hljs-params">params: <span class="hljs-built_in">string</span></span>)</span> &#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;-------ios回调设备标识参数----&#x27;</span>, params)<br>    <span class="hljs-built_in">localStorage</span>.setItem(<span class="hljs-string">&quot;DeviceIdentify&quot;</span>, params);<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ol>
+
+      </section>
+      <section class="extra">
+        
+          <ul class="copyright">
+  
+    <li><strong>本文作者：</strong>wowangmouren</li>
+    <li><strong>本文链接：</strong><a href="https://wangwewntao.top/2021/09/18/wmr_04/index.html" title="https:&#x2F;&#x2F;wangwewntao.top&#x2F;2021&#x2F;09&#x2F;18&#x2F;wmr_04&#x2F;index.html">https:&#x2F;&#x2F;wangwewntao.top&#x2F;2021&#x2F;09&#x2F;18&#x2F;wmr_04&#x2F;index.html</a></li>
+    <li><strong>版权声明：</strong>本博客所有文章均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" title="BY-NC-SA" target="_blank" rel="noopener">BY-NC-SA</a> 许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+          <section class="donate">
+  <div id="qrcode-donate">
+    <img   class="lazyload" data-original="/images/theme/alipay.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+        
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%9F%E7%94%9F%E4%BA%A4%E4%BA%92/" rel="tag">原生交互</a></li></ul> 
+
+        
+  <nav class="nav">
+    <a href="/2021/09/18/wmr_05/"><i class="iconfont iconleft"></i>vuex存取值的两种方式</a>
+    <a href="/2021/09/18/wmr_03/">svga动画图在vue中使用<i class="iconfont iconright"></i></a>
+  </nav>
+
+      </section>
+      
+    </section>
+  </div>
+</article></div>
+      <div class="col-xl-3">
+        
+          
+  <aside class="toc-wrap">
+    <h3 class="toc-title">文章目录：</h3>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%8E%9F%E7%94%9F%E8%B0%83%E7%94%A8H5%EF%BC%88vue%EF%BC%89%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%9A"><span class="toc-text">一、原生调用H5（vue）的方法：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81h5%E8%B0%83%E7%94%A8%E5%8E%9F%E7%94%9F"><span class="toc-text">二、h5调用原生</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%80%BB%E7%BB%93"><span class="toc-text">三、总结</span></a></li></ol>
+  </aside>
+
+        
+      </div>
+    </div>
+  </div>
+</main>
+  
+
+<footer class="footer">
+  <div class="footer-social"><a 
+        href="tencent://message/?Menu=yes&uin=1020524654 "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#12B7F5'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconQQ "></i>
+      </a><a 
+        href="https://github.com/wowangmouren?tab=repositories "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#9f7be1'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  icongithub-fill "></i>
+      </a><a 
+        href="mailto:1020524654@qq.com "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#DA2E76'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconmail "></i>
+      </a></div>
+  
+    <div class="footer-copyright"><p>欢迎进入王文涛的个人博客~  |  <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">主题</a></p></div>
+  
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  
+  
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+  
+</body>
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

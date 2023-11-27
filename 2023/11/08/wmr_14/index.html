@@ -1,0 +1,378 @@
+
+
+<!DOCTYPE html>
+<html lang="en" color-mode=light>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>上传器oss图片上传以及生成二维码海报 - 王文涛的博客</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+  
+  <meta name="description" content="一、图片上传至oss
+通过接口获取oss上传签名
+
+
+...">
+  <meta name="author" content="wowangmouren">
+  <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
+  <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" sizes="180x180">
+  <meta rel="mask-icon" href="/images/icons/stun-logo.svg" color="#333333">
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/favicon-144x144.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+    
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1445822_r673sha78lq.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+    
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css" name="highlight-style" mode="light">
+
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solarized-dark.min.css" name="highlight-style" mode="dark">
+
+      
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      lazyload: {
+        enable: true,
+        only_post: 'false',
+        loading: '[object Object]'
+      },
+      donate: {
+        enable: true,
+        alipay: '/images/theme/alipay.png',
+        wechat: '/images/theme/wechat.png'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: true,
+        always_show: true
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: false
+      },
+      preview: {
+        background: {
+          default: '',
+          api: ''
+        },
+        motto: {
+          default: '王文涛的博客',
+          typing: true,
+          api: '',
+          data_contents: ''
+        },
+      },
+      qrcode: {
+        enable: true,
+        type: 'url',
+        image: 'https://pic.izhaoo.com/weapp-code.jpg',
+      },
+      toc: {
+        enable: true
+      },
+      scrollbar: {
+        type: 'default'
+      },
+      notification: {
+        enable: false,
+        delay: 4500,
+        list: '',
+        page_white_list: '',
+        page_black_list: ''
+      },
+      search: {
+        enable: false,
+        path: ''
+      }
+    }
+  </script>
+
+  
+
+  
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="lock-screen">
+  <div class="loading"></div>
+  
+    
+
+
+  <nav class="navbar">
+    <div class="left">
+      
+        <i class="iconfont iconhome j-navbar-back-home"></i>
+      
+      
+        <i class="iconfont iconqrcode j-navbar-qrcode"></i>
+      
+      
+        <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+      
+      
+    </div>
+    <div class="center">上传器oss图片上传以及生成二维码海报</div>
+    <div class="right">
+      <i class="iconfont iconmenu j-navbar-menu"></i>
+    </div>
+    
+      <div id="qrcode-navbar"></div>
+    
+  </nav>
+
+  
+  
+
+<nav class="menu">
+  <div class="menu-container">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content"><li class="menu-item">
+        <a href="/ " class="underline "> 首页</a>
+      </li><li class="menu-item">
+        <a href="/galleries/ " class="underline "> 相册</a>
+      </li><li class="menu-item">
+        <a href="/archives/ " class="underline "> 归档</a>
+      </li><li class="menu-item">
+        <a href="/tags/ " class="underline "> 标签</a>
+      </li><li class="menu-item">
+        <a href="/categories/ " class="underline "> 分类</a>
+      </li><li class="menu-item">
+        <a href="/about/ " class="underline "> 关于</a>
+      </li></ul>
+    
+      <div class="menu-copyright"><p>欢迎进入王文涛的个人博客~  |  <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">主题</a></p></div>
+    
+  </div>
+</nav>
+  <main id="main">
+  <div class="article-wrap">
+    <div class="row container">
+      <div class="col-xl-3"></div>
+      <div class="col-xl-6"><article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img   class="lazyload" data-original="/images/theme/i%E5%8E%A6%E9%97%A8/i_%E5%8E%A6%E9%97%A801.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">上传器oss图片上传以及生成二维码海报</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>November 08, 2023</span>
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>11037</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        <h3 id="一、图片上传至oss"><a href="#一、图片上传至oss" class="headerlink" title="一、图片上传至oss"></a>一、图片上传至oss</h3><ol>
+<li><h5 id="通过接口获取oss上传签名"><a href="#通过接口获取oss上传签名" class="headerlink" title="通过接口获取oss上传签名"></a>通过接口获取oss上传签名</h5></li>
+</ol>
+<ol start="2">
+<li><h5 id="图片上传至oss-接口成功但不会有返回信息，因此要在全局axios请求的响应拦截器做弹出提示框的限制"><a href="#图片上传至oss-接口成功但不会有返回信息，因此要在全局axios请求的响应拦截器做弹出提示框的限制" class="headerlink" title="图片上传至oss,接口成功但不会有返回信息，因此要在全局axios请求的响应拦截器做弹出提示框的限制"></a>图片上传至oss,接口成功但不会有返回信息，因此要在全局axios请求的响应拦截器做弹出提示框的限制</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 添加响应拦截器</span><br>service.interceptors.response.use(<br>    <span class="hljs-function">(<span class="hljs-params">response: any</span>) =&gt;</span> &#123;<br>        <span class="hljs-keyword">const</span> res = response.data;<br><br>        <span class="hljs-comment">// 统一错误处理</span><br>        <span class="hljs-keyword">if</span> (res.code === StatusCode.ERROR &amp;&amp; res.msg == <span class="hljs-string">&#x27;用户未登录!&#x27;</span>) &#123;<br>            <span class="hljs-comment">// ElMessage.error(res.msg);</span><br>            storage.removeToken();<br>            router.push(&#123; <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;/login&#x27;</span> &#125;);<br>            closeLoading();<br>            <span class="hljs-keyword">return</span> <span class="hljs-built_in">Promise</span>.reject(res);<br>        &#125;<br>        <span class="hljs-keyword">if</span> (res.code != StatusCode.SUCCESS || res.code == StatusCode.ERROR) &#123;<br>            closeLoading();<br>            <span class="hljs-comment">// 处理oss上传图片后成功但不返参问题</span><br>            <span class="hljs-keyword">if</span> (response.config.url.indexOf(<span class="hljs-string">&quot;aliyuncs.com&quot;</span>) != -<span class="hljs-number">1</span>) <span class="hljs-keyword">return</span>;<br>            ElMessage.error(res.msg);<br>            <span class="hljs-keyword">return</span> <span class="hljs-built_in">Promise</span>.reject(res);<br>        &#125;<br>        closeLoading();<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;,<br>    <span class="hljs-function">(<span class="hljs-params">error: any</span>) =&gt;</span> &#123;<br>        ElMessage(<span class="hljs-string">&#x27;系统繁忙 请刷新重新！&#x27;</span>);<br>        closeLoading();<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">Promise</span>.reject(error);<br>    &#125;<br>);<br></code></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="二、qrcode-vue-html2canvas-生成二维码海报"><a href="#二、qrcode-vue-html2canvas-生成二维码海报" class="headerlink" title="二、qrcode.vue + html2canvas  生成二维码海报"></a>二、qrcode.vue + html2canvas  生成二维码海报</h3><ol>
+<li><h5 id="qrcode-vue的两种使用方式："><a href="#qrcode-vue的两种使用方式：" class="headerlink" title="qrcode.vue的两种使用方式："></a>qrcode.vue的两种使用方式：</h5><p>​    组件方式使用：<a target="_blank" rel="noopener" href="https://github.com/scopewu/qrcode.vue/blob/main/README-zh_cn.md">https://github.com/scopewu/qrcode.vue/blob/main/README-zh_cn.md</a></p>
+<p>​    canvas操作方式： <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/d99e1f6c6a85">https://www.jianshu.com/p/d99e1f6c6a85</a></p>
+</li>
+<li><h5 id="html2canvas使用：-它的原理就是先生成了二维码，再通过布局方式，使二维码图片放置在背景图的合适位置，然后截屏生成图片，需要注意的是其通过canvas-toDataURL生成的是base64格式的图片文件，如果需要上传oss，那么需要先转换成文件流"><a href="#html2canvas使用：-它的原理就是先生成了二维码，再通过布局方式，使二维码图片放置在背景图的合适位置，然后截屏生成图片，需要注意的是其通过canvas-toDataURL生成的是base64格式的图片文件，如果需要上传oss，那么需要先转换成文件流" class="headerlink" title="html2canvas使用： 它的原理就是先生成了二维码，再通过布局方式，使二维码图片放置在背景图的合适位置，然后截屏生成图片，需要注意的是其通过canvas.toDataURL生成的是base64格式的图片文件，如果需要上传oss，那么需要先转换成文件流"></a>html2canvas使用： 它的原理就是先生成了二维码，再通过布局方式，使二维码图片放置在背景图的合适位置，然后截屏生成图片，需要注意的是其通过canvas.toDataURL生成的是base64格式的图片文件，如果需要上传oss，那么需要先转换成文件流</h5></li>
+</ol>
+<h3 id="三、具体代码"><a href="#三、具体代码" class="headerlink" title="三、具体代码"></a>三、具体代码</h3><ol>
+<li><h5 id="代码如下"><a href="#代码如下" class="headerlink" title="代码如下"></a>代码如下</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">el-dialog</span> <span class="hljs-attr">:close-on-click-modal</span>=<span class="hljs-string">&quot;false&quot;</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;isDialog&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;速销海报&quot;</span> @<span class="hljs-attr">close</span>=<span class="hljs-string">&quot;clickClose&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;content&quot;</span>&gt;</span><br>      <span class="hljs-comment">&lt;!-- *产品图片： --&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">el-upload</span> <span class="hljs-attr">action</span> <span class="hljs-attr">:http-request</span>=<span class="hljs-string">&quot;picUpload&quot;</span> <span class="hljs-attr">:before-upload</span>=<span class="hljs-string">&quot;uploadBefore&quot;</span> <span class="hljs-attr">:file-list</span>=<span class="hljs-string">&quot;imgList&quot;</span> <span class="hljs-attr">list-type</span>=<span class="hljs-string">&quot;picture-card&quot;</span> <span class="hljs-attr">:on-preview</span>=<span class="hljs-string">&quot;handlePictureCardPreview&quot;</span> <span class="hljs-attr">:on-remove</span>=<span class="hljs-string">&quot;handleRemove&quot;</span> <span class="hljs-attr">:limit</span>=<span class="hljs-string">&quot;9&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">el-icon</span>&gt;</span><br>          <span class="hljs-tag">&lt;<span class="hljs-name">plus</span> /&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">el-icon</span>&gt;</span><br>      <span class="hljs-tag">&lt;/<span class="hljs-name">el-upload</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-comment">&lt;!-- 图片预览 --&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">el-dialog</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;dialogVisible&quot;</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 100%; heigth: 100%&quot;</span> <span class="hljs-attr">:src</span>=<span class="hljs-string">&quot;dialogImageUrl&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;&quot;</span> /&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">el-dialog</span>&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">footer</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;dialog-footer&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">el-button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;clickClose&quot;</span>&gt;</span>取消<span class="hljs-tag">&lt;/<span class="hljs-name">el-button</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">el-button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;primary&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;confirmSubmit&quot;</span>&gt;</span>确认<span class="hljs-tag">&lt;/<span class="hljs-name">el-button</span>&gt;</span><br>      <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">el-dialog</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;invitePosterPage&quot;</span>&gt;</span><br>    <span class="hljs-comment">&lt;!-- 这里是你生成完成的海报，背景图+二维码 --&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;poster&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;flex-row&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;position: relative&quot;</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;poster-bg&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;@/assets/avatar.jpg&quot;</span> /&gt;</span><br>      <span class="hljs-comment">&lt;!-- canvas里是你的二维码 --&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">canvas</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;qr&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;qrCode-canvas&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">canvas</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript"></span><br><span class="javascript"><span class="hljs-keyword">import</span> &#123; reactive, toRefs, onMounted, defineComponent &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span></span><br><span class="javascript"><span class="hljs-keyword">import</span> &#123; Plus &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@element-plus/icons&#x27;</span></span><br><span class="javascript"><span class="hljs-keyword">import</span> &#123; uploadImage, imgSign, speed, waitSpeed, deleteSpeedImg &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@/api/ButtJoint&#x27;</span></span><br><span class="javascript"><span class="hljs-keyword">import</span> myUtils <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@/utils/myUtils&#x27;</span></span><br><span class="javascript"><span class="hljs-keyword">import</span> &#123; ElMessage, ElMessageBox &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;element-plus&quot;</span>;</span><br><span class="javascript"><span class="hljs-keyword">import</span> QRCode <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;qrcode&#x27;</span></span><br><span class="javascript"><span class="hljs-keyword">import</span> html2canvas <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;html2canvas&#x27;</span>;</span><br><span class="javascript"></span><br><span class="javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> defineComponent(&#123;</span><br><span class="javascript">  <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;&#x27;</span>,</span><br><span class="javascript">  <span class="hljs-attr">components</span>: &#123;</span><br><span class="javascript">    Plus</span><br><span class="javascript">  &#125;,</span><br><span class="javascript">  <span class="hljs-attr">props</span>: &#123;</span><br><span class="javascript">    <span class="hljs-attr">productId</span>: <span class="hljs-built_in">String</span>,</span><br><span class="javascript">    <span class="hljs-attr">closeDialog</span>: &#123;</span><br><span class="javascript">      <span class="hljs-attr">type</span>: <span class="hljs-built_in">Function</span>,</span><br><span class="javascript">      <span class="hljs-attr">default</span>: <span class="hljs-function">() =&gt;</span> &#123;</span><br><span class="javascript">        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`hah`</span>);</span><br><span class="javascript">      &#125;</span><br><span class="javascript">    &#125;</span><br><span class="javascript">  &#125;,</span><br><span class="javascript">  <span class="hljs-function"><span class="hljs-title">setup</span>(<span class="hljs-params">props</span>)</span> &#123;</span><br><span class="javascript">    <span class="hljs-keyword">const</span> state = reactive(&#123;</span><br><span class="javascript">      <span class="hljs-attr">isDialog</span>: <span class="hljs-literal">true</span>,</span><br><span class="javascript">      <span class="hljs-comment">// 上传图片列表数组</span></span><br><span class="javascript">      <span class="hljs-attr">imgList</span>: [],</span><br><span class="javascript">      <span class="hljs-comment">// 上传图片的预览</span></span><br><span class="javascript">      <span class="hljs-attr">dialogImageUrl</span>: <span class="hljs-string">&#x27;&#x27;</span>,</span><br><span class="javascript">      <span class="hljs-attr">dialogVisible</span>: <span class="hljs-literal">false</span>,</span><br><span class="javascript">      <span class="hljs-attr">posterDataUrl</span>: <span class="hljs-string">&#x27;&#x27;</span>,</span><br><span class="javascript">    &#125;)</span><br><span class="javascript"></span><br><span class="javascript">    <span class="hljs-comment">// 关闭弹窗</span></span><br><span class="javascript">    <span class="hljs-keyword">const</span> clickClose = <span class="hljs-function">() =&gt;</span> &#123;</span><br><span class="javascript">      props.closeDialog();</span><br><span class="javascript">    &#125;;</span><br><span class="javascript"></span><br><span class="javascript">    <span class="hljs-comment">// 获取速销海报内容</span></span><br><span class="javascript">    <span class="hljs-keyword">const</span> getWaitSpeed = <span class="hljs-keyword">async</span> () =&gt; &#123;</span><br><span class="javascript">      <span class="hljs-keyword">const</span> res = <span class="hljs-keyword">await</span> waitSpeed(&#123; <span class="hljs-attr">productId</span>: props.productId &#125;);</span><br><span class="javascript">      res.data.urls.forEach(<span class="hljs-function">(<span class="hljs-params">itm</span>) =&gt;</span> &#123;</span><br><span class="javascript">        state.imgList.push(&#123; <span class="hljs-attr">url</span>: itm &#125;)</span><br><span class="javascript">      &#125;)</span><br><span class="javascript">    &#125;;</span><br><span class="javascript"></span><br><span class="javascript">    <span class="hljs-comment">// 移除图片</span></span><br><span class="javascript">    <span class="hljs-keyword">const</span> handleRemove = <span class="hljs-keyword">async</span> (file) =&gt; &#123;</span><br><span class="javascript">      <span class="hljs-comment">// 删除图片</span></span><br><span class="javascript">      <span class="hljs-keyword">await</span> deleteSpeedImg(&#123;</span><br><span class="javascript">        <span class="hljs-attr">productId</span>: props.productId,</span><br><span class="javascript">        <span class="hljs-attr">url</span>: file.url</span><br><span class="javascript">      &#125;);</span><br><span class="javascript">      state.imgList = (state.imgList).filter(<span class="hljs-function">(<span class="hljs-params">item</span>) =&gt;</span> item.url != file.url);</span><br><span class="javascript">    &#125;</span><br><span class="javascript"></span><br><span class="javascript">    <span class="hljs-comment">// 预览图片</span></span><br><span class="javascript">    <span class="hljs-keyword">const</span> handlePictureCardPreview = <span class="hljs-function">(<span class="hljs-params">file</span>) =&gt;</span> &#123;</span><br><span class="javascript">      state.dialogImageUrl = file.url</span><br><span class="javascript">      state.dialogVisible = <span class="hljs-literal">true</span>;</span><br><span class="javascript">    &#125;</span><br><span class="javascript"></span><br><span class="javascript">    <span class="hljs-comment">// 上传图片之前</span></span><br><span class="javascript">    <span class="hljs-keyword">const</span> uploadBefore = <span class="hljs-function">(<span class="hljs-params">file</span>) =&gt;</span> &#123;</span><br><span class="javascript">      <span class="hljs-comment">//上传文件之前校验图片格式和大小</span></span><br><span class="javascript">      <span class="hljs-keyword">const</span> isJPG = file.type === <span class="hljs-string">&quot;image/jpeg&quot;</span> || file.type === <span class="hljs-string">&quot;image/png&quot;</span> || file.type === <span class="hljs-string">&quot;image/gif&quot;</span> || file.type === <span class="hljs-string">&quot;image/jpg&quot;</span> || file.type === <span class="hljs-string">&quot;image/x-icon&quot;</span> || file.type === <span class="hljs-string">&quot;image/bmp&quot;</span>;</span><br><span class="javascript">      <span class="hljs-keyword">const</span> isLt20M = file.size / <span class="hljs-number">1024</span> / <span class="hljs-number">1024</span> &lt; <span class="hljs-number">20</span>;</span><br><span class="javascript">      <span class="hljs-keyword">if</span> (!isJPG) &#123;</span><br><span class="javascript">        ElMessageBox.confirm(<span class="hljs-string">&quot;上传图片只能是 JPG、JPEG、PNG、GIF、ICO、BMP 格式!&quot;</span>, <span class="hljs-string">&quot;提示&quot;</span>, &#123;</span><br><span class="javascript">          <span class="hljs-attr">confirmButtonText</span>: <span class="hljs-string">&quot;确认&quot;</span>,</span><br><span class="javascript">          <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;info&quot;</span>,</span><br><span class="javascript">        &#125;)</span><br><span class="javascript">        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span></span><br><span class="javascript">      &#125;</span><br><span class="javascript">      <span class="hljs-keyword">if</span> (!isLt20M) &#123;</span><br><span class="javascript">        ElMessageBox.confirm(<span class="hljs-string">&quot;上传图片大小不能超过20MB!&quot;</span>, <span class="hljs-string">&quot;提示&quot;</span>, &#123;</span><br><span class="javascript">          <span class="hljs-attr">confirmButtonText</span>: <span class="hljs-string">&quot;确认&quot;</span>,</span><br><span class="javascript">          <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;info&quot;</span>,</span><br><span class="javascript">        &#125;)</span><br><span class="javascript">        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span></span><br><span class="javascript">      &#125;</span><br><span class="javascript">    &#125;;</span><br><span class="javascript"></span><br><span class="javascript">    <span class="hljs-comment">// 图片上传至oss</span></span><br><span class="javascript">    <span class="hljs-keyword">const</span> picUpload = <span class="hljs-keyword">async</span> (file) =&gt; &#123;</span><br><span class="javascript">      <span class="hljs-comment">// 获取oss上传签名</span></span><br><span class="javascript">      <span class="hljs-keyword">const</span> &#123; <span class="hljs-attr">data</span>: signData &#125; = <span class="hljs-keyword">await</span> imgSign();</span><br><span class="javascript">      <span class="hljs-keyword">const</span> ossData = <span class="hljs-keyword">new</span> FormData();</span><br><span class="javascript">      <span class="hljs-comment">// 通过工具类函数生成随机10位的图片名，避免图片名重复</span></span><br><span class="javascript">      <span class="hljs-keyword">const</span> filename = myUtils.randomName(file.file.name, <span class="hljs-number">10</span>);</span><br><span class="javascript">      <span class="hljs-comment">//图片名称</span></span><br><span class="javascript">      <span class="hljs-keyword">const</span> keyValue = signData.dir + filename;</span><br><span class="javascript">      <span class="hljs-comment">//文件名</span></span><br><span class="javascript">      ossData.append(<span class="hljs-string">&quot;name&quot;</span>, file.file.name);</span><br><span class="javascript">      ossData.append(<span class="hljs-string">&quot;key&quot;</span>, keyValue);</span><br><span class="javascript">      ossData.append(<span class="hljs-string">&quot;policy&quot;</span>, signData.policy);</span><br><span class="javascript">      ossData.append(<span class="hljs-string">&quot;OSSAccessKeyId&quot;</span>, signData.accessid);</span><br><span class="javascript">      ossData.append(<span class="hljs-string">&quot;success_action_status&quot;</span>, <span class="hljs-string">&#x27;200&#x27;</span>);</span><br><span class="javascript">      ossData.append(<span class="hljs-string">&quot;signature&quot;</span>, signData.signature);</span><br><span class="javascript">      ossData.append(<span class="hljs-string">&quot;file&quot;</span>, file.file);</span><br><span class="javascript">      <span class="hljs-built_in">console</span>.log(signData.host, <span class="hljs-string">&quot;signData.host&quot;</span>)</span><br><span class="javascript">      uploadImage(signData.host, ossData).then(<span class="hljs-function">() =&gt;</span> &#123;</span><br><span class="javascript">        <span class="hljs-keyword">const</span> Url = signData.host + <span class="hljs-string">&#x27;/&#x27;</span> + keyValue;</span><br><span class="javascript">        <span class="hljs-keyword">const</span> imageUrl = &#123;</span><br><span class="javascript">          <span class="hljs-attr">url</span>: Url</span><br><span class="javascript">        &#125;</span><br><span class="javascript">        state.imgList.push(imageUrl);</span><br><span class="javascript">      &#125;);</span><br><span class="javascript">    &#125;;</span><br><span class="javascript"></span><br><span class="javascript">    <span class="hljs-comment">// 确认提交</span></span><br><span class="javascript">    <span class="hljs-keyword">const</span> confirmSubmit = <span class="hljs-keyword">async</span> () =&gt; &#123;</span><br><span class="javascript">      <span class="hljs-keyword">if</span> (state.imgList.length &lt; <span class="hljs-number">6</span>) &#123;</span><br><span class="javascript">        <span class="hljs-keyword">return</span> ElMessage.info(<span class="hljs-string">&#x27;最少添加6张图片！&#x27;</span>);</span><br><span class="javascript">      &#125;</span><br><span class="javascript">      <span class="hljs-keyword">const</span> newList = [];</span><br><span class="javascript">      state.imgList.forEach(<span class="hljs-function">(<span class="hljs-params">itm</span>) =&gt;</span> &#123;</span><br><span class="javascript">        newList.push(itm.url)</span><br><span class="javascript">      &#125;);</span><br><span class="javascript">      <span class="hljs-keyword">const</span> res = <span class="hljs-keyword">await</span> speed(&#123;</span><br><span class="javascript">        <span class="hljs-attr">productId</span>: props.productId,</span><br><span class="javascript">        <span class="hljs-attr">imagesUrl</span>: newList</span><br><span class="javascript">      &#125;)</span><br><span class="javascript">      <span class="hljs-keyword">if</span> (res.code == <span class="hljs-number">200</span>) &#123;</span><br><span class="javascript">        ElMessage.success(<span class="hljs-string">&#x27;添加成功！&#x27;</span>);</span><br><span class="javascript">        clickClose();</span><br><span class="javascript">      &#125;</span><br><span class="javascript">    &#125;;</span><br><span class="javascript"></span><br><span class="javascript">    <span class="hljs-keyword">const</span> base64toFile = <span class="hljs-function">(<span class="hljs-params">dataurl, filename = <span class="hljs-string">&#x27;wowangmouren&#x27;</span></span>) =&gt;</span> &#123;</span><br><span class="javascript">      <span class="hljs-keyword">let</span> arr = dataurl.split(<span class="hljs-string">&#x27;,&#x27;</span>)</span><br><span class="javascript">      <span class="hljs-keyword">let</span> mime = arr[<span class="hljs-number">0</span>].match(<span class="hljs-regexp">/:(.*?);/</span>)[<span class="hljs-number">1</span>]</span><br><span class="javascript">      <span class="hljs-keyword">let</span> suffix = mime.split(<span class="hljs-string">&#x27;/&#x27;</span>)[<span class="hljs-number">1</span>]</span><br><span class="javascript">      <span class="hljs-keyword">let</span> bstr = atob(arr[<span class="hljs-number">1</span>])</span><br><span class="javascript">      <span class="hljs-keyword">let</span> n = bstr.length</span><br><span class="javascript">      <span class="hljs-keyword">let</span> u8arr = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Uint8Array</span>(n)</span><br><span class="javascript">      <span class="hljs-keyword">while</span> (n--) &#123;</span><br><span class="javascript">        u8arr[n] = bstr.charCodeAt(n)</span><br><span class="javascript">      &#125;</span><br><span class="javascript">      <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> File([u8arr], <span class="hljs-string">`<span class="hljs-subst">$&#123;filename&#125;</span>.<span class="hljs-subst">$&#123;suffix&#125;</span>`</span>, &#123;</span><br><span class="javascript">        <span class="hljs-attr">type</span>: mime</span><br><span class="javascript">      &#125;)</span><br><span class="javascript">    &#125;</span><br><span class="javascript"></span><br><span class="javascript">    <span class="hljs-comment">// base64图片上传至oss</span></span><br><span class="javascript">    <span class="hljs-keyword">const</span> base64Upload = <span class="hljs-keyword">async</span> (file) =&gt; &#123;</span><br><span class="javascript">      <span class="hljs-comment">// 获取oss上传签名</span></span><br><span class="javascript">      <span class="hljs-keyword">const</span> &#123; <span class="hljs-attr">data</span>: signData &#125; = <span class="hljs-keyword">await</span> imgSign();</span><br><span class="javascript">      <span class="hljs-keyword">const</span> ossData = <span class="hljs-keyword">new</span> FormData();</span><br><span class="javascript">      <span class="hljs-keyword">const</span> filename = myUtils.randomName(file.name, <span class="hljs-number">10</span>);</span><br><span class="javascript">      <span class="hljs-comment">//图片名称</span></span><br><span class="javascript">      <span class="hljs-keyword">const</span> keyValue = signData.dir + filename;</span><br><span class="javascript">      <span class="hljs-comment">//文件名</span></span><br><span class="javascript">      ossData.append(<span class="hljs-string">&quot;name&quot;</span>, file.name);</span><br><span class="javascript">      ossData.append(<span class="hljs-string">&quot;key&quot;</span>, keyValue);</span><br><span class="javascript">      ossData.append(<span class="hljs-string">&quot;policy&quot;</span>, signData.policy);</span><br><span class="javascript">      ossData.append(<span class="hljs-string">&quot;OSSAccessKeyId&quot;</span>, signData.accessid);</span><br><span class="javascript">      ossData.append(<span class="hljs-string">&quot;success_action_status&quot;</span>, <span class="hljs-string">&#x27;200&#x27;</span>);</span><br><span class="javascript">      ossData.append(<span class="hljs-string">&quot;signature&quot;</span>, signData.signature);</span><br><span class="javascript">      ossData.append(<span class="hljs-string">&quot;file&quot;</span>, file);</span><br><span class="javascript">      uploadImage(signData.host, ossData).then(<span class="hljs-function">() =&gt;</span> &#123;</span><br><span class="javascript">        <span class="hljs-keyword">const</span> Url = signData.host + <span class="hljs-string">&#x27;/&#x27;</span> + keyValue;</span><br><span class="javascript">        <span class="hljs-built_in">console</span>.log(Url, <span class="hljs-string">&#x27;base64的图片&#x27;</span>)</span><br><span class="javascript">        <span class="hljs-keyword">const</span> imageUrl = &#123;</span><br><span class="javascript">          <span class="hljs-attr">url</span>: Url</span><br><span class="javascript">        &#125;</span><br><span class="javascript">        state.imgList.push(imageUrl);</span><br><span class="javascript">      &#125;);</span><br><span class="javascript">    &#125;;</span><br><span class="javascript">    <span class="hljs-comment">// 进入页面创建二维码并结合背景图生成海报</span></span><br><span class="javascript">    <span class="hljs-keyword">const</span> createQRCode = <span class="hljs-function">() =&gt;</span> &#123;</span><br><span class="javascript">      <span class="hljs-comment">//先用 QRCode 生成二维码 canvas，然后用 html2canvas 合成整张海报并转成 base64 显示出来</span></span><br><span class="javascript">      <span class="hljs-keyword">const</span> canvas = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&#x27;qrCode-canvas&#x27;</span>)</span><br><span class="javascript">      QRCode.toCanvas(canvas, <span class="hljs-string">&#x27;www.baidu.com&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">error</span>) =&gt;</span> &#123;</span><br><span class="javascript">        <span class="hljs-keyword">if</span> (error) &#123;</span><br><span class="javascript">          <span class="hljs-built_in">console</span>.log(error)</span><br><span class="javascript">        &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="javascript">          <span class="hljs-comment">//qrcode 生成的二维码会带有一些默认样式，需要调整下</span></span><br><span class="javascript">          canvas.style.width = <span class="hljs-string">&#x27;10rem&#x27;</span></span><br><span class="javascript">          canvas.style.height = <span class="hljs-string">&#x27;10rem&#x27;</span></span><br><span class="javascript">          <span class="hljs-keyword">const</span> poster = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&#x27;poster&#x27;</span>)</span><br><span class="javascript">          html2canvas(poster).then(<span class="hljs-function"><span class="hljs-params">canvas</span> =&gt;</span> &#123;</span><br><span class="javascript">            state.posterDataUrl = canvas.toDataURL(<span class="hljs-string">&#x27;image/jpeg&#x27;</span>)</span><br><span class="javascript">            <span class="hljs-comment">// base64格式的图片转换成文件流</span></span><br><span class="javascript">            <span class="hljs-keyword">const</span> base64File = base64toFile(state.posterDataUrl);</span><br><span class="javascript">            <span class="hljs-keyword">if</span> (base64File) &#123;</span><br><span class="javascript">              base64Upload(base64File)</span><br><span class="javascript">            &#125;</span><br><span class="javascript">          &#125;);</span><br><span class="javascript">        &#125;</span><br><span class="javascript">      &#125;)</span><br><span class="javascript">    &#125;</span><br><span class="javascript"></span><br><span class="javascript">    onMounted(<span class="hljs-function">() =&gt;</span> &#123;</span><br><span class="javascript">      getWaitSpeed();</span><br><span class="javascript">      <span class="hljs-comment">// createQRCode();</span></span><br><span class="javascript">      <span class="hljs-built_in">console</span>.log(props, <span class="hljs-string">&#x27;3.-组件挂载到页面之后执行-------onMounted&#x27;</span>)</span><br><span class="javascript">    &#125;)</span><br><span class="javascript">    <span class="hljs-keyword">return</span> &#123;</span><br><span class="javascript">      clickClose,</span><br><span class="javascript">      uploadBefore,</span><br><span class="javascript">      picUpload,</span><br><span class="javascript">      handleRemove,</span><br><span class="javascript">      handlePictureCardPreview,</span><br><span class="javascript">      confirmSubmit,</span><br><span class="javascript">      ...toRefs(state),</span><br><span class="javascript">    &#125;</span><br><span class="javascript">  &#125;,</span><br><span class="javascript">&#125;)</span><br><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">scoped</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&#x27;scss&#x27;</span>&gt;</span><span class="css"></span><br><span class="css"><span class="hljs-selector-class">.content</span> &#123;</span><br><span class="css">  <span class="hljs-attribute">height</span>: <span class="hljs-number">35vh</span>;</span><br><span class="css">  <span class="hljs-attribute">overflow-y</span>: scroll;</span><br><span class="css">  <span class="hljs-attribute">text-align</span>: left;</span><br><span class="css">&#125;</span><br><span class="css"><span class="hljs-selector-class">.invitePosterPage</span> &#123;</span><br><span class="css">  // <span class="hljs-attribute">width</span>: <span class="hljs-number">10px</span>;</span><br><span class="css">  // <span class="hljs-attribute">height</span>: <span class="hljs-number">10px</span>;</span><br><span class="css">  // <span class="hljs-attribute">display</span>: none;</span><br><span class="css">  // <span class="hljs-selector-class">.poster-bg</span> &#123;</span><br><span class="css">  //   <span class="hljs-attribute">position</span>: relative;</span><br><span class="css">  // &#125;</span><br><span class="css">  <span class="hljs-selector-class">.qr</span> &#123;</span><br><span class="css">    <span class="hljs-attribute">height</span>: <span class="hljs-number">1rem</span>;</span><br><span class="css">    <span class="hljs-attribute">position</span>: absolute;</span><br><span class="css">    <span class="hljs-attribute">bottom</span>: <span class="hljs-number">0.5rem</span>;</span><br><span class="css">    <span class="hljs-attribute">left</span>: <span class="hljs-number">1.4rem</span>;</span><br><span class="css">  &#125;</span><br><span class="css">&#125;</span><br><span class="css"></span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br></code></pre></td></tr></table></figure></li>
+</ol>
+
+      </section>
+      <section class="extra">
+        
+          <ul class="copyright">
+  
+    <li><strong>本文作者：</strong>wowangmouren</li>
+    <li><strong>本文链接：</strong><a href="https://wangwewntao.top/2023/11/08/wmr_14/index.html" title="https:&#x2F;&#x2F;wangwewntao.top&#x2F;2023&#x2F;11&#x2F;08&#x2F;wmr_14&#x2F;index.html">https:&#x2F;&#x2F;wangwewntao.top&#x2F;2023&#x2F;11&#x2F;08&#x2F;wmr_14&#x2F;index.html</a></li>
+    <li><strong>版权声明：</strong>本博客所有文章均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" title="BY-NC-SA" target="_blank" rel="noopener">BY-NC-SA</a> 许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+          <section class="donate">
+  <div id="qrcode-donate">
+    <img   class="lazyload" data-original="/images/theme/alipay.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+        
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/oss%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0/" rel="tag">oss图片上传</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E7%BB%B4%E7%A0%81%E6%B5%B7%E6%8A%A5/" rel="tag">二维码海报</a></li></ul> 
+
+        
+  <nav class="nav">
+    <a href="/2023/11/08/wmr_15/"><i class="iconfont iconleft"></i>vue3.0  Composition API使用</a>
+    <a href="/2023/11/08/wmr_13/">webpack的学习与理解<i class="iconfont iconright"></i></a>
+  </nav>
+
+      </section>
+      
+    </section>
+  </div>
+</article></div>
+      <div class="col-xl-3">
+        
+          
+  <aside class="toc-wrap">
+    <h3 class="toc-title">文章目录：</h3>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E8%87%B3oss"><span class="toc-text">一、图片上传至oss</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81qrcode-vue-html2canvas-%E7%94%9F%E6%88%90%E4%BA%8C%E7%BB%B4%E7%A0%81%E6%B5%B7%E6%8A%A5"><span class="toc-text">二、qrcode.vue + html2canvas  生成二维码海报</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81"><span class="toc-text">三、具体代码</span></a></li></ol>
+  </aside>
+
+        
+      </div>
+    </div>
+  </div>
+</main>
+  
+
+<footer class="footer">
+  <div class="footer-social"><a 
+        href="tencent://message/?Menu=yes&uin=1020524654 "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#12B7F5'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconQQ "></i>
+      </a><a 
+        href="https://github.com/wowangmouren?tab=repositories "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#9f7be1'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  icongithub-fill "></i>
+      </a><a 
+        href="mailto:1020524654@qq.com "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#DA2E76'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconmail "></i>
+      </a></div>
+  
+    <div class="footer-copyright"><p>欢迎进入王文涛的个人博客~  |  <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">主题</a></p></div>
+  
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  
+  
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+  
+</body>
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

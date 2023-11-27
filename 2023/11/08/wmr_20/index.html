@@ -1,0 +1,383 @@
+
+
+<!DOCTYPE html>
+<html lang="en" color-mode=light>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>node项目连接mysql - 王文涛的博客</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+  
+  <meta name="description" content="一、安装mysql（一）以管理员身份运行cmd在安装时...">
+  <meta name="author" content="wowangmouren">
+  <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
+  <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" sizes="180x180">
+  <meta rel="mask-icon" href="/images/icons/stun-logo.svg" color="#333333">
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/favicon-144x144.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+    
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1445822_r673sha78lq.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+    
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css" name="highlight-style" mode="light">
+
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solarized-dark.min.css" name="highlight-style" mode="dark">
+
+      
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      lazyload: {
+        enable: true,
+        only_post: 'false',
+        loading: '[object Object]'
+      },
+      donate: {
+        enable: true,
+        alipay: '/images/theme/alipay.png',
+        wechat: '/images/theme/wechat.png'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: true,
+        always_show: true
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: false
+      },
+      preview: {
+        background: {
+          default: '',
+          api: ''
+        },
+        motto: {
+          default: '王文涛的博客',
+          typing: true,
+          api: '',
+          data_contents: ''
+        },
+      },
+      qrcode: {
+        enable: true,
+        type: 'url',
+        image: 'https://pic.izhaoo.com/weapp-code.jpg',
+      },
+      toc: {
+        enable: true
+      },
+      scrollbar: {
+        type: 'default'
+      },
+      notification: {
+        enable: false,
+        delay: 4500,
+        list: '',
+        page_white_list: '',
+        page_black_list: ''
+      },
+      search: {
+        enable: false,
+        path: ''
+      }
+    }
+  </script>
+
+  
+
+  
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="lock-screen">
+  <div class="loading"></div>
+  
+    
+
+
+  <nav class="navbar">
+    <div class="left">
+      
+        <i class="iconfont iconhome j-navbar-back-home"></i>
+      
+      
+        <i class="iconfont iconqrcode j-navbar-qrcode"></i>
+      
+      
+        <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+      
+      
+    </div>
+    <div class="center">node项目连接mysql</div>
+    <div class="right">
+      <i class="iconfont iconmenu j-navbar-menu"></i>
+    </div>
+    
+      <div id="qrcode-navbar"></div>
+    
+  </nav>
+
+  
+  
+
+<nav class="menu">
+  <div class="menu-container">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content"><li class="menu-item">
+        <a href="/ " class="underline "> 首页</a>
+      </li><li class="menu-item">
+        <a href="/galleries/ " class="underline "> 相册</a>
+      </li><li class="menu-item">
+        <a href="/archives/ " class="underline "> 归档</a>
+      </li><li class="menu-item">
+        <a href="/tags/ " class="underline "> 标签</a>
+      </li><li class="menu-item">
+        <a href="/categories/ " class="underline "> 分类</a>
+      </li><li class="menu-item">
+        <a href="/about/ " class="underline "> 关于</a>
+      </li></ul>
+    
+      <div class="menu-copyright"><p>欢迎进入王文涛的个人博客~  |  <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">主题</a></p></div>
+    
+  </div>
+</nav>
+  <main id="main">
+  <div class="article-wrap">
+    <div class="row container">
+      <div class="col-xl-3"></div>
+      <div class="col-xl-6"><article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img   class="lazyload" data-original="/images/theme/cover/gongju.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">node项目连接mysql</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>November 08, 2023</span>
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>1701</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        <h1 id="一、安装mysql"><a href="#一、安装mysql" class="headerlink" title="一、安装mysql"></a>一、安装mysql</h1><h2 id="（一）以管理员身份运行cmd"><a href="#（一）以管理员身份运行cmd" class="headerlink" title="（一）以管理员身份运行cmd"></a>（一）以管理员身份运行cmd</h2><p>在安装时，必须以管理员身份运行cmd，否则在安装时会报错，会导致安装失败的情况</p>
+<p>cd 切换到MySQL安装目录的 bin 目录下</p>
+<h2 id="（二）安装服务（mysqld-–install）"><a href="#（二）安装服务（mysqld-–install）" class="headerlink" title="（二）安装服务（mysqld –install）"></a>（二）安装服务（<strong>mysqld –install</strong>）</h2><p>后面的服务名可以不写，默认的名字为 mysql。当然，如果你的电脑上需要安装多个MySQL服务，就可以用不同的名字区分了，比如 mysql5 和 mysql8。</p>
+<p>到这一步mysql就是安装完成，在此之前多有的cmd命令都是需要在  D:\software\mysql-8.0.27-winx64\bin;  路径下完成</p>
+<h2 id="（三）初始化数据库（mysqld-–initialize-–console）"><a href="#（三）初始化数据库（mysqld-–initialize-–console）" class="headerlink" title="（三）初始化数据库（mysqld –initialize –console）"></a>（三）初始化数据库（mysqld –initialize –console）</h2><p>执行完成后，会打印 root 用户的初始默认密码，其中root@localhost:后面的“rI5rvf5x5G,E”就是初始密码（不含首位空格）。在没有更改密码前，需要记住这个密码，后续登录需要用到。</p>
+<h2 id="（四）启动MySQL的服务（net-start-mysql）"><a href="#（四）启动MySQL的服务（net-start-mysql）" class="headerlink" title="（四）启动MySQL的服务（net start mysql）"></a>（四）启动MySQL的服务（net start mysql）</h2><p>启动mysql，就可以使用了</p>
+<p>如果是第一次，那么需要先登录</p>
+<h2 id="（五）登录验证（mysql-u-root-p）"><a href="#（五）登录验证（mysql-u-root-p）" class="headerlink" title="（五）登录验证（mysql -u root -p）"></a>（五）登录验证（mysql -u root -p）</h2><p>登录验证，mysql是否安装成功！(要注意上面产生的随机密码，不包括前面符号前面的空格，否则会登陆失败)，如果和下图所示一样，则说明你的mysql已经安装成功！注意，，一定要先开启服务，不然会登陆失败，出现拒绝访问的提示符！！！</p>
+<h2 id="（六）更改密码"><a href="#（六）更改密码" class="headerlink" title="（六）更改密码"></a>（六）更改密码</h2><p>由于初始化产生的随机密码太复杂，，不便于我们登录mysql，因此，我们应当修改一个自己能记住的密码！！</p>
+<p><strong>ALTER USER ‘root’@’localhost’ IDENTIFIED WITH mysql_native_password BY ‘新密码’;</strong> </p>
+<p>修改密码，注意命令尾的；一定要有，这是mysql的语法   而且密码需要用引号括起来</p>
+<h2 id="（七）配置环境变量"><a href="#（七）配置环境变量" class="headerlink" title="（七）配置环境变量"></a>（七）配置环境变量</h2><p>将解压文件夹下的bin路径添加到变量值中，前后以 ; 开头结尾</p>
+<p>比如我自己的就是：D:\software\mysql-8.0.27-winx64\bin;</p>
+<h2 id="（八）其他"><a href="#（八）其他" class="headerlink" title="（八）其他"></a>（八）其他</h2><ol>
+<li><h3 id="停止-MySQL服务"><a href="#停止-MySQL服务" class="headerlink" title="停止 MySQL服务"></a>停止 MySQL服务</h3><p><strong>net stop mysql</strong></p>
+</li>
+<li><h3 id="卸载-MySQL-服务"><a href="#卸载-MySQL-服务" class="headerlink" title="卸载 MySQL 服务"></a>卸载 MySQL 服务</h3><p><strong>sc delete MySQL/mysqld -remove</strong></p>
+</li>
+</ol>
+<h1 id="二、node项目里连接mysql"><a href="#二、node项目里连接mysql" class="headerlink" title="二、node项目里连接mysql"></a>二、node项目里连接mysql</h1><ul>
+<li> 连接数据库</li>
+</ul>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&#123;<br>	<span class="hljs-string">&quot;config_name&quot;</span> : <span class="hljs-string">&quot;develop&quot;</span>,<br>	<span class="hljs-string">&quot;jwt_config&quot;</span> : &#123;<br>		<span class="hljs-string">&quot;secretKey&quot;</span>:<span class="hljs-string">&quot;itcast&quot;</span>,<br>		<span class="hljs-string">&quot;expiresIn&quot;</span>:<span class="hljs-number">86400</span><br>	&#125;,<br>	<span class="hljs-string">&quot;upload_config&quot;</span>:&#123;<br>		<span class="hljs-string">&quot;baseURL&quot;</span>:<span class="hljs-string">&quot;http://127.0.0.1:8888&quot;</span>,<br>		<span class="hljs-string">&quot;upload_ueditor&quot;</span>:<span class="hljs-string">&quot;uploads/ueditor&quot;</span>,<br>		<span class="hljs-string">&quot;simple_upload_redirect&quot;</span>:<span class="hljs-string">&quot;http://127.0.0.1/reload&quot;</span><br>	&#125;,<br>	<span class="hljs-string">&quot;db_config&quot;</span> : &#123;<br>		<span class="hljs-string">&quot;protocol&quot;</span> : <span class="hljs-string">&quot;mysql&quot;</span>,<br>		<span class="hljs-string">&quot;host&quot;</span> : <span class="hljs-string">&quot;127.0.0.1&quot;</span>,<br>		<span class="hljs-string">&quot;database&quot;</span> : <span class="hljs-string">&quot;shop&quot;</span>,  <span class="hljs-comment">// 这里是指数据库名</span><br>		<span class="hljs-string">&quot;user&quot;</span> : <span class="hljs-string">&quot;root&quot;</span>,<br>		<span class="hljs-string">&quot;password&quot;</span> : <span class="hljs-string">&quot;qazplm01&quot;</span>,<br>		<span class="hljs-string">&quot;port&quot;</span> : <span class="hljs-number">3306</span><br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+      </section>
+      <section class="extra">
+        
+          <ul class="copyright">
+  
+    <li><strong>本文作者：</strong>wowangmouren</li>
+    <li><strong>本文链接：</strong><a href="https://wangwewntao.top/2023/11/08/wmr_20/index.html" title="https:&#x2F;&#x2F;wangwewntao.top&#x2F;2023&#x2F;11&#x2F;08&#x2F;wmr_20&#x2F;index.html">https:&#x2F;&#x2F;wangwewntao.top&#x2F;2023&#x2F;11&#x2F;08&#x2F;wmr_20&#x2F;index.html</a></li>
+    <li><strong>版权声明：</strong>本博客所有文章均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" title="BY-NC-SA" target="_blank" rel="noopener">BY-NC-SA</a> 许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+          <section class="donate">
+  <div id="qrcode-donate">
+    <img   class="lazyload" data-original="/images/theme/alipay.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+        
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a></li></ul> 
+
+        
+  <nav class="nav">
+    <a href="/2023/11/08/wmr_21/"><i class="iconfont iconleft"></i>正则表达式</a>
+    <a href="/2023/11/08/wmr_19/">async await promise try...catch<i class="iconfont iconright"></i></a>
+  </nav>
+
+      </section>
+      
+    </section>
+  </div>
+</article></div>
+      <div class="col-xl-3">
+        
+          
+  <aside class="toc-wrap">
+    <h3 class="toc-title">文章目录：</h3>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%AE%89%E8%A3%85mysql"><span class="toc-text">一、安装mysql</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%88%E4%B8%80%EF%BC%89%E4%BB%A5%E7%AE%A1%E7%90%86%E5%91%98%E8%BA%AB%E4%BB%BD%E8%BF%90%E8%A1%8Ccmd"><span class="toc-text">（一）以管理员身份运行cmd</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%88%E4%BA%8C%EF%BC%89%E5%AE%89%E8%A3%85%E6%9C%8D%E5%8A%A1%EF%BC%88mysqld-%E2%80%93install%EF%BC%89"><span class="toc-text">（二）安装服务（mysqld –install）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%88%E4%B8%89%EF%BC%89%E5%88%9D%E5%A7%8B%E5%8C%96%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%88mysqld-%E2%80%93initialize-%E2%80%93console%EF%BC%89"><span class="toc-text">（三）初始化数据库（mysqld –initialize –console）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%88%E5%9B%9B%EF%BC%89%E5%90%AF%E5%8A%A8MySQL%E7%9A%84%E6%9C%8D%E5%8A%A1%EF%BC%88net-start-mysql%EF%BC%89"><span class="toc-text">（四）启动MySQL的服务（net start mysql）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%88%E4%BA%94%EF%BC%89%E7%99%BB%E5%BD%95%E9%AA%8C%E8%AF%81%EF%BC%88mysql-u-root-p%EF%BC%89"><span class="toc-text">（五）登录验证（mysql -u root -p）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%88%E5%85%AD%EF%BC%89%E6%9B%B4%E6%94%B9%E5%AF%86%E7%A0%81"><span class="toc-text">（六）更改密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%88%E4%B8%83%EF%BC%89%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-text">（七）配置环境变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%88%E5%85%AB%EF%BC%89%E5%85%B6%E4%BB%96"><span class="toc-text">（八）其他</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%81%9C%E6%AD%A2-MySQL%E6%9C%8D%E5%8A%A1"><span class="toc-text">停止 MySQL服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%B8%E8%BD%BD-MySQL-%E6%9C%8D%E5%8A%A1"><span class="toc-text">卸载 MySQL 服务</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81node%E9%A1%B9%E7%9B%AE%E9%87%8C%E8%BF%9E%E6%8E%A5mysql"><span class="toc-text">二、node项目里连接mysql</span></a></li></ol>
+  </aside>
+
+        
+      </div>
+    </div>
+  </div>
+</main>
+  
+
+<footer class="footer">
+  <div class="footer-social"><a 
+        href="tencent://message/?Menu=yes&uin=1020524654 "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#12B7F5'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconQQ "></i>
+      </a><a 
+        href="https://github.com/wowangmouren?tab=repositories "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#9f7be1'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  icongithub-fill "></i>
+      </a><a 
+        href="mailto:1020524654@qq.com "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#DA2E76'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconmail "></i>
+      </a></div>
+  
+    <div class="footer-copyright"><p>欢迎进入王文涛的个人博客~  |  <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">主题</a></p></div>
+  
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  
+  
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+  
+</body>
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

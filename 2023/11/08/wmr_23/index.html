@@ -1,0 +1,651 @@
+
+
+<!DOCTYPE html>
+<html lang="en" color-mode=light>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>react知识点的简单总结 - 王文涛的博客</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+  
+  <meta name="description" content="一、基础知识点（一）、路由的基本使用        1...">
+  <meta name="author" content="wowangmouren">
+  <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
+  <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" sizes="180x180">
+  <meta rel="mask-icon" href="/images/icons/stun-logo.svg" color="#333333">
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/favicon-144x144.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+    
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1445822_r673sha78lq.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+    
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css" name="highlight-style" mode="light">
+
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solarized-dark.min.css" name="highlight-style" mode="dark">
+
+      
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      lazyload: {
+        enable: true,
+        only_post: 'false',
+        loading: '[object Object]'
+      },
+      donate: {
+        enable: true,
+        alipay: '/images/theme/alipay.png',
+        wechat: '/images/theme/wechat.png'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: true,
+        always_show: true
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: false
+      },
+      preview: {
+        background: {
+          default: '',
+          api: ''
+        },
+        motto: {
+          default: '王文涛的博客',
+          typing: true,
+          api: '',
+          data_contents: ''
+        },
+      },
+      qrcode: {
+        enable: true,
+        type: 'url',
+        image: 'https://pic.izhaoo.com/weapp-code.jpg',
+      },
+      toc: {
+        enable: true
+      },
+      scrollbar: {
+        type: 'default'
+      },
+      notification: {
+        enable: false,
+        delay: 4500,
+        list: '',
+        page_white_list: '',
+        page_black_list: ''
+      },
+      search: {
+        enable: false,
+        path: ''
+      }
+    }
+  </script>
+
+  
+
+  
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="lock-screen">
+  <div class="loading"></div>
+  
+    
+
+
+  <nav class="navbar">
+    <div class="left">
+      
+        <i class="iconfont iconhome j-navbar-back-home"></i>
+      
+      
+        <i class="iconfont iconqrcode j-navbar-qrcode"></i>
+      
+      
+        <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+      
+      
+    </div>
+    <div class="center">react知识点的简单总结</div>
+    <div class="right">
+      <i class="iconfont iconmenu j-navbar-menu"></i>
+    </div>
+    
+      <div id="qrcode-navbar"></div>
+    
+  </nav>
+
+  
+  
+
+<nav class="menu">
+  <div class="menu-container">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content"><li class="menu-item">
+        <a href="/ " class="underline "> 首页</a>
+      </li><li class="menu-item">
+        <a href="/galleries/ " class="underline "> 相册</a>
+      </li><li class="menu-item">
+        <a href="/archives/ " class="underline "> 归档</a>
+      </li><li class="menu-item">
+        <a href="/tags/ " class="underline "> 标签</a>
+      </li><li class="menu-item">
+        <a href="/categories/ " class="underline "> 分类</a>
+      </li><li class="menu-item">
+        <a href="/about/ " class="underline "> 关于</a>
+      </li></ul>
+    
+      <div class="menu-copyright"><p>欢迎进入王文涛的个人博客~  |  <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">主题</a></p></div>
+    
+  </div>
+</nav>
+  <main id="main">
+  <div class="article-wrap">
+    <div class="row container">
+      <div class="col-xl-3"></div>
+      <div class="col-xl-6"><article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img   class="lazyload" data-original="/images/theme/cover/react.webp" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">react知识点的简单总结</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>November 08, 2023</span>
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>13845</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        <h1 id="一、基础知识点"><a href="#一、基础知识点" class="headerlink" title="一、基础知识点"></a>一、基础知识点</h1><h2 id="（一）、路由的基本使用"><a href="#（一）、路由的基本使用" class="headerlink" title="（一）、路由的基本使用"></a>（一）、路由的基本使用</h2><pre><code>        1.明确好界面中的导航区、展示区
+        2.导航区的a标签改为Link标签
+                    &lt;Link to=&quot;/xxxxx&quot;&gt;Demo&lt;/Link&gt;
+        3.展示区写Route标签进行路径的匹配
+                    &lt;Route path=&#39;/xxxx&#39; component=&#123;Demo&#125;/&gt;
+        4.&lt;App&gt;的最外侧包裹了一个&lt;BrowserRouter&gt;或&lt;HashRouter&gt;
+</code></pre>
+<h2 id="（二）、路由组件与一般组件"><a href="#（二）、路由组件与一般组件" class="headerlink" title="（二）、路由组件与一般组件"></a>（二）、路由组件与一般组件</h2><pre><code>        1.写法不同：
+                    一般组件：&lt;Demo/&gt;
+                    路由组件：&lt;Route path=&quot;/demo&quot; component=&#123;Demo&#125;/&gt;
+        2.存放位置不同：
+                    一般组件：components
+                    路由组件：pages
+        3.接收到的props不同：
+                    一般组件：写组件标签时传递了什么，就能收到什么
+                    路由组件：接收到三个固定的属性
+                                        history:
+                                                    go: ƒ go(n)
+                                                    goBack: ƒ goBack()
+                                                    goForward: ƒ goForward()
+                                                    push: ƒ push(path, state)
+                                                    replace: ƒ replace(path, state)
+                                        location:
+                                                    pathname: &quot;/about&quot;
+                                                    search: &quot;&quot;
+                                                    state: undefined
+                                        match:
+                                                    params: &#123;&#125;
+                                                    path: &quot;/about&quot;
+                                                    url: &quot;/about&quot;
+</code></pre>
+<h2 id="（三）、NavLink与封装NavLink"><a href="#（三）、NavLink与封装NavLink" class="headerlink" title="（三）、NavLink与封装NavLink"></a>（三）、NavLink与封装NavLink</h2><pre><code>            1.NavLink可以实现路由链接的高亮，通过activeClassName指定样式名
+</code></pre>
+<h2 id="（四）、Switch的使用"><a href="#（四）、Switch的使用" class="headerlink" title="（四）、Switch的使用"></a>（四）、Switch的使用</h2><pre><code>            1.通常情况下，path和component是一一对应的关系。
+            2.Switch可以提高路由匹配效率(单一匹配)。
+</code></pre>
+<h2 id="（五）、解决多级路径刷新页面样式丢失的问题"><a href="#（五）、解决多级路径刷新页面样式丢失的问题" class="headerlink" title="（五）、解决多级路径刷新页面样式丢失的问题"></a>（五）、解决多级路径刷新页面样式丢失的问题</h2><pre><code>            1.public/index.html 中 引入样式时不写 ./ 写 / （常用）
+            2.public/index.html 中 引入样式时不写 ./ 写 %PUBLIC_URL% （常用）
+            3.使用HashRouter
+</code></pre>
+<h2 id="（六）、路由的严格匹配与模糊匹配"><a href="#（六）、路由的严格匹配与模糊匹配" class="headerlink" title="（六）、路由的严格匹配与模糊匹配"></a>（六）、路由的严格匹配与模糊匹配</h2><pre><code>            1.默认使用的是模糊匹配（简单记：【输入的路径】必须包含要【匹配的路径】，且顺序要一致）
+            2.开启严格匹配：&lt;Route exact=&#123;true&#125; path=&quot;/about&quot; component=&#123;About&#125;/&gt;
+            3.严格匹配不要随便开启，需要再开，有些时候开启会导致无法继续匹配二级路由
+</code></pre>
+<h2 id="（七）、Redirect的使用"><a href="#（七）、Redirect的使用" class="headerlink" title="（七）、Redirect的使用"></a>（七）、Redirect的使用</h2><pre><code>            1.一般写在所有路由注册的最下方，当所有路由都无法匹配时，跳转到Redirect指定的路由
+            2.具体编码：
+                    &lt;Switch&gt;
+                        &lt;Route path=&quot;/about&quot; component=&#123;About&#125;/&gt;
+                        &lt;Route path=&quot;/home&quot; component=&#123;Home&#125;/&gt;
+                        &lt;Redirect to=&quot;/about&quot;/&gt;
+                    &lt;/Switch&gt;
+</code></pre>
+<h2 id="（八）、嵌套路由"><a href="#（八）、嵌套路由" class="headerlink" title="（八）、嵌套路由"></a>（八）、嵌套路由</h2><pre><code>            1.注册子路由时要写上父路由的path值
+            2.路由的匹配是按照注册路由的顺序进行的
+</code></pre>
+<h2 id="（九）、向路由组件传递参数"><a href="#（九）、向路由组件传递参数" class="headerlink" title="（九）、向路由组件传递参数"></a>（九）、向路由组件传递参数</h2><pre><code>            1.params参数
+                        路由链接(携带参数)：&lt;Link to=&#39;/demo/test/tom/18&#39;&#125;&gt;详情&lt;/Link&gt;
+                        注册路由(声明接收)：&lt;Route path=&quot;/demo/test/:name/:age&quot; component=&#123;Test&#125;/&gt;
+                        接收参数：this.props.match.params
+            2.search参数
+                        路由链接(携带参数)：&lt;Link to=&#39;/demo/test?name=tom&amp;age=18&#39;&#125;&gt;详情&lt;/Link&gt;
+                        注册路由(无需声明，正常注册即可)：&lt;Route path=&quot;/demo/test&quot; component=&#123;Test&#125;/&gt;
+                        接收参数：this.props.location.search
+                        备注：获取到的search是urlencoded编码字符串，需要借助querystring解析
+            3.state参数
+                        路由链接(携带参数)：&lt;Link to=&#123;&#123;pathname:'/demo/test',state:&#123;name:'tom',age:18&#125;&#125;&#125;&gt;详情&lt;/Link&gt;
+                        注册路由(无需声明，正常注册即可)：&lt;Route path=&quot;/demo/test&quot; component=&#123;Test&#125;/&gt;
+                        接收参数：this.props.location.state
+                        备注：刷新也可以保留住参数
+</code></pre>
+<h2 id="（十）、编程式路由导航"><a href="#（十）、编程式路由导航" class="headerlink" title="（十）、编程式路由导航"></a>（十）、编程式路由导航</h2><pre><code>                借助this.prosp.history对象上的API对操作路由跳转、前进、后退
+                        -this.prosp.history.push()
+                        -this.prosp.history.replace()
+                        -this.prosp.history.goBack()
+                        -this.prosp.history.goForward()
+                        -this.prosp.history.go()
+</code></pre>
+<h2 id="（十一）、BrowserRouter与HashRouter的区别"><a href="#（十一）、BrowserRouter与HashRouter的区别" class="headerlink" title="（十一）、BrowserRouter与HashRouter的区别"></a>（十一）、BrowserRouter与HashRouter的区别</h2><pre><code>        1.底层原理不一样：
+                    BrowserRouter使用的是H5的history API，不兼容IE9及以下版本。
+                    HashRouter使用的是URL的哈希值。
+        2.path表现形式不一样
+                    BrowserRouter的路径中没有#,例如：localhost:3000/demo/test
+                    HashRouter的路径包含#,例如：localhost:3000/#/demo/test
+        3.刷新后对路由state参数的影响
+                    (1).BrowserRouter没有任何影响，因为state保存在history对象中。
+                    (2).HashRouter刷新后会导致路由state参数的丢失！！！
+        4.备注：HashRouter可以用于解决一些路径错误相关的问题。
+</code></pre>
+<h2 id="（十二）、antd的按需引入-自定主题"><a href="#（十二）、antd的按需引入-自定主题" class="headerlink" title="（十二）、antd的按需引入+自定主题"></a>（十二）、antd的按需引入+自定主题</h2><pre><code>        1.安装依赖：yarn add react-app-rewired customize-cra babel-plugin-import less less-loader
+        2.修改package.json
+                ....
+                    &quot;scripts&quot;: &#123;
+                        &quot;start&quot;: &quot;react-app-rewired start&quot;,
+                        &quot;build&quot;: &quot;react-app-rewired build&quot;,
+                        &quot;test&quot;: &quot;react-app-rewired test&quot;,
+                        &quot;eject&quot;: &quot;react-scripts eject&quot;
+                    &#125;,
+                ....
+        3.根目录下创建config-overrides.js
+                //配置具体的修改规则
+                const &#123; override, fixBabelImports,addLessLoader&#125; = require(&#39;customize-cra&#39;);
+                module.exports = override(
+                    fixBabelImports(&#39;import&#39;, &#123;
+                        libraryName: &#39;antd&#39;,
+                        libraryDirectory: &#39;es&#39;,
+                        style: true,
+                    &#125;),
+                    addLessLoader(&#123;
+                        lessOptions:&#123;
+                            javascriptEnabled: true,
+                            modifyVars: &#123; &#39;@primary-color&#39;: &#39;green&#39; &#125;,
+                        &#125;
+                    &#125;),
+                );
+            4.备注：不用在组件里亲自引入样式了，即：import &#39;antd/dist/antd.css&#39;应该删掉
+</code></pre>
+<h2 id="（十三）、-setState"><a href="#（十三）、-setState" class="headerlink" title="（十三）、 setState"></a>（十三）、 setState</h2><h3 id="setState更新状态的2种写法"><a href="#setState更新状态的2种写法" class="headerlink" title="setState更新状态的2种写法"></a>setState更新状态的2种写法</h3><figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs pf">	(<span class="hljs-number">1</span>). <span class="hljs-built_in">set</span>State(<span class="hljs-keyword">state</span>Change, [callback])------对象式的<span class="hljs-built_in">set</span>State<br>            <span class="hljs-number">1</span>.<span class="hljs-keyword">state</span>Change为状态改变对象(该对象可以体现出状态的更改)<br>            <span class="hljs-number">2</span>.callback是可选的回调函数, 它在状态更新完毕、界面也更新后(render调用后)才被调用<br>					<br>	(<span class="hljs-number">2</span>). <span class="hljs-built_in">set</span>State(updater, [callback])------函数式的<span class="hljs-built_in">set</span>State<br>            <span class="hljs-number">1</span>.updater为返回<span class="hljs-keyword">state</span>Change对象的函数。<br>            <span class="hljs-number">2</span>.updater可以接收到<span class="hljs-keyword">state</span>和props。<br>            <span class="hljs-number">4</span>.callback是可选的回调函数, 它在状态更新、界面也更新后(render调用后)才被调用。<br>总结:<br>		<span class="hljs-number">1</span>.对象式的<span class="hljs-built_in">set</span>State是函数式的<span class="hljs-built_in">set</span>State的简写方式(语法糖)<br>		<span class="hljs-number">2</span>.使用原则：<br>				(<span class="hljs-number">1</span>).如果新状态不依赖于原状态 ===&gt; 使用对象方式<br>				(<span class="hljs-number">2</span>).如果新状态依赖于原状态 ===&gt; 使用函数方式<br>				(<span class="hljs-number">3</span>).如果需要在<span class="hljs-built_in">set</span>State()执行后获取最新的状态数据, <br>					要在第二个callback函数中读取<br></code></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h2 id="（十三）、-lazyLoad"><a href="#（十三）、-lazyLoad" class="headerlink" title="（十三）、 lazyLoad"></a>（十三）、 lazyLoad</h2><h3 id="路由组件的lazyLoad"><a href="#路由组件的lazyLoad" class="headerlink" title="路由组件的lazyLoad"></a>路由组件的lazyLoad</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//1.通过React的lazy函数配合import()函数动态加载路由组件 ===&gt; 路由组件代码会被分开打包</span><br><span class="hljs-keyword">const</span> Login = lazy(<span class="hljs-function">()=&gt;</span><span class="hljs-keyword">import</span>(<span class="hljs-string">&#x27;@/pages/Login&#x27;</span>))<br><br><span class="hljs-comment">//2.通过&lt;Suspense&gt;指定在加载得到路由打包文件前显示一个自定义loading界面</span><br>&lt;Suspense fallback=&#123;<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>loading.....<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span>&#125;&gt;<br>       <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Switch</span>&gt;</span></span><br><span class="xml">           <span class="hljs-tag">&lt;<span class="hljs-name">Route</span> <span class="hljs-attr">path</span>=<span class="hljs-string">&quot;/xxx&quot;</span> <span class="hljs-attr">component</span>=<span class="hljs-string">&#123;Xxxx&#125;/</span>&gt;</span></span><br><span class="xml">           <span class="hljs-tag">&lt;<span class="hljs-name">Redirect</span> <span class="hljs-attr">to</span>=<span class="hljs-string">&quot;/login&quot;</span>/&gt;</span></span><br><span class="xml">       <span class="hljs-tag">&lt;/<span class="hljs-name">Switch</span>&gt;</span></span><br>   &lt;/Suspense&gt;<br></code></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h1 id="二、redux"><a href="#二、redux" class="headerlink" title="二、redux"></a>二、redux</h1><h2 id="一-、-redux精简版"><a href="#一-、-redux精简版" class="headerlink" title="(一)、_redux精简版"></a>(一)、_redux精简版</h2><pre><code>    (1).去除Count组件自身的状态
+    (2).src下建立:
+                    -redux
+                        -store.js
+                        -count_reducer.js
+
+    (3).store.js：
+                1).引入redux中的createStore函数，创建一个store
+                2).createStore调用时要传入一个为其服务的reducer
+                3).记得暴露store对象
+
+    (4).count_reducer.js：
+                1).reducer的本质是一个函数，接收：preState,action，返回加工后的状态
+                2).reducer有两个作用：初始化状态，加工状态
+                3).reducer被第一次调用时，是store自动触发的，
+                                传递的preState是undefined,
+                                传递的action是:&#123;type:&#39;@@REDUX/INIT_a.2.b.4&#125;
+
+    (5).在index.js中监测store中状态的改变，一旦发生改变重新渲染&lt;App/&gt;
+            备注：redux只负责管理状态，至于状态的改变驱动着页面的展示，要靠我们自己写。
+</code></pre>
+<h2 id="（二）、-redux完整版"><a href="#（二）、-redux完整版" class="headerlink" title="（二）、_redux完整版"></a>（二）、_redux完整版</h2><pre><code>    新增文件：
+        1.count_action.js 专门用于创建action对象
+        2.constant.js 放置容易写错的type值
+</code></pre>
+<h2 id="（三）、-redux异步action版"><a href="#（三）、-redux异步action版" class="headerlink" title="（三）、_redux异步action版"></a>（三）、_redux异步action版</h2><pre><code>     (1).明确：延迟的动作不想交给组件自身，想交给action
+     (2).何时需要异步action：想要对状态进行操作，但是具体的数据靠异步任务返回。
+     (3).具体编码：
+                 1).yarn add redux-thunk，并配置在store中
+                 2).创建action的函数不再返回一般对象，而是一个函数，该函数中写异步任务。
+                 3).异步任务有结果后，分发一个同步的action去真正操作数据。
+     (4).备注：异步action不是必须要写的，完全可以自己等待异步任务的结果了再去分发同步action。
+</code></pre>
+<h2 id="（四）、-react-redux基本使用"><a href="#（四）、-react-redux基本使用" class="headerlink" title="（四）、_react-redux基本使用"></a>（四）、_react-redux基本使用</h2><pre><code>        (1).明确两个概念：
+                    1).UI组件:不能使用任何redux的api，只负责页面的呈现、交互等。
+                    2).容器组件：负责和redux通信，将结果交给UI组件。
+        (2).如何创建一个容器组件————靠react-redux 的 connect函数
+                        connect(mapStateToProps,mapDispatchToProps)(UI组件)
+                            -mapStateToProps:映射状态，返回值是一个对象
+                            -mapDispatchToProps:映射操作状态的方法，返回值是一个对象
+        (3).备注1：容器组件中的store是靠props传进去的，而不是在容器组件中直接引入
+        (4).备注2：mapDispatchToProps，也可以是一个对象
+</code></pre>
+<h2 id="（五）、-react-redux优化"><a href="#（五）、-react-redux优化" class="headerlink" title="（五）、_react-redux优化"></a>（五）、_react-redux优化</h2><pre><code>        (1).容器组件和UI组件整合一个文件
+        (2).无需自己给容器组件传递store，给&lt;App/&gt;包裹一个&lt;Provider store=&#123;store&#125;&gt;即可。
+        (3).使用了react-redux后也不用再自己检测redux中状态的改变了，容器组件可以自动完成这个工作。
+        (4).mapDispatchToProps也可以简单的写成一个对象
+        (5).一个组件要和redux“打交道”要经过哪几步？
+                        (1).定义好UI组件---不暴露
+                        (2).引入connect生成一个容器组件，并暴露，写法如下：
+                                connect(
+                                    state =&gt; (&#123;key:value&#125;), //映射状态
+                                    &#123;key:xxxxxAction&#125; //映射操作状态的方法
+                                )(UI组件)
+                        (4).在UI组件中通过this.props.xxxxxxx读取和操作状态
+</code></pre>
+<h2 id="（六）、-react-redux数据共享版"><a href="#（六）、-react-redux数据共享版" class="headerlink" title="（六）、_react-redux数据共享版"></a>（六）、_react-redux数据共享版</h2><pre><code>        (1).定义一个Pserson组件，和Count组件通过redux共享数据。
+        (2).为Person组件编写：reducer、action，配置constant常量。
+        (3).重点：Person的reducer和Count的Reducer要使用combineReducers进行合并，
+                合并后的总状态是一个对象！！！
+        (4).交给store的是总reducer，最后注意在组件中取出状态的时候，记得“取到位”。
+</code></pre>
+<h2 id="（七）、-react-redux开发者工具的使用"><a href="#（七）、-react-redux开发者工具的使用" class="headerlink" title="（七）、_react-redux开发者工具的使用"></a>（七）、_react-redux开发者工具的使用</h2><pre><code>        (1).yarn add redux-devtools-extension
+        (2).store中进行配置
+                import &#123;composeWithDevTools&#125; from &#39;redux-devtools-extension&#39;
+                const store = createStore(allReducer,composeWithDevTools(applyMiddleware(thunk)))
+</code></pre>
+<h2 id="（八）-react-redux最终版"><a href="#（八）-react-redux最终版" class="headerlink" title="（八）_react-redux最终版"></a>（八）_react-redux最终版</h2><pre><code>        (1).所有变量名字要规范，尽量触发对象的简写形式。
+        (2).reducers文件夹中，编写index.js专门用于汇总并暴露所有的reducer
+</code></pre>
+<h1 id="三、Hooks"><a href="#三、Hooks" class="headerlink" title="三、Hooks"></a>三、Hooks</h1><h2 id="（一）、-React-Hook-Hooks是什么"><a href="#（一）、-React-Hook-Hooks是什么" class="headerlink" title="（一）、 React Hook/Hooks是什么?"></a>（一）、 React Hook/Hooks是什么?</h2><figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs pf">(<span class="hljs-number">1</span>). Hook是React <span class="hljs-number">16.8</span>.<span class="hljs-number">0</span>版本增加的新特性/新语法<br>(<span class="hljs-number">2</span>). 可以让你在函数组件中使用 <span class="hljs-keyword">state</span> 以及其他的 React 特性<br></code></pre></td></tr></table></figure>
+
+<h2 id="（二）、-三个常用的Hook"><a href="#（二）、-三个常用的Hook" class="headerlink" title="（二）、 三个常用的Hook"></a>（二）、 三个常用的Hook</h2><figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs reasonml">(<span class="hljs-number">1</span>). State Hook: <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">React</span>.</span></span>use<span class="hljs-constructor">State()</span><br>(<span class="hljs-number">2</span>). Effect Hook: <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">React</span>.</span></span>use<span class="hljs-constructor">Effect()</span><br>(<span class="hljs-number">3</span>). Ref Hook: <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">React</span>.</span></span>use<span class="hljs-constructor">Ref()</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="（三）、-State-Hook"><a href="#（三）、-State-Hook" class="headerlink" title="（三）、 State Hook"></a>（三）、 State Hook</h2><figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs reasonml">(<span class="hljs-number">1</span>). State Hook让函数组件也可以有state状态, 并进行状态数据的读写操作<br>(<span class="hljs-number">2</span>). 语法: const <span class="hljs-literal">[<span class="hljs-identifier">xxx</span>, <span class="hljs-identifier">setXxx</span>]</span> = <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">React</span>.</span></span>use<span class="hljs-constructor">State(<span class="hljs-params">initValue</span>)</span>  <br>(<span class="hljs-number">3</span>). use<span class="hljs-constructor">State()</span>说明:<br>        参数: 第一次初始化指定的值在内部作缓存<br>        返回值: 包含<span class="hljs-number">2</span>个元素的数组, 第<span class="hljs-number">1</span>个为内部当前状态值, 第<span class="hljs-number">2</span>个为更新状态值的函数<br>(<span class="hljs-number">4</span>). set<span class="hljs-constructor">Xxx()</span><span class="hljs-number">2</span>种写法:<br>        set<span class="hljs-constructor">Xxx(<span class="hljs-params">newValue</span>)</span>: 参数为非函数值, 直接指定新的状态值, 内部用其覆盖原来的状态值<br>        set<span class="hljs-constructor">Xxx(<span class="hljs-params">value</span> =&gt; <span class="hljs-params">newValue</span>)</span>: 参数为函数, 接收原本的状态值, 返回新的状态值, 内部用其覆盖原来的状态值<br></code></pre></td></tr></table></figure>
+
+<h2 id="（四）、Effect-Hook"><a href="#（四）、Effect-Hook" class="headerlink" title="（四）、Effect Hook"></a>（四）、Effect Hook</h2><figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs arcade">(<span class="hljs-number">1</span>). Effect Hook 可以让你在函数组件中执行副作用操作(用于模拟类组件中的生命周期钩子)<br>(<span class="hljs-number">2</span>). React中的副作用操作:<br>        发ajax请求数据获取<br>        设置订阅 / 启动定时器<br>        手动更改真实DOM<br>(<span class="hljs-number">3</span>). 语法和说明: <br>        useEffect(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123; <br>          <span class="hljs-comment">// 在此可以执行任何带副作用操作</span><br>          <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123; <span class="hljs-comment">// 在组件卸载前执行</span><br>            <span class="hljs-comment">// 在此做一些收尾工作, 比如清除定时器/取消订阅等</span><br>          &#125;<br>        &#125;, [stateValue]) <span class="hljs-comment">// 如果指定的是[], 回调函数只会在第一次render()后执行</span><br>    <br>(<span class="hljs-number">4</span>). 可以把 useEffect Hook 看做如下三个函数的组合<br>        componentDidMount()<br>        componentDidUpdate()<br>    	componentWillUnmount() <br></code></pre></td></tr></table></figure>
+
+<h2 id="（五）、Ref-Hook"><a href="#（五）、Ref-Hook" class="headerlink" title="（五）、Ref Hook"></a>（五）、Ref Hook</h2><figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs reasonml">(<span class="hljs-number">1</span>). Ref Hook可以在函数组件中存储/查找组件内的标签或任意其它数据<br>(<span class="hljs-number">2</span>). 语法: const refContainer = use<span class="hljs-constructor">Ref()</span><br>(<span class="hljs-number">3</span>). 作用:保存标签对象,功能与<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">React</span>.</span></span>create<span class="hljs-constructor">Ref()</span>一样<br></code></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h2 id="（六）、Fragment"><a href="#（六）、Fragment" class="headerlink" title="（六）、Fragment"></a>（六）、Fragment</h2><h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><pre><code>&lt;Fragment&gt;&lt;Fragment&gt;
+&lt;&gt;&lt;/&gt;
+</code></pre>
+<h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><blockquote>
+<p>可以不用必须有一个真实的DOM根标签了</p>
+</blockquote>
+<hr/>
+
+<h2 id="（七）、Context"><a href="#（七）、Context" class="headerlink" title="（七）、Context"></a>（七）、Context</h2><h3 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h3><blockquote>
+<p>一种组件间通信方式, 常用于【祖组件】与【后代组件】间通信</p>
+</blockquote>
+<h3 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a>使用</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-number">1</span>) 创建Context容器对象：<br>	<span class="hljs-keyword">const</span> XxxContext = React.createContext()  <br>	<br><span class="hljs-number">2</span>) 渲染子组时，外面包裹xxxContext.Provider, 通过value属性给后代组件传递数据：<br>	&lt;xxxContext.Provider value=&#123;数据&#125;&gt;<br>		子组件<br>    &lt;/xxxContext.Provider&gt;<br>    <br><span class="hljs-number">3</span>) 后代组件读取数据：<br><br>	<span class="hljs-comment">//第一种方式:仅适用于类组件 </span><br>	  <span class="hljs-keyword">static</span> contextType = xxxContext  <span class="hljs-comment">// 声明接收context</span><br>	  <span class="hljs-built_in">this</span>.context <span class="hljs-comment">// 读取context中的value数据</span><br>	  <br>	<span class="hljs-comment">//第二种方式: 函数组件与类组件都可以</span><br>	  &lt;xxxContext.Consumer&gt;<br>	    &#123;<br>	      <span class="hljs-function"><span class="hljs-params">value</span> =&gt;</span> ( <span class="hljs-comment">// value就是context中的value数据</span><br>	        要显示的内容<br>	      )<br>	    &#125;<br>	  &lt;/xxxContext.Consumer&gt;<br></code></pre></td></tr></table></figure>
+
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><pre><code>在应用开发中一般不用context, 一般都它的封装react插件
+</code></pre>
+<hr/>
+
+
+<h2 id="（八）、-组件优化"><a href="#（八）、-组件优化" class="headerlink" title="（八）、 组件优化"></a>（八）、 组件优化</h2><h3 id="Component的2个问题"><a href="#Component的2个问题" class="headerlink" title="Component的2个问题"></a>Component的2个问题</h3><blockquote>
+<ol>
+<li><p>只要执行setState(),即使不改变状态数据, 组件也会重新render()</p>
+</li>
+<li><p>只当前组件重新render(), 就会自动重新render子组件 ==&gt; 效率低</p>
+</li>
+</ol>
+</blockquote>
+<h3 id="效率高的做法"><a href="#效率高的做法" class="headerlink" title="效率高的做法"></a>效率高的做法</h3><blockquote>
+<p> 只有当组件的state或props数据发生改变时才重新render()</p>
+</blockquote>
+<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><blockquote>
+<p> Component中的shouldComponentUpdate()总是返回true</p>
+</blockquote>
+<h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><pre><code>办法1: 
+    重写shouldComponentUpdate()方法
+    比较新旧state或props数据, 如果有变化才返回true, 如果没有返回false
+办法2:  
+    使用PureComponent
+    PureComponent重写了shouldComponentUpdate(), 只有state或props数据有变化才返回true
+    注意: 
+        只是进行state和props数据的浅比较, 如果只是数据对象内部数据变了, 返回false  
+        不要直接修改state数据, 而是要产生新数据
+项目中一般使用PureComponent来优化
+</code></pre>
+<hr/>
+
+
+<h2 id="（九）、-render-props"><a href="#（九）、-render-props" class="headerlink" title="（九）、 render props"></a>（九）、 render props</h2><h3 id="如何向组件内部动态传入带内容的结构-标签"><a href="#如何向组件内部动态传入带内容的结构-标签" class="headerlink" title="如何向组件内部动态传入带内容的结构(标签)?"></a>如何向组件内部动态传入带内容的结构(标签)?</h3><pre><code>Vue中: 
+    使用slot技术, 也就是通过组件标签体传入结构  &lt;AA&gt;&lt;BB/&gt;&lt;/AA&gt;
+React中:
+    使用children props: 通过组件标签体传入结构
+    使用render props: 通过组件标签属性传入结构, 一般用render函数属性
+</code></pre>
+<h3 id="children-props"><a href="#children-props" class="headerlink" title="children props"></a>children props</h3><pre><code>&lt;A&gt;
+  &lt;B&gt;xxxx&lt;/B&gt;
+&lt;/A&gt;
+&#123;this.props.children&#125;
+问题: 如果B组件需要A组件内的数据, ==&gt; 做不到 
+</code></pre>
+<h3 id="render-props"><a href="#render-props" class="headerlink" title="render props"></a>render props</h3><pre><code>&lt;A render=&#123;(data) =&gt; &lt;C data=&#123;data&#125;&gt;&lt;/C&gt;&#125;&gt;&lt;/A&gt;
+A组件: &#123;this.props.render(内部state数据)&#125;
+C组件: 读取A组件传入的数据显示 &#123;this.props.data&#125; 
+</code></pre>
+<hr/>
+
+<h2 id="（十）、-错误边界"><a href="#（十）、-错误边界" class="headerlink" title="（十）、 错误边界"></a>（十）、 错误边界</h2><h4 id="理解："><a href="#理解：" class="headerlink" title="理解："></a>理解：</h4><p>错误边界：用来捕获后代组件错误，渲染出备用页面</p>
+<h4 id="特点："><a href="#特点：" class="headerlink" title="特点："></a>特点：</h4><p>只能捕获后代组件生命周期产生的错误，不能捕获自己组件产生的错误和其他组件在合成事件、定时器中产生的错误</p>
+<h5 id="使用方式："><a href="#使用方式：" class="headerlink" title="使用方式："></a>使用方式：</h5><p>getDerivedStateFromError配合componentDidCatch</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 生命周期函数，一旦后台组件报错，就会触发</span><br><span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-title">getDerivedStateFromError</span>(<span class="hljs-params">error</span>)</span> &#123;<br>    <span class="hljs-built_in">console</span>.log(error);<br>    <span class="hljs-comment">// 在render之前触发</span><br>    <span class="hljs-comment">// 返回新的state</span><br>    <span class="hljs-keyword">return</span> &#123;<br>        <span class="hljs-attr">hasError</span>: <span class="hljs-literal">true</span>,<br>    &#125;;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-title">componentDidCatch</span>(<span class="hljs-params">error, info</span>)</span> &#123;<br>    <span class="hljs-comment">// 统计页面的错误。发送请求发送到后台去</span><br>    <span class="hljs-built_in">console</span>.log(error, info);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="（十一）、组件通信方式总结"><a href="#（十一）、组件通信方式总结" class="headerlink" title="（十一）、组件通信方式总结"></a>（十一）、组件通信方式总结</h2><h4 id="方式："><a href="#方式：" class="headerlink" title="方式："></a>方式：</h4><pre><code>    props：
+        (1).children props
+        (2).render props
+    消息订阅-发布：
+        pubs-sub、event等等
+    集中式管理：
+        redux、dva等等
+    conText:
+        生产者-消费者模式
+</code></pre>
+<h4 id="组件间的关系"><a href="#组件间的关系" class="headerlink" title="组件间的关系"></a>组件间的关系</h4><pre><code>    父子组件：props
+    兄弟组件(非嵌套组件)：消息订阅-发布、集中式管理
+    祖孙组件(跨级组件)：消息订阅-发布、集中式管理、conText(用的少)
+</code></pre>
+
+      </section>
+      <section class="extra">
+        
+          <ul class="copyright">
+  
+    <li><strong>本文作者：</strong>wowangmouren</li>
+    <li><strong>本文链接：</strong><a href="https://wangwewntao.top/2023/11/08/wmr_23/index.html" title="https:&#x2F;&#x2F;wangwewntao.top&#x2F;2023&#x2F;11&#x2F;08&#x2F;wmr_23&#x2F;index.html">https:&#x2F;&#x2F;wangwewntao.top&#x2F;2023&#x2F;11&#x2F;08&#x2F;wmr_23&#x2F;index.html</a></li>
+    <li><strong>版权声明：</strong>本博客所有文章均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" title="BY-NC-SA" target="_blank" rel="noopener">BY-NC-SA</a> 许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+          <section class="donate">
+  <div id="qrcode-donate">
+    <img   class="lazyload" data-original="/images/theme/alipay.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+        
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/React%E5%85%A5%E9%97%A8/" rel="tag">React入门</a></li></ul> 
+
+        
+  <nav class="nav">
+    <a href="/2023/11/08/wmr_24/"><i class="iconfont iconleft"></i>DOM、document、BOM、window区别</a>
+    <a href="/2023/11/08/wmr_22/">快速搞懂JavaScript的原型对象与原型链<i class="iconfont iconright"></i></a>
+  </nav>
+
+      </section>
+      
+    </section>
+  </div>
+</article></div>
+      <div class="col-xl-3">
+        
+          
+  <aside class="toc-wrap">
+    <h3 class="toc-title">文章目录：</h3>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">一、基础知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%88%E4%B8%80%EF%BC%89%E3%80%81%E8%B7%AF%E7%94%B1%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="toc-text">（一）、路由的基本使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%88%E4%BA%8C%EF%BC%89%E3%80%81%E8%B7%AF%E7%94%B1%E7%BB%84%E4%BB%B6%E4%B8%8E%E4%B8%80%E8%88%AC%E7%BB%84%E4%BB%B6"><span class="toc-text">（二）、路由组件与一般组件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%88%E4%B8%89%EF%BC%89%E3%80%81NavLink%E4%B8%8E%E5%B0%81%E8%A3%85NavLink"><span class="toc-text">（三）、NavLink与封装NavLink</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%88%E5%9B%9B%EF%BC%89%E3%80%81Switch%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text">（四）、Switch的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%88%E4%BA%94%EF%BC%89%E3%80%81%E8%A7%A3%E5%86%B3%E5%A4%9A%E7%BA%A7%E8%B7%AF%E5%BE%84%E5%88%B7%E6%96%B0%E9%A1%B5%E9%9D%A2%E6%A0%B7%E5%BC%8F%E4%B8%A2%E5%A4%B1%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-text">（五）、解决多级路径刷新页面样式丢失的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%88%E5%85%AD%EF%BC%89%E3%80%81%E8%B7%AF%E7%94%B1%E7%9A%84%E4%B8%A5%E6%A0%BC%E5%8C%B9%E9%85%8D%E4%B8%8E%E6%A8%A1%E7%B3%8A%E5%8C%B9%E9%85%8D"><span class="toc-text">（六）、路由的严格匹配与模糊匹配</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%88%E4%B8%83%EF%BC%89%E3%80%81Redirect%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text">（七）、Redirect的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%88%E5%85%AB%EF%BC%89%E3%80%81%E5%B5%8C%E5%A5%97%E8%B7%AF%E7%94%B1"><span class="toc-text">（八）、嵌套路由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%88%E4%B9%9D%EF%BC%89%E3%80%81%E5%90%91%E8%B7%AF%E7%94%B1%E7%BB%84%E4%BB%B6%E4%BC%A0%E9%80%92%E5%8F%82%E6%95%B0"><span class="toc-text">（九）、向路由组件传递参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%88%E5%8D%81%EF%BC%89%E3%80%81%E7%BC%96%E7%A8%8B%E5%BC%8F%E8%B7%AF%E7%94%B1%E5%AF%BC%E8%88%AA"><span class="toc-text">（十）、编程式路由导航</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%88%E5%8D%81%E4%B8%80%EF%BC%89%E3%80%81BrowserRouter%E4%B8%8EHashRouter%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">（十一）、BrowserRouter与HashRouter的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%88%E5%8D%81%E4%BA%8C%EF%BC%89%E3%80%81antd%E7%9A%84%E6%8C%89%E9%9C%80%E5%BC%95%E5%85%A5-%E8%87%AA%E5%AE%9A%E4%B8%BB%E9%A2%98"><span class="toc-text">（十二）、antd的按需引入+自定主题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%88%E5%8D%81%E4%B8%89%EF%BC%89%E3%80%81-setState"><span class="toc-text">（十三）、 setState</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#setState%E6%9B%B4%E6%96%B0%E7%8A%B6%E6%80%81%E7%9A%842%E7%A7%8D%E5%86%99%E6%B3%95"><span class="toc-text">setState更新状态的2种写法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%88%E5%8D%81%E4%B8%89%EF%BC%89%E3%80%81-lazyLoad"><span class="toc-text">（十三）、 lazyLoad</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E7%BB%84%E4%BB%B6%E7%9A%84lazyLoad"><span class="toc-text">路由组件的lazyLoad</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81redux"><span class="toc-text">二、redux</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E3%80%81-redux%E7%B2%BE%E7%AE%80%E7%89%88"><span class="toc-text">(一)、_redux精简版</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%88%E4%BA%8C%EF%BC%89%E3%80%81-redux%E5%AE%8C%E6%95%B4%E7%89%88"><span class="toc-text">（二）、_redux完整版</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%88%E4%B8%89%EF%BC%89%E3%80%81-redux%E5%BC%82%E6%AD%A5action%E7%89%88"><span class="toc-text">（三）、_redux异步action版</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%88%E5%9B%9B%EF%BC%89%E3%80%81-react-redux%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="toc-text">（四）、_react-redux基本使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%88%E4%BA%94%EF%BC%89%E3%80%81-react-redux%E4%BC%98%E5%8C%96"><span class="toc-text">（五）、_react-redux优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%88%E5%85%AD%EF%BC%89%E3%80%81-react-redux%E6%95%B0%E6%8D%AE%E5%85%B1%E4%BA%AB%E7%89%88"><span class="toc-text">（六）、_react-redux数据共享版</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%88%E4%B8%83%EF%BC%89%E3%80%81-react-redux%E5%BC%80%E5%8F%91%E8%80%85%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text">（七）、_react-redux开发者工具的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%88%E5%85%AB%EF%BC%89-react-redux%E6%9C%80%E7%BB%88%E7%89%88"><span class="toc-text">（八）_react-redux最终版</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81Hooks"><span class="toc-text">三、Hooks</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%88%E4%B8%80%EF%BC%89%E3%80%81-React-Hook-Hooks%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">（一）、 React Hook&#x2F;Hooks是什么?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%88%E4%BA%8C%EF%BC%89%E3%80%81-%E4%B8%89%E4%B8%AA%E5%B8%B8%E7%94%A8%E7%9A%84Hook"><span class="toc-text">（二）、 三个常用的Hook</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%88%E4%B8%89%EF%BC%89%E3%80%81-State-Hook"><span class="toc-text">（三）、 State Hook</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%88%E5%9B%9B%EF%BC%89%E3%80%81Effect-Hook"><span class="toc-text">（四）、Effect Hook</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%88%E4%BA%94%EF%BC%89%E3%80%81Ref-Hook"><span class="toc-text">（五）、Ref Hook</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%88%E5%85%AD%EF%BC%89%E3%80%81Fragment"><span class="toc-text">（六）、Fragment</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8"><span class="toc-text">使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8"><span class="toc-text">作用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%88%E4%B8%83%EF%BC%89%E3%80%81Context"><span class="toc-text">（七）、Context</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%90%86%E8%A7%A3"><span class="toc-text">理解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-1"><span class="toc-text">使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F"><span class="toc-text">注意</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%88%E5%85%AB%EF%BC%89%E3%80%81-%E7%BB%84%E4%BB%B6%E4%BC%98%E5%8C%96"><span class="toc-text">（八）、 组件优化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Component%E7%9A%842%E4%B8%AA%E9%97%AE%E9%A2%98"><span class="toc-text">Component的2个问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%88%E7%8E%87%E9%AB%98%E7%9A%84%E5%81%9A%E6%B3%95"><span class="toc-text">效率高的做法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E5%9B%A0"><span class="toc-text">原因</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3"><span class="toc-text">解决</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%88%E4%B9%9D%EF%BC%89%E3%80%81-render-props"><span class="toc-text">（九）、 render props</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%90%91%E7%BB%84%E4%BB%B6%E5%86%85%E9%83%A8%E5%8A%A8%E6%80%81%E4%BC%A0%E5%85%A5%E5%B8%A6%E5%86%85%E5%AE%B9%E7%9A%84%E7%BB%93%E6%9E%84-%E6%A0%87%E7%AD%BE"><span class="toc-text">如何向组件内部动态传入带内容的结构(标签)?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#children-props"><span class="toc-text">children props</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#render-props"><span class="toc-text">render props</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%88%E5%8D%81%EF%BC%89%E3%80%81-%E9%94%99%E8%AF%AF%E8%BE%B9%E7%95%8C"><span class="toc-text">（十）、 错误边界</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%88%E5%8D%81%E4%B8%80%EF%BC%89%E3%80%81%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F%E6%80%BB%E7%BB%93"><span class="toc-text">（十一）、组件通信方式总结</span></a></li></ol></li></ol>
+  </aside>
+
+        
+      </div>
+    </div>
+  </div>
+</main>
+  
+
+<footer class="footer">
+  <div class="footer-social"><a 
+        href="tencent://message/?Menu=yes&uin=1020524654 "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#12B7F5'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconQQ "></i>
+      </a><a 
+        href="https://github.com/wowangmouren?tab=repositories "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#9f7be1'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  icongithub-fill "></i>
+      </a><a 
+        href="mailto:1020524654@qq.com "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#DA2E76'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconmail "></i>
+      </a></div>
+  
+    <div class="footer-copyright"><p>欢迎进入王文涛的个人博客~  |  <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">主题</a></p></div>
+  
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  
+  
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+  
+</body>
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

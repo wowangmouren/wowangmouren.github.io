@@ -1,0 +1,371 @@
+
+
+<!DOCTYPE html>
+<html lang="en" color-mode=light>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>webpack的学习与理解 - 王文涛的博客</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+  
+  <meta name="description" content="一、查看项目webpack配置详情项目终端直接输入：v...">
+  <meta name="author" content="wowangmouren">
+  <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
+  <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" sizes="180x180">
+  <meta rel="mask-icon" href="/images/icons/stun-logo.svg" color="#333333">
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/favicon-144x144.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+    
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1445822_r673sha78lq.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+    
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css" name="highlight-style" mode="light">
+
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solarized-dark.min.css" name="highlight-style" mode="dark">
+
+      
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      lazyload: {
+        enable: true,
+        only_post: 'false',
+        loading: '[object Object]'
+      },
+      donate: {
+        enable: true,
+        alipay: '/images/theme/alipay.png',
+        wechat: '/images/theme/wechat.png'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: true,
+        always_show: true
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: false
+      },
+      preview: {
+        background: {
+          default: '',
+          api: ''
+        },
+        motto: {
+          default: '王文涛的博客',
+          typing: true,
+          api: '',
+          data_contents: ''
+        },
+      },
+      qrcode: {
+        enable: true,
+        type: 'url',
+        image: 'https://pic.izhaoo.com/weapp-code.jpg',
+      },
+      toc: {
+        enable: true
+      },
+      scrollbar: {
+        type: 'default'
+      },
+      notification: {
+        enable: false,
+        delay: 4500,
+        list: '',
+        page_white_list: '',
+        page_black_list: ''
+      },
+      search: {
+        enable: false,
+        path: ''
+      }
+    }
+  </script>
+
+  
+
+  
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="lock-screen">
+  <div class="loading"></div>
+  
+    
+
+
+  <nav class="navbar">
+    <div class="left">
+      
+        <i class="iconfont iconhome j-navbar-back-home"></i>
+      
+      
+        <i class="iconfont iconqrcode j-navbar-qrcode"></i>
+      
+      
+        <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+      
+      
+    </div>
+    <div class="center">webpack的学习与理解</div>
+    <div class="right">
+      <i class="iconfont iconmenu j-navbar-menu"></i>
+    </div>
+    
+      <div id="qrcode-navbar"></div>
+    
+  </nav>
+
+  
+  
+
+<nav class="menu">
+  <div class="menu-container">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content"><li class="menu-item">
+        <a href="/ " class="underline "> 首页</a>
+      </li><li class="menu-item">
+        <a href="/galleries/ " class="underline "> 相册</a>
+      </li><li class="menu-item">
+        <a href="/archives/ " class="underline "> 归档</a>
+      </li><li class="menu-item">
+        <a href="/tags/ " class="underline "> 标签</a>
+      </li><li class="menu-item">
+        <a href="/categories/ " class="underline "> 分类</a>
+      </li><li class="menu-item">
+        <a href="/about/ " class="underline "> 关于</a>
+      </li></ul>
+    
+      <div class="menu-copyright"><p>欢迎进入王文涛的个人博客~  |  <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">主题</a></p></div>
+    
+  </div>
+</nav>
+  <main id="main">
+  <div class="article-wrap">
+    <div class="row container">
+      <div class="col-xl-3"></div>
+      <div class="col-xl-6"><article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img   class="lazyload" data-original="/images/theme/cover/webpack.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">webpack的学习与理解</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>November 08, 2023</span>
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>3257</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        <h1 id="一、查看项目webpack配置详情"><a href="#一、查看项目webpack配置详情" class="headerlink" title="一、查看项目webpack配置详情"></a>一、查看项目webpack配置详情</h1><p>项目终端直接输入：vue inspect &gt; output.js</p>
+<h1 id="二、webpack是什么？"><a href="#二、webpack是什么？" class="headerlink" title="二、webpack是什么？"></a>二、webpack是什么？</h1><p>​        webpack是一个现代javascript应用程序的静态模块打包器（因为浏览器只能解析js文件，因此需要对文件进行编译打包）</p>
+<h1 id="三、-webpack能做什么？"><a href="#三、-webpack能做什么？" class="headerlink" title="三、 webpack能做什么？"></a>三、 webpack能做什么？</h1><p>​        1.语法转换。less/sass/stylus转换为css,ES6转ES5</p>
+<p>​        2.html、css、js代码压缩合并（打包）</p>
+<p>​        3.webpack可以在开发期间提供一个开发环境，自动打开浏览器，保存时自动刷新浏览器，</p>
+<p>​        4.项目一般打包再上线，因此webpack配置开发环境用，线上不用，依赖文件也是下载为-D</p>
+<h1 id="四、-webpack-config-js-和vue-config-js有什么区别？"><a href="#四、-webpack-config-js-和vue-config-js有什么区别？" class="headerlink" title="四、 webpack.config.js 和vue.config.js有什么区别？"></a>四、 webpack.config.js 和vue.config.js有什么区别？</h1><p><strong>webpack.config.js</strong>:   是webpack的配置文件，所有使用webpack作为打包工具的项目都可以使用，vue的项目可以使用，react的项目也可以使用。</p>
+<p><strong>vue.config.js</strong>:   是vue项目的配置文件，专用于vue项目。通过vue.config.js中常用功能的配置，简化了配置工作，当然如果需要更专业的配置工作，webpack.config.js和vue.config.js在vue项目中是可以并存的。</p>
+<h1 id="五、vue-config-js具体配置"><a href="#五、vue-config-js具体配置" class="headerlink" title="五、vue.config.js具体配置"></a>五、vue.config.js具体配置</h1><ol>
+<li><p>具体代码</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;path&#x27;</span>)<br>   <br>  <span class="hljs-comment">//引入自动生成的html插件</span><br>  <span class="hljs-keyword">const</span> HtmlWebpackPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;html-webpack-plugin&#x27;</span>);<br>  <br>  <span class="hljs-comment">//引入分离css文件的模块</span><br>  <span class="hljs-keyword">const</span> MiniCssExtractPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;mini-css-extract-plugin&#x27;</span>);<br>  <br>  <span class="hljs-comment">//导入清除插件，可以在每次打包之前清除dist目录的内容</span><br>  <span class="hljs-keyword">const</span> &#123; CleanWebpackPlugin &#125; = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;clean-webpack-plugin&#x27;</span>);<br> <br>  <span class="hljs-comment">// webpack-dev-server 相关配置,需要将配置的对象到处，给webpack使用</span><br>  <span class="hljs-built_in">module</span>.exports = &#123;<br>  	<span class="hljs-comment">//入口entry，从哪个文件开始打包</span><br> 	<span class="hljs-attr">entry</span>: <span class="hljs-string">&#x27;./src/main.js&#x27;</span>,<br> 	<span class="hljs-comment">//出口output，打包到哪里去</span><br> 	<span class="hljs-attr">output</span>:&#123;<br> 	<span class="hljs-comment">//打包输出的目录（输出的目录必须是一个绝对路径）</span><br> 	<span class="hljs-attr">path</span>:path.join(__dirname,<span class="hljs-string">&#x27;dist&#x27;</span>),<br> 	<span class="hljs-comment">//打包后生成的文件名</span><br> 	<span class="hljs-attr">filename</span>:<span class="hljs-string">&#x27;js/bundle.js&#x27;</span><br> &#125;,<br> <span class="hljs-comment">//模式mode development未压缩的，production压缩</span><br> <span class="hljs-attr">mode</span>:<span class="hljs-string">&#x27;development&#x27;</span>,<br> <br> <span class="hljs-comment">//配置module模块加载规则</span><br> <span class="hljs-comment">//默认，webpack只认识json,js，</span><br> <span class="hljs-attr">module</span>:&#123;<br> 	<span class="hljs-attr">rules</span>:[<br> 		<span class="hljs-comment">//（1）配置css文件的解析</span><br> 		&#123;<br> 			<span class="hljs-comment">//匹配所有以css结尾的文件，正则</span><br> 			<span class="hljs-attr">test</span>:<span class="hljs-regexp">/\.css$/</span>,<br> 			<span class="hljs-comment">//css-loader让webpack能够识别css文件</span><br> 			<span class="hljs-comment">//style-loader通过动态创建style标签的方式让解析后的css内容，能够作用到页面中</span><br> 			use:[&#123;<br> 				<span class="hljs-attr">loader</span>:MiniCssExtractPlugin.loader,<br> 				<span class="hljs-attr">options</span>:&#123;<br> 					<span class="hljs-comment">//公共资源加载的路径</span><br> 					<span class="hljs-attr">publicPath</span>:<span class="hljs-string">&#x27;../&#x27;</span>,<br> 					<span class="hljs-comment">//https://www.bilibili.com/video/BV1vJ411E7rn?p=6</span><br> 				&#125;<br> 			&#125;,<span class="hljs-string">&#x27;css-loader&#x27;</span>],<br> 		&#125;,<br> 		<span class="hljs-comment">//（2）配置less文件的解析</span><br> 		&#123;<br> 			<span class="hljs-attr">test</span>:<span class="hljs-regexp">/\.less$/</span>,<br> 			<span class="hljs-comment">//use中从后往前作用,less转换为css,css转换为webpack可识别</span><br> 			<span class="hljs-comment">// use:[&#x27;style-loader&#x27;,&#x27;css-loader&#x27;,&#x27;less-loader&#x27;]</span><br> 			use:[&#123;<br> 				<span class="hljs-attr">loader</span>:MiniCssExtractPlugin.loader,<br> 				<span class="hljs-attr">options</span>:&#123;<br> 					<span class="hljs-comment">//公共资源加载的路径</span><br> 					<span class="hljs-attr">publicPath</span>:<span class="hljs-string">&#x27;../&#x27;</span>,<br> 				&#125;<br> 			&#125;,<span class="hljs-string">&#x27;css-loader&#x27;</span>,<span class="hljs-string">&#x27;less-loader&#x27;</span>]<br> 		&#125;,<br> <span class="hljs-comment">//（3）配置图片文件的解析</span><br> &#123;<br> <span class="hljs-attr">test</span>:<span class="hljs-regexp">/\.(png|jpg|gif)$/i</span>,<br> use:[<br> <span class="hljs-comment">//url-loader如果不配置，默认都会将文件转换为base64字符串的格式</span><br> &#123;<br> <span class="hljs-attr">loader</span>:<span class="hljs-string">&#x27;url-loader&#x27;</span>,<br> <span class="hljs-comment">//8K以内转换为base64，8k以外，单独的一个文件请求</span><br> <span class="hljs-attr">options</span>:&#123;<br> <span class="hljs-attr">limit</span>:<span class="hljs-number">8</span>*<span class="hljs-number">1024</span>,<br> <span class="hljs-comment">//配置输出的文件名</span><br> <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;[name].[ext]&#x27;</span>,<br> <span class="hljs-comment">//配置静态资源的引用路径</span><br> <span class="hljs-attr">publicPath</span>:<span class="hljs-string">&#x27;../images/&#x27;</span>,<br> <span class="hljs-comment">//配置输出的文件目录</span><br> <span class="hljs-attr">outputPath</span>:<span class="hljs-string">&quot;images/&quot;</span><br> <br> &#125;<br> &#125;<br> ]<br> &#125;,<br> <span class="hljs-comment">//（4）配置高版本js兼容性处理</span><br> &#123;<br> <span class="hljs-attr">test</span>:<span class="hljs-regexp">/\.js$/</span>,<br> <span class="hljs-comment">//exclude为配置排除项</span><br> exclude:<span class="hljs-regexp">/(node_modules)/</span>,<br> use:&#123;<br> <span class="hljs-attr">loader</span>:<span class="hljs-string">&#x27;babel-loader&#x27;</span>,<br> <span class="hljs-attr">options</span>:&#123;<br> <span class="hljs-attr">presets</span>:[<span class="hljs-string">&#x27;@babel/preset-env&#x27;</span>]<br> &#125;<br> &#125;<br> &#125;]<br> &#125;,<br>  <br> <span class="hljs-comment">//配置插件</span><br> <span class="hljs-attr">plugin</span>:[<br> <span class="hljs-comment">//自动生成html的插件</span><br><span class="hljs-keyword">new</span> HtmlWebpackPlugin(&#123;<span class="hljs-attr">template</span>: <span class="hljs-string">&#x27;./src/view/index.html&#x27;</span>&#125;),<br><span class="hljs-comment">//分离css的插件，定义打包好的文件的存放路径和文件名</span><br><span class="hljs-keyword">new</span> MiniCssExtractPlugin(&#123;<br><span class="hljs-attr">filename</span>:<span class="hljs-string">&#x27;css/index.css&#x27;</span><br>&#125;),<br><span class="hljs-comment">//清除dist目录的插件</span><br><span class="hljs-keyword">new</span> CleanWebpackPlugin()<br>],<br><span class="hljs-comment">//配置开发服务器</span><br><span class="hljs-attr">devServer</span>: &#123;<br><span class="hljs-attr">port</span>:<span class="hljs-number">3000</span>,<br><span class="hljs-attr">open</span>:<span class="hljs-literal">true</span>,<br>&#125;<br> <br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ol>
+
+      </section>
+      <section class="extra">
+        
+          <ul class="copyright">
+  
+    <li><strong>本文作者：</strong>wowangmouren</li>
+    <li><strong>本文链接：</strong><a href="https://wangwewntao.top/2023/11/08/wmr_13/index.html" title="https:&#x2F;&#x2F;wangwewntao.top&#x2F;2023&#x2F;11&#x2F;08&#x2F;wmr_13&#x2F;index.html">https:&#x2F;&#x2F;wangwewntao.top&#x2F;2023&#x2F;11&#x2F;08&#x2F;wmr_13&#x2F;index.html</a></li>
+    <li><strong>版权声明：</strong>本博客所有文章均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" title="BY-NC-SA" target="_blank" rel="noopener">BY-NC-SA</a> 许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+          <section class="donate">
+  <div id="qrcode-donate">
+    <img   class="lazyload" data-original="/images/theme/alipay.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+        
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack-config-js/" rel="tag">webpack.config.js</a></li></ul> 
+
+        
+  <nav class="nav">
+    <a href="/2023/11/08/wmr_14/"><i class="iconfont iconleft"></i>上传器oss图片上传以及生成二维码海报</a>
+    <a href="/2023/11/08/wmr_12/">Vue-生命周期8个钩子函数<i class="iconfont iconright"></i></a>
+  </nav>
+
+      </section>
+      
+    </section>
+  </div>
+</article></div>
+      <div class="col-xl-3">
+        
+          
+  <aside class="toc-wrap">
+    <h3 class="toc-title">文章目录：</h3>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%9F%A5%E7%9C%8B%E9%A1%B9%E7%9B%AEwebpack%E9%85%8D%E7%BD%AE%E8%AF%A6%E6%83%85"><span class="toc-text">一、查看项目webpack配置详情</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81webpack%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">二、webpack是什么？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81-webpack%E8%83%BD%E5%81%9A%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">三、 webpack能做什么？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E3%80%81-webpack-config-js-%E5%92%8Cvue-config-js%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-text">四、 webpack.config.js 和vue.config.js有什么区别？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%94%E3%80%81vue-config-js%E5%85%B7%E4%BD%93%E9%85%8D%E7%BD%AE"><span class="toc-text">五、vue.config.js具体配置</span></a></li></ol>
+  </aside>
+
+        
+      </div>
+    </div>
+  </div>
+</main>
+  
+
+<footer class="footer">
+  <div class="footer-social"><a 
+        href="tencent://message/?Menu=yes&uin=1020524654 "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#12B7F5'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconQQ "></i>
+      </a><a 
+        href="https://github.com/wowangmouren?tab=repositories "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#9f7be1'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  icongithub-fill "></i>
+      </a><a 
+        href="mailto:1020524654@qq.com "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#DA2E76'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconmail "></i>
+      </a></div>
+  
+    <div class="footer-copyright"><p>欢迎进入王文涛的个人博客~  |  <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">主题</a></p></div>
+  
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  
+  
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+  
+</body>
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

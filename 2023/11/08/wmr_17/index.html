@@ -1,0 +1,382 @@
+
+
+<!DOCTYPE html>
+<html lang="en" color-mode=light>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>断点调试 - 王文涛的博客</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+  
+  <meta name="description" content="一、Chrome断点调试（一）项目中配置
+如果你使用的...">
+  <meta name="author" content="wowangmouren">
+  <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
+  <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" sizes="180x180">
+  <meta rel="mask-icon" href="/images/icons/stun-logo.svg" color="#333333">
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/favicon-144x144.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+    
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1445822_r673sha78lq.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+    
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css" name="highlight-style" mode="light">
+
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solarized-dark.min.css" name="highlight-style" mode="dark">
+
+      
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      lazyload: {
+        enable: true,
+        only_post: 'false',
+        loading: '[object Object]'
+      },
+      donate: {
+        enable: true,
+        alipay: '/images/theme/alipay.png',
+        wechat: '/images/theme/wechat.png'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: true,
+        always_show: true
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: false
+      },
+      preview: {
+        background: {
+          default: '',
+          api: ''
+        },
+        motto: {
+          default: '王文涛的博客',
+          typing: true,
+          api: '',
+          data_contents: ''
+        },
+      },
+      qrcode: {
+        enable: true,
+        type: 'url',
+        image: 'https://pic.izhaoo.com/weapp-code.jpg',
+      },
+      toc: {
+        enable: true
+      },
+      scrollbar: {
+        type: 'default'
+      },
+      notification: {
+        enable: false,
+        delay: 4500,
+        list: '',
+        page_white_list: '',
+        page_black_list: ''
+      },
+      search: {
+        enable: false,
+        path: ''
+      }
+    }
+  </script>
+
+  
+
+  
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="lock-screen">
+  <div class="loading"></div>
+  
+    
+
+
+  <nav class="navbar">
+    <div class="left">
+      
+        <i class="iconfont iconhome j-navbar-back-home"></i>
+      
+      
+        <i class="iconfont iconqrcode j-navbar-qrcode"></i>
+      
+      
+        <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+      
+      
+    </div>
+    <div class="center">断点调试</div>
+    <div class="right">
+      <i class="iconfont iconmenu j-navbar-menu"></i>
+    </div>
+    
+      <div id="qrcode-navbar"></div>
+    
+  </nav>
+
+  
+  
+
+<nav class="menu">
+  <div class="menu-container">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content"><li class="menu-item">
+        <a href="/ " class="underline "> 首页</a>
+      </li><li class="menu-item">
+        <a href="/galleries/ " class="underline "> 相册</a>
+      </li><li class="menu-item">
+        <a href="/archives/ " class="underline "> 归档</a>
+      </li><li class="menu-item">
+        <a href="/tags/ " class="underline "> 标签</a>
+      </li><li class="menu-item">
+        <a href="/categories/ " class="underline "> 分类</a>
+      </li><li class="menu-item">
+        <a href="/about/ " class="underline "> 关于</a>
+      </li></ul>
+    
+      <div class="menu-copyright"><p>欢迎进入王文涛的个人博客~  |  <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">主题</a></p></div>
+    
+  </div>
+</nav>
+  <main id="main">
+  <div class="article-wrap">
+    <div class="row container">
+      <div class="col-xl-3"></div>
+      <div class="col-xl-6"><article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img   class="lazyload" data-original="/images/theme/cover/gongju.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">断点调试</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>November 08, 2023</span>
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>1839</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        <h1 id="一、Chrome断点调试"><a href="#一、Chrome断点调试" class="headerlink" title="一、Chrome断点调试"></a>一、Chrome断点调试</h1><h2 id="（一）项目中配置"><a href="#（一）项目中配置" class="headerlink" title="（一）项目中配置"></a>（一）项目中配置</h2><ol>
+<li><p>如果你使用的是 Vue CLI 2，请设置并更新 <code>config/index.js</code> 内的 <code>devtool</code> property：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">devtool: <span class="hljs-string">&#x27;source-map&#x27;</span>,<br></code></pre></td></tr></table></figure></li>
+<li><p>如果你使用的是 Vue CLI 3，请设置并更新 <code>vue.config.js</code> 内的 <code>devtool</code> property：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">module</span>.exports = &#123;<br>  <span class="hljs-attr">configureWebpack</span>: &#123;<br>    <span class="hljs-attr">devtool</span>: <span class="hljs-string">&#x27;source-map&#x27;</span><br>  &#125;<br>&#125;<br><br>这里配置source-map是为了使webpack处理过的压缩文件还能还原，方便调试<br></code></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="（二）chrome浏览器中sources中调试"><a href="#（二）chrome浏览器中sources中调试" class="headerlink" title="（二）chrome浏览器中sources中调试"></a>（二）chrome浏览器中sources中调试</h2><p>webpack://文件夹下  . 目录下找到对应文件夹，其中第一个js文件就是可调试页面</p>
+<h1 id="二、Vscode中断点调试"><a href="#二、Vscode中断点调试" class="headerlink" title="二、Vscode中断点调试"></a>二、Vscode中断点调试</h1><h2 id="（一）项目中配置-1"><a href="#（一）项目中配置-1" class="headerlink" title="（一）项目中配置"></a>（一）项目中配置</h2><ol>
+<li><p>如果是基于 webpack 打包的 vue 项目， 可能会存在断点不匹配的问题, 还需要做些修改：</p>
+<ul>
+<li>打开根目录下的 config 目录下的 index.js （ Vue CLI 2）文件或者vue.config.js（Vue CLI 3）</li>
+<li>将dev 节点下的 devtool 值改为 ‘eval-source-map’</li>
+<li>将dev节点下的 cacheBusting 值改为 false</li>
+</ul>
+<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs livescript"><span class="hljs-built_in">module</span>.<span class="hljs-built_in">exports</span> = &#123;<br>  configureWebpack: &#123;<br>    devtool: <span class="hljs-string">&#x27;eval-source-map&#x27;</span><br>  &#125;<br>&#125;<br><br>配置值必须为：‘<span class="hljs-built_in">eval</span>-source-<span class="hljs-keyword">map</span>’，为了是解决vscode调试vue代码断点没有在项目中被命中问题<br></code></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="（二）创建-Debug-配置文件"><a href="#（二）创建-Debug-配置文件" class="headerlink" title="（二）创建 Debug 配置文件"></a>（二）创建 Debug 配置文件</h2><ol>
+<li><p>点击 Visual Studio Code 左侧边栏的 <strong>调试</strong> 按钮， 在弹出的调试配置窗口中点击 <em>设置</em> 小齿轮， 然后选择 chrome, VS Code 将会在工作区根目录生成.vscode 目录，里面会有一个 lanch.json 文件并会自动打开</p>
+<p>用下面的配置文件覆盖自动生成的 lanch.json 文件内容。</p>
+<p>注意：URL中的端口号要跟WEBPACK配置的启动端口号一致</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&#123;<br>  <span class="hljs-comment">// Use IntelliSense to learn about possible attributes.</span><br>  <span class="hljs-comment">// Hover to view descriptions of existing attributes.</span><br>  <span class="hljs-comment">// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387</span><br>  <span class="hljs-string">&quot;version&quot;</span>: <span class="hljs-string">&quot;0.2.0&quot;</span>,<br>  <span class="hljs-string">&quot;configurations&quot;</span>: [<br>    &#123;<br>      <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;chrome&quot;</span>,<br>      <span class="hljs-string">&quot;request&quot;</span>: <span class="hljs-string">&quot;attach&quot;</span>,<br>      <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;Attach to Chrome&quot;</span>,<br>      <span class="hljs-string">&quot;webRoot&quot;</span>: <span class="hljs-string">&quot;$&#123;workspaceRoot&#125;/src&quot;</span>,<br>      <span class="hljs-string">&quot;url&quot;</span>: <span class="hljs-string">&quot;http://localhost:8080/#/&quot;</span>,　<br>      <span class="hljs-string">&quot;sourceMaps&quot;</span>: <span class="hljs-literal">true</span>,<br>      <span class="hljs-string">&quot;sourceMapPathOverrides&quot;</span>: &#123;<br>          <span class="hljs-string">&quot;webpack:///src/*&quot;</span>: <span class="hljs-string">&quot;$&#123;webRoot&#125;/*&quot;</span>,<br>          <span class="hljs-string">&quot;webpack:///./src/*&quot;</span>: <span class="hljs-string">&quot;$&#123;webRoot&#125;/*&quot;</span><br>       &#125;<br>    &#125;<br>  ]<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ol>
+
+      </section>
+      <section class="extra">
+        
+          <ul class="copyright">
+  
+    <li><strong>本文作者：</strong>wowangmouren</li>
+    <li><strong>本文链接：</strong><a href="https://wangwewntao.top/2023/11/08/wmr_17/index.html" title="https:&#x2F;&#x2F;wangwewntao.top&#x2F;2023&#x2F;11&#x2F;08&#x2F;wmr_17&#x2F;index.html">https:&#x2F;&#x2F;wangwewntao.top&#x2F;2023&#x2F;11&#x2F;08&#x2F;wmr_17&#x2F;index.html</a></li>
+    <li><strong>版权声明：</strong>本博客所有文章均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" title="BY-NC-SA" target="_blank" rel="noopener">BY-NC-SA</a> 许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+          <section class="donate">
+  <div id="qrcode-donate">
+    <img   class="lazyload" data-original="/images/theme/alipay.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+        
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Devtools/" rel="tag">Devtools</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/chrome%E6%96%AD%E7%82%B9%E8%B0%83%E8%AF%95/" rel="tag">chrome断点调试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode%E6%96%AD%E7%82%B9%E8%B0%83%E8%AF%95/" rel="tag">vscode断点调试</a></li></ul> 
+
+        
+  <nav class="nav">
+    <a href="/2023/11/08/wmr_18/"><i class="iconfont iconleft"></i>node</a>
+    <a href="/2023/11/08/wmr_16/">computed计算属性跟watch监听属性详解<i class="iconfont iconright"></i></a>
+  </nav>
+
+      </section>
+      
+    </section>
+  </div>
+</article></div>
+      <div class="col-xl-3">
+        
+          
+  <aside class="toc-wrap">
+    <h3 class="toc-title">文章目录：</h3>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81Chrome%E6%96%AD%E7%82%B9%E8%B0%83%E8%AF%95"><span class="toc-text">一、Chrome断点调试</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%88%E4%B8%80%EF%BC%89%E9%A1%B9%E7%9B%AE%E4%B8%AD%E9%85%8D%E7%BD%AE"><span class="toc-text">（一）项目中配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%88%E4%BA%8C%EF%BC%89chrome%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%ADsources%E4%B8%AD%E8%B0%83%E8%AF%95"><span class="toc-text">（二）chrome浏览器中sources中调试</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81Vscode%E4%B8%AD%E6%96%AD%E7%82%B9%E8%B0%83%E8%AF%95"><span class="toc-text">二、Vscode中断点调试</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%88%E4%B8%80%EF%BC%89%E9%A1%B9%E7%9B%AE%E4%B8%AD%E9%85%8D%E7%BD%AE-1"><span class="toc-text">（一）项目中配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%88%E4%BA%8C%EF%BC%89%E5%88%9B%E5%BB%BA-Debug-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-text">（二）创建 Debug 配置文件</span></a></li></ol></li></ol>
+  </aside>
+
+        
+      </div>
+    </div>
+  </div>
+</main>
+  
+
+<footer class="footer">
+  <div class="footer-social"><a 
+        href="tencent://message/?Menu=yes&uin=1020524654 "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#12B7F5'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconQQ "></i>
+      </a><a 
+        href="https://github.com/wowangmouren?tab=repositories "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#9f7be1'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  icongithub-fill "></i>
+      </a><a 
+        href="mailto:1020524654@qq.com "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#DA2E76'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconmail "></i>
+      </a></div>
+  
+    <div class="footer-copyright"><p>欢迎进入王文涛的个人博客~  |  <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">主题</a></p></div>
+  
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  
+  
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+  
+</body>
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>
